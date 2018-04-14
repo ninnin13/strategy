@@ -76,6 +76,8 @@ step5.x = 500
 step5.y = -100
 step5.hide()
 
+//second commit
+
 function myturn(){
 STtechnique = 1
 choiced == 0
