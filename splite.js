@@ -1,4 +1,21 @@
-
+//吹き出し
+// var hukidasi = {
+//   image: new Image({
+//     url: `./image/tab/hukidasi.png`,
+//     width: 1200,
+//     height: 200,
+//   }),
+//   name: "landeffect"
+// }
+// hukidasi.image.hide()
+var descriptionText = {
+  text: new Text({
+    text: () => Textinwhat,
+    size: 50,
+    color: "rgb(100, 50, 240)",
+    fontFamily: "arial"
+  })
+}
 //エフェクト
 var landeffect = {
   image: new Image({

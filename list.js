@@ -35,6 +35,7 @@ var wordkeep = []
 // yourstep.push(1)
 //進む場所
 var wherecan = []
+var fastwherecan = []
 var priority = []
 //ホーム画面移動用
 //ホームで動くもの
@@ -173,6 +174,12 @@ musicname.push(music2)
 musicname.push(home0)
 musicname.push(home1)
 musicname.push(home2)
+//チュートリアル
+var textlist = []
+textlist.push("こんにちは")
+textlist.push("私は、新しく隊長になったあなたの補佐官を任されました。")
+textlist.push("まずは、配置の仕方を教えます。")
+textlist.push("「配置」のボタンを押してください。")
 //ロード背景
 var loads = []
 var load = {

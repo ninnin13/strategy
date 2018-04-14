@@ -26,6 +26,16 @@ function randomDU(number) {
   }
  }
 }
+//移動優先度
+function plusfast(nowx,nowy) {
+  range(0,wherecan.length2).forEach(i => {
+    cards.forEach(card => {
+      if(card.image.x == nowx + wherecan[i*2]*grid && card.image.y == nowy + wherecan[i*2+1]*grid){
+        fastwherecan.push(wherecan[i*2],wherecan[i*2+1])
+      }
+    })
+  })
+}
 //デッキ保存
 function deckkeep() {
   range(0,deck.length).forEach(i => {
@@ -219,7 +229,7 @@ function YattackTC(TCmain,TCx,TCy) {
   })
   after(attackobject.YCMData*0.02, "seconds", () => {
     cards.forEach(card => {
-      if(card.image.x == attackobject.STXData + attackobject.PMXData && card.image.y == attackobject.STYData + attackobject.PMYData){
+      if(card.touching(attackobject)){
         card.image.brightness = 100
         repeat(100, () => {
           card.image.brightness -= 1

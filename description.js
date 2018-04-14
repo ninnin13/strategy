@@ -46,3 +46,15 @@ forever(() => {
     })
   }
 })
+forever(() => {
+  if(DSmode == "はじめに"){
+    textnumber = 0
+    repeat(4, () => {
+      if(textstop == 0 && mouseDown){
+        textnumber += 1
+        
+        textstop = 1
+      }
+    })
+  }
+})

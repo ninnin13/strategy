@@ -9,6 +9,12 @@ var walkData
 var walkData2
 var Tkeepmath2
 var Tkeepmath3
+//チュートリアル
+var gameStatus2
+var DSfirst
+var Textinwhat
+var DSmode
+var textnumber = 0
 //技
 var STtechnique = 0
 var TCnumber
@@ -197,6 +203,7 @@ var clear
 //相手のターン終了タイミング
 var Ygotime = 0
 //連打不可にするため
+var textstop = 0
 var nextstop = 0
 var downMouse
 var hidestop = 0
@@ -204,9 +211,9 @@ every(1, "seconds", () => {
   if(!(downMouse == 0)){
   downMouse = 0
   }
-  // if(!(pushstopper == 0)){
-  //  pushstopper = 0
-  // }
+  if(!(textstop == 0)){
+   textstop = 0
+  }
   if(TCstopper == 1){
     TCstopper = 0
   }

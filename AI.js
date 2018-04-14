@@ -251,7 +251,7 @@ if(Ycardtype == "unique2"){
     range(-1*keepmath3,keepmath3+1).forEach(k => {
      oddOrEven(several)
      if(oddEven == "even"){
-      wharecan.push(k,j)
+      wherecan.push(k,j)
      }
      several += 1
    })

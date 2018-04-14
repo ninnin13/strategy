@@ -82,7 +82,186 @@ function myturn(){
 STtechnique = 1
 choiced == 0
 showitemlimit = 2
+DSfirst = 1
+DSmode = "なし"
 turnshow()
+if(gameStatus2 == "DSduring"){
+  after(2.3/hidespeed, "seconds", () => {
+    if(DSfirst == 1) {
+      // hukidasi.image.x = 0
+      // hukidasi.image.y = -8*grid
+      descriptionText.text.x = 0
+      descriptionText.text.y = -8*grid
+      // hukidasi.image.show()
+      // hukidasi.image.sendToFront()
+      descriptionText.text.show()
+      descriptionText.text.sendToFront()
+  　　 DSmode = "はじめに"
+      DSfirst = 0
+    }
+    var choicing = 0
+    //console.log(cardsetting[0])
+    repeatUntil(() => !(turn == "my"), () => {
+       if(choicing == 1){
+         if(keysDown.includes('S')){
+           upcard2 -= 10
+           upcard = upcard2
+           range(0, cardkind.length).forEach(i => {
+            standcard(cardkind[i])
+            upcard -= 150
+          })
+         }
+         if(keysDown.includes('W')){
+           upcard2 += 10
+           upcard = upcard2
+           range(0, cardkind.length).forEach(i => {
+            standcard(cardkind[i])
+            upcard -= 150
+          })
+         }
+       }
+       if(choicingitem == 1){
+         if(keysDown.includes('S')){
+           itemupcard2 -= 10
+           itemupcard = itemupcard2
+           range(0, itemkind.length).forEach(i => {
+            standitem(itemkind[i])
+            itemupcard -= 150
+          })
+         }
+         if(keysDown.includes('W')){
+           itemupcard2 += 10
+           itemupcard = itemupcard2
+           range(0, itemkind.length).forEach(i => {
+            standitem(itemkind[i])
+            itemupcard -= 150
+          })
+         }
+       }
+       if(startTurn == 1){
+         stepshow()
+         newturn()
+         startTurn = 0
+       }
+       if(step5.mouseOver && mouseDown){
+         stephide()
+         backshow()
+         //選んでいる
+         choicing = 1
+         //
+         upcard2 = 180
+         upcard = upcard2
+         range(0, cardkind.length).forEach(i => {
+           standcard(cardkind[i])
+           upcard -= 150
+         })
+        }
+        if(step4.mouseOver && mouseDown){
+          stephide()
+          backshow()
+          gocardtime = "true"
+
+       }
+       if(step3.mouseOver && mouseDown){
+         stephide()
+         backshow()
+         //選んでいる
+         choicingitem = 1
+         //
+         itemupcard2 = 180
+         itemupcard = itemupcard2
+         range(0, itemkind.length).forEach(i => {
+           standitem(itemkind[i])
+           itemupcard -= 150
+         })
+        }
+       if(step2.mouseOver && mouseDown){
+         stephide()
+         backshow()
+         TS = 1
+       }
+       //当たり判定
+       techniquestart()
+       if(choicing == 1){
+         range(0,cardkind.length).forEach(i => {
+           cardhit(cardkind[i],cardkind[i].name)
+         })
+       }
+       if(choicingitem == 1){
+         range(0,itemkind.length).forEach(i => {
+           itemhit(itemkind[i],itemkind[i].name)
+         })
+       }
+      if(mouseDown && mouseX < grid*4 && mouseX > grid*-4 && mouseY < grid*-6 && mouseY > grid*-10 ){
+            if(!(choicestand == 1)){
+              if(showcardlimit > 0){
+               downX = floor(mouseX/grid)
+               downY = floor(mouseY/grid)
+               downX += 0.5
+               downY += 0.5
+               cardfield(choicestand,choicestand2)
+               existcard()
+               choicestand = 1
+               //console.log(downX)
+             }
+            }
+       }
+       if(mouseX < grid*10 && mouseX > grid*-10 && mouseY < grid*15 && mouseY > grid*-15 && mouseDown){
+        if(!(choiceitem == 1)){
+          if(showitemlimit > 0){
+           downX = floor(mouseX/grid)
+           downY = floor(mouseY/grid)
+           downX += 0.5
+           downY += 0.5
+            console.log("道具の効果")
+           if(choiceitem2.type == "attributechange"){
+             console.log("属性変更決定")
+             console.log(choiceitem2)
+             console.log(choiceitem2.EFname)
+             attributechange(choiceitem,choiceitem2,choiceitem2.attribute,choiceitem2.EFname)
+           }
+           choiceitem = 1
+           //console.log(downX)
+         }
+        }
+      }
+      if(keysDown.includes('B') || gobackTab.mouseOver && mouseDown){
+        choicing = 0
+        choicingitem = 0
+        choicestand = 1
+        choiceitem = 1
+        STtechnique = 1
+        stepshow()
+        wheres.forEach(where => {
+          where.image.hide()
+        })
+        where0.image.hide()
+        gocardtime = "false"
+        range(0, cardsetting.length).forEach(i => {
+         notstandcard(cardsetting[i])
+         upcard -= 150
+       })
+       range(0, itemkind.length).forEach(i => {
+        notstandcard(itemkind[i])
+        itemupcard -= 150
+       })
+       TBt.text.hide()
+       TS = 0
+      }
+      if(turnchange == "true"){
+       if(step1.mouseOver && mouseDown || keysDown.includes('F')){
+          bctab.hide()
+          stephide()
+         nextturn = 1
+          turn = "your"
+          turnchange = "false"
+          choicestand = 1
+       }
+
+     }
+    })
+  })
+}else{
 after(2.3/hidespeed, "seconds", () => {
   var choicing = 0
   //console.log(cardsetting[0])
@@ -247,6 +426,7 @@ after(2.3/hidespeed, "seconds", () => {
   })
 })
 }
+}
 //回数制限など
 function newturn(){
   showcardlimit = 2
@@ -340,6 +520,7 @@ after(2.3/hidespeed, "seconds", () => {
       if(Ycard.image.y < grid*9){
         if(0 == random(0,2)){
           Ycardput(Ycard.go,Ycard.step)
+          plusfast(Ycard.image.x,Ycard.image.y)
          // console.log(goXYstart)
          // console.log(wherecan)
          // console.log("putern1")
