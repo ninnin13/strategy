@@ -187,6 +187,8 @@ textlist.push("配置は１ターン2体までです。")
 textlist.push("このターンにできることは終わったので、「戻る」、「終了」を押してください。")
 textlist.push("次は、移動です。")
 textlist.push("「移動」のボタンを押してください。")
+textlist.push("配置した犬をクリックしてください")
+textlist.push("今表示されている赤色のところが、移動できる範囲です")
 var usetextlist = []
 //ロード背景
 var loads = []
