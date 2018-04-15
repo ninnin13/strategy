@@ -186,6 +186,7 @@ textlist.push("もう一体好きなカードを選んで配置してくださ�
 textlist.push("配置は１ターン2体までです。")
 textlist.push("このターンにできることは終わったので、「戻る」、「終了」を押してください。")
 textlist.push("次は、移動です。")
+textlist.push("「移動」のボタンを押してください。")
 var usetextlist = []
 //ロード背景
 var loads = []
