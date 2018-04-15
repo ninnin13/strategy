@@ -26,14 +26,30 @@ function randomDU(number) {
   }
  }
 }
+//チュートリアル
+function didlist(inname) {
+  indid = 0
+  range(0,usetextlist.length).forEach(i => {
+    if(usetextlist[i] == inname){
+      indid = 1
+    }
+  })
+}
 //移動優先度
 function plusfast(nowx,nowy) {
-  range(0,wherecan.length2).forEach(i => {
+  range(0,wherecan.length/2).forEach(i => {
     cards.forEach(card => {
       if(card.image.x == nowx + wherecan[i*2]*grid && card.image.y == nowy + wherecan[i*2+1]*grid){
         fastwherecan.push(wherecan[i*2],wherecan[i*2+1])
       }
     })
+  })
+}
+function littlefast() {
+  range(0,wherecan.length/2).forEach(i => {
+    if(wherecan[i*2+1] < 0){
+      fastwherecan.push(wherecan[i*2],wherecan[i*2+1])
+    }
   })
 }
 //デッキ保存
@@ -229,7 +245,7 @@ function YattackTC(TCmain,TCx,TCy) {
   })
   after(attackobject.YCMData*0.02, "seconds", () => {
     cards.forEach(card => {
-      if(card.touching(attackobject)){
+      if(card.image.x == attackobject.STXData + attackobject.PMXData && card.image.y == attackobject.STYData + attackobject.PMYData){
         card.image.brightness = 100
         repeat(100, () => {
           card.image.brightness -= 1
@@ -265,6 +281,9 @@ if(name.image.mouseOver && mouseDown){
      choicestand = name2
      choicestand2 = name
      downMouse = 1
+     canarea.image.show()
+     canarea.image.sendToFront()
+     canarea.image.y = -8*grid
     }
  }
 }
@@ -684,12 +703,30 @@ function Ychoicego(nowX,nowY,nowproperty) {
     dcrease -= 1
   })
   wherecan.remove("Ds")
+  plusfast(nowX,nowY)
   console.log("進行方向決定" + wherecan)
-  goXYstart = random(0,wherecan.length-1)
-  goXYstart = floor(goXYstart/2)
-  goXYstart = goXYstart*2
-  goX = wherecan[goXYstart]
-  goY = wherecan[goXYstart+1]
+  if(fastwherecan.length == 0){
+   littlefast()
+   if(fastwherecan.length == 0){
+    goXYstart = random(0,wherecan.length-1)
+    goXYstart = floor(goXYstart/2)
+    goXYstart = goXYstart*2
+    goX = wherecan[goXYstart]
+    goY = wherecan[goXYstart+1]
+  }else{
+    goXYstart = random(0,fastwherecan.length-1)
+    goXYstart = floor(goXYstart/2)
+    goXYstart = goXYstart*2
+    goX = fastwherecan[goXYstart]
+    goY = fastwherecan[goXYstart+1]
+  }
+ }else{
+   goXYstart = random(0,fastwherecan.length-1)
+   goXYstart = floor(goXYstart/2)
+   goXYstart = goXYstart*2
+   goX = fastwherecan[goXYstart]
+   goY = fastwherecan[goXYstart+1]
+ }
 }
 function yourgo(goblocks,YcardgoX,YcardgoY){
      Ycards.forEach(Ycard => {

@@ -94,9 +94,15 @@ if(gameStatus2 == "DSduring"){
       descriptionText.text.y = -8*grid
       // hukidasi.image.show()
       // hukidasi.image.sendToFront()
-      descriptionText.text.show()
-      descriptionText.text.sendToFront()
+      // descriptionText.text.show()
+      // descriptionText.text.sendToFront()
+      didlist("はじめに")
+      if(indid == 0){
+       textsign = 0
   　　 DSmode = "はじめに"
+      }
+  //     textsign = 0
+  // 　　 DSmode = "はじめに"
       DSfirst = 0
     }
     var choicing = 0
@@ -146,6 +152,11 @@ if(gameStatus2 == "DSduring"){
        if(step5.mouseOver && mouseDown){
          stephide()
          backshow()
+         didlist("配置1")
+         if(indid == 0){
+          textsign = 0
+     　　 DSmode = "配置1"
+         }
          //選んでいる
          choicing = 1
          //
@@ -199,6 +210,7 @@ if(gameStatus2 == "DSduring"){
                downY = floor(mouseY/grid)
                downX += 0.5
                downY += 0.5
+               canarea.image.hide()
                cardfield(choicestand,choicestand2)
                existcard()
                choicestand = 1
@@ -226,6 +238,7 @@ if(gameStatus2 == "DSduring"){
         }
       }
       if(keysDown.includes('B') || gobackTab.mouseOver && mouseDown){
+        canarea.image.hide()
         choicing = 0
         choicingitem = 0
         choicestand = 1
@@ -363,6 +376,7 @@ after(2.3/hidespeed, "seconds", () => {
              downY = floor(mouseY/grid)
              downX += 0.5
              downY += 0.5
+             canarea.image.hide()
              cardfield(choicestand,choicestand2)
              existcard()
              choicestand = 1
@@ -517,10 +531,9 @@ after(2.3/hidespeed, "seconds", () => {
     //console.log(mapData[floor(Ykeepmath/grid)][floor(Ykeepmath2/grid)])
     Ychecksame(mapData[floor(Ykeepmath/grid)][floor(Ykeepmath2/grid)],Ycard.propertydata)
     if(80 > random(0,100) && Ycard.TorF == 0){
-      if(Ycard.image.y < grid*9){
-        if(0 == random(0,2)){
+      // if(Ycard.image.y < grid*9){
+        // if(0 == random(0,2)){
           Ycardput(Ycard.go,Ycard.step)
-          plusfast(Ycard.image.x,Ycard.image.y)
          // console.log(goXYstart)
          // console.log(wherecan)
          // console.log("putern1")
@@ -530,28 +543,28 @@ after(2.3/hidespeed, "seconds", () => {
          yourgo(Ycard.number,goX,goY)
          YcardDLT()
          checkfinish()
-       }else{
-         Ycardput2(Ycard.go,Ycard.step)
-         // console.log(goXYstart)
-         // console.log(wherecan)
-         // console.log("putern2")
-         Ychoicego(Ycard.image.x,Ycard.image.y,Ycard.property)
-         console.log("P2x: " + goX)
-         console.log("P2y: " + goY)
-         yourgo(Ycard.number,goX,goY)
-         YcardDLT()
-         checkfinish()
-       }
-      }else{
-        Ycardput3(Ycard.go,Ycard.step)
-        //console.log(goXYstart)
-        //console.log(wherecan)
-        //console.log("putern3")
-        Ychoicego()
-        yourgo(Ycard.number,goX,goY)
-        YcardDLT()
-        checkfinish()
-      }
+       // }else{
+       //   Ycardput2(Ycard.go,Ycard.step)
+       //   // console.log(goXYstart)
+       //   // console.log(wherecan)
+       //   // console.log("putern2")
+       //   Ychoicego(Ycard.image.x,Ycard.image.y,Ycard.property)
+       //   console.log("P2x: " + goX)
+       //   console.log("P2y: " + goY)
+       //   yourgo(Ycard.number,goX,goY)
+       //   YcardDLT()
+       //   checkfinish()
+       // }
+      // }else{
+      //   Ycardput3(Ycard.go,Ycard.step)
+      //   //console.log(goXYstart)
+      //   //console.log(wherecan)
+      //   //console.log("putern3")
+      //   Ychoicego()
+      //   yourgo(Ycard.number,goX,goY)
+      //   YcardDLT()
+      //   checkfinish()
+      // }
 
     }
    }

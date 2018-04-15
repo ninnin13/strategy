@@ -191,6 +191,9 @@ var goXYstart
 var goXY
 var goX
 var goY
+//チュートリアル
+var textsign
+var indid
 //技用
 var techniquetext
 var TS = 0
@@ -212,6 +215,7 @@ every(1, "seconds", () => {
   downMouse = 0
   }
   if(!(textstop == 0)){
+    console.log("元に戻した")
    textstop = 0
   }
   if(TCstopper == 1){

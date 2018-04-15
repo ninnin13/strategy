@@ -20,6 +20,10 @@ function YcardDLT() {
     console.log(Ydelatelist[0])
     Ydelatelist.remove(Ydelatelist[0])
   })
+  range(0,fastwherecan.length).forEach(i => {
+    console.log(fastwherecan[0])
+    fastwherecan.remove(fastwherecan[0])
+  })
   console.log(Ydelatelist)
 }
 function Ycardput(Ycardtype,Ycardgo){

@@ -16,6 +16,16 @@ var descriptionText = {
     fontFamily: "arial"
   })
 }
+//チュートリアル
+var canarea = {
+  image: new Image({
+    url: `./image/canarea.png`,
+    width: 8*grid,
+    height: 4*grid,
+  }),
+  name: "canarea"
+}
+canarea.image.hide()
 //エフェクト
 var landeffect = {
   image: new Image({

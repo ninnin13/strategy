@@ -180,6 +180,13 @@ textlist.push("こんにちは")
 textlist.push("私は、新しく隊長になったあなたの補佐官を任されました。")
 textlist.push("まずは、配置の仕方を教えます。")
 textlist.push("「配置」のボタンを押してください。")
+textlist.push("左の犬のカードをクリックしてください。")
+textlist.push("下に表示されている範囲内に置くと、配置できます。")
+textlist.push("もう一体好きなカードを選んで配置してください。")
+textlist.push("配置は１ターン2体までです。")
+textlist.push("このターンにできることは終わったので、「戻る」、「終了」を押してください。")
+textlist.push("次は、移動です。")
+var usetextlist = []
 //ロード背景
 var loads = []
 var load = {
