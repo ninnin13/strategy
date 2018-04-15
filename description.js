@@ -46,74 +46,82 @@ forever(() => {
     })
   }
 })
+function DSstart(startText) {
+  textnumber = startText
+  Textinwhat = textlist[textnumber]
+  descriptionText.text.show()
+  descriptionText.text.sendToFront()
+  textsign = 1
+  usetextlist.push(DSmode)
+  textstop = 1
+  after(1, "seconds", () => {
+    textstop = 0
+  })
+}
+function DSset() {
+  duringtutorial = 1
+  textnumber += 1
+  console.log(textnumber)
+  Textinwhat = textlist[textnumber]
+  descriptionText.text.show()
+  descriptionText.text.sendToFront()
+  textstop = 1
+  after(1, "seconds", () => {
+    textstop = 0
+  })
+}
+function repeatcheck(stopnumber) {
+  repeatUntil(() => textnumber < stopnumber, () => {}, () => {
+    if(textstop == 0 && mouseDown){
+      DSset()
+      if(textnumber == stopnumber){
+        descriptionText.text.hide()
+        duringtutorial = 0
+      }
+    }
+  })
+}
 forever(() => {
   if(DSmode == "はじめに"){
     if(textsign == 0){
-     textnumber = 0
-     Textinwhat = textlist[textnumber]
-     descriptionText.text.show()
-     descriptionText.text.sendToFront()
-     textsign = 1
-     usetextlist.push(DSmode)
-   }
-    repeatUntil(() => textnumber < 5, () => {}, () => {
-      if(textstop == 0 && mouseDown){
-        textnumber += 1
-        console.log(textnumber)
-        Textinwhat = textlist[textnumber]
-        descriptionText.text.show()
-        descriptionText.text.sendToFront()
-        textstop = 1
-        if(textnumber == 4){
-          descriptionText.text.hide()
-        }
-      }
-    })
+      DSstart(0)
+    }
+    repeatcheck(4)
   }
   if(DSmode == "配置1"){
-    if(textsign == 0){
-     textnumber = 4
-     Textinwhat = textlist[textnumber]
-     descriptionText.text.show()
-     descriptionText.text.sendToFront()
-     textsign = 1
-     usetextlist.push(DSmode)
+   if(textsign == 0){
+      DSstart(4)
    }
-    repeatUntil(() => textnumber < 5, () => {}, () => {
-      if(textstop == 0 && mouseDown){
-        textnumber += 1
-        console.log(textnumber)
-        Textinwhat = textlist[textnumber]
-        descriptionText.text.show()
-        descriptionText.text.sendToFront()
-        textstop = 1
-        if(textnumber == 5){
-          descriptionText.text.hide()
-        }
-      }
-    })
+   repeatcheck(5)
   }
   if(DSmode == "配置2"){
-    if(textsign == 0){
-     textnumber = 5
-     Textinwhat = textlist[textnumber]
-     descriptionText.text.show()
-     descriptionText.text.sendToFront()
-     textsign = 1
-     usetextlist.push(DSmode)
+   if(textsign == 0){
+     DSstart(5)
    }
-    repeatUntil(() => textnumber < 6, () => {}, () => {
-      if(textstop == 0 && mouseDown){
-        textnumber += 1
-        console.log(textnumber)
-        Textinwhat = textlist[textnumber]
-        descriptionText.text.show()
-        descriptionText.text.sendToFront()
-        textstop = 1
-        if(textnumber == 6){
-          descriptionText.text.hide()
-        }
-      }
-    })
+   repeatcheck(6)
+  }
+  if(DSmode == "配置3"){
+   if(textsign == 0){
+     DSstart(6)
+   }
+   repeatcheck(9)
+  }
+  if(DSmode == "配置4"){
+   if(textsign == 0){
+     DSstart(9)
+   }
+   repeatcheck(10)
+  }
+  if(DSmode == "移動1"){
+   if(textsign == 0){
+     DSstart(10)
+   }
+   repeatcheck(12)
+  }
+  if(DSmode == "移動1"){
+   if(textsign == 0){
+     DSstart(12)
+   }
+   repeatcheck(14)
   }
 })

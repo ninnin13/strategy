@@ -284,6 +284,11 @@ if(name.image.mouseOver && mouseDown){
      canarea.image.show()
      canarea.image.sendToFront()
      canarea.image.y = -8*grid
+     didlist("配置2")
+     if(indid == 0){
+      textsign = 0
+ 　　 DSmode = "配置2"
+     }
     }
  }
 }

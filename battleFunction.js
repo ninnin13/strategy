@@ -79,6 +79,7 @@ step5.hide()
 //second commit
 
 function myturn(){
+turnnumber += 1
 STtechnique = 1
 choiced == 0
 showitemlimit = 2
@@ -99,7 +100,14 @@ if(gameStatus2 == "DSduring"){
       didlist("はじめに")
       if(indid == 0){
        textsign = 0
-  　　 DSmode = "はじめに"
+  　　  DSmode = "はじめに"
+      }
+      if(turnnumber == 2){
+        didlist("移動1")
+        if(indid == 0){
+         textsign = 0
+    　　  DSmode = "移動1"
+        }
       }
   //     textsign = 0
   // 　　 DSmode = "はじめに"
@@ -108,6 +116,7 @@ if(gameStatus2 == "DSduring"){
     var choicing = 0
     //console.log(cardsetting[0])
     repeatUntil(() => !(turn == "my"), () => {
+      if(duringtutorial == 0){
        if(choicing == 1){
          if(keysDown.includes('S')){
            upcard2 -= 10
@@ -167,12 +176,16 @@ if(gameStatus2 == "DSduring"){
            upcard -= 150
          })
         }
-        if(step4.mouseOver && mouseDown){
+        if(step4.mouseOver && mouseDown && turnnumber > 1){
           stephide()
           backshow()
           gocardtime = "true"
-
-       }
+          didlist("移動2")
+          if(indid == 0){
+           textsign = 0
+      　　  DSmode = "移動2"
+          }
+        }
        if(step3.mouseOver && mouseDown){
          stephide()
          backshow()
@@ -214,6 +227,17 @@ if(gameStatus2 == "DSduring"){
                cardfield(choicestand,choicestand2)
                existcard()
                choicestand = 1
+               didlist("配置3")
+               if(indid == 0){
+                textsign = 0
+           　　 DSmode = "配置3"
+               }else{
+                 didlist("配置4")
+                 if(indid == 0){
+                  textsign = 0
+             　　 DSmode = "配置4"
+                 }
+               }
                //console.log(downX)
              }
             }
@@ -272,7 +296,8 @@ if(gameStatus2 == "DSduring"){
        }
 
      }
-    })
+    }
+   })
   })
 }else{
 after(2.3/hidespeed, "seconds", () => {

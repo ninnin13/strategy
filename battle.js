@@ -89,6 +89,7 @@ forever(() => {
         existitem()
         YDcraft()
         STtechnique = 1
+        turnnumber = 0
         backNumber2 = 0
       }
       if(nextturn == 1)  {

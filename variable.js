@@ -9,12 +9,17 @@ var walkData
 var walkData2
 var Tkeepmath2
 var Tkeepmath3
+//今の状況
+var turnnumber
 //チュートリアル
 var gameStatus2
 var DSfirst
 var Textinwhat
 var DSmode
 var textnumber = 0
+var textsign
+var indid
+var duringtutorial
 //技
 var STtechnique = 0
 var TCnumber
@@ -191,9 +196,6 @@ var goXYstart
 var goXY
 var goX
 var goY
-//チュートリアル
-var textsign
-var indid
 //技用
 var techniquetext
 var TS = 0
@@ -214,10 +216,10 @@ every(1, "seconds", () => {
   if(!(downMouse == 0)){
   downMouse = 0
   }
-  if(!(textstop == 0)){
-    console.log("元に戻した")
-   textstop = 0
-  }
+  // if(!(textstop == 0)){
+  //   console.log("元に戻した")
+  //  textstop = 0
+  // }
   if(TCstopper == 1){
     TCstopper = 0
   }
