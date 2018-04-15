@@ -73,7 +73,7 @@ size: 30,
 color: "green",
 })
 var kingicon = new Image({
-  url: "./image/icon/loadicon.png",
+  url: "./image/icon/load.png",
   width: 50,
   height: 50,
 })

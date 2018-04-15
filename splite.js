@@ -109,7 +109,7 @@ var loadtext = {
 }
 var loadicon = {
   image: new Image({
-    url: "./image/icon/loadicon.png",
+    url: "./image/icon/load.png",
     width: 3*grid,
     height: 3*grid,
   })
