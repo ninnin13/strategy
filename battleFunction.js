@@ -180,10 +180,12 @@ if(gameStatus2 == "DSduring"){
           stephide()
           backshow()
           gocardtime = "true"
-          didlist("移動2")
-          if(indid == 0){
-           textsign = 0
-      　　  DSmode = "移動2"
+          if(turnnumber == 2){
+            didlist("移動2")
+            if(indid == 0){
+             textsign = 0
+        　　  DSmode = "移動2"
+            }
           }
         }
        if(step3.mouseOver && mouseDown){

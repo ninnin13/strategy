@@ -203,6 +203,11 @@ forever(() => {
  if(gocardtime == "true"){
   cards.forEach(card => {
     if (card.image.mouseOver && mouseDown && whatcard == 0 && card.TorF == 0 && card.death == 0) {
+      didlist("移動3")
+      if(indid == 0){
+       textsign = 0
+  　　  DSmode = "移動3"
+      }
       range(0,outdirection.length).forEach(i => {
         outdirection.remove(outdirection[0])
       })
@@ -403,6 +408,11 @@ forever(() => {
            where.image.hide()
          })
          where0.image.hide()
+         didlist("移動4")
+         if(indid == 0){
+          textsign = 0
+     　　  DSmode = "移動4"
+         }
          //????
          // whatcard = 1
          //動いたカード

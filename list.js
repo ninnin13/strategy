@@ -177,19 +177,27 @@ musicname.push(home2)
 //チュートリアル
 var textlist = []
 textlist.push("こんにちは")
-textlist.push("私は、新しく隊長になったあなたの補佐官を任されました。")
+textlist.push("今から、戦いの基本を教えます。")
 textlist.push("まずは、配置の仕方を教えます。")
 textlist.push("「配置」のボタンを押してください。")
 textlist.push("左の犬のカードをクリックしてください。")
 textlist.push("下に表示されている範囲内に置くと、配置できます。")
 textlist.push("配置は１ターン2体までです。")
-textlist.push("次は、炎の魔法使いを配置してください。")
+textlist.push("次は、火の魔法使いを配置してください。")
 textlist.push("右に写っているカードはカードは「W」で上に、「S」で下に動かせます.")
-textlist.push("このターンにできることは終わったので、「戻る」、「終了」を押してください。")
+textlist.push("このターンにできることは終わったので、「戻る」、「終了」を押してください。") //10
 textlist.push("次は、移動です。")
 textlist.push("「移動」のボタンを押してください。")
 textlist.push("配置した犬をクリックしてください")
 textlist.push("今表示されている赤色のところが、移動できる範囲です")
+textlist.push("一番前のマスの赤色のところをクリックしてください。")
+textlist.push("戻るを押してください。")
+textlist.push("次は、アイテムです。")
+textlist.push("「アイテム」のボタンを押してください。")
+textlist.push("左の、海の秘石をクリックしてください。")
+textlist.push("アイテムは、カードがどこにいても使用できます。") //20
+textlist.push("犬のカードをクリックしてください。")
+textlist.push("これでアイテムを使えました。")
 var usetextlist = []
 //ロード背景
 var loads = []

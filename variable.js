@@ -15,7 +15,7 @@ var turnnumber
 var gameStatus2
 var DSfirst
 var Textinwhat
-var DSmode
+var DSmode = "none"
 var textnumber = 0
 var textsign
 var indid

@@ -35,7 +35,7 @@ forever(() => {
     deck2.push(jyassyu)
     deck2.push(skymachine)
     deck2.push(firemagician)
-    itemindeck.push(landstone)
+    itemindeck.push(waterstone)
     gameStatus2 = "DSduring"
     gameStatus = "battle"
     backNumber = 0
@@ -82,9 +82,11 @@ function repeatcheck(stopnumber) {
   })
 }
 forever(() => {
+ // if(!(DSmode == "none")){
   if(DSmode == "はじめに"){
     if(textsign == 0){
       DSstart(0)
+      // DSmode = "none"
     }
     repeatcheck(4)
   }
@@ -118,10 +120,23 @@ forever(() => {
    }
    repeatcheck(12)
   }
-  if(DSmode == "移動1"){
+  if(DSmode == "移動2"){
    if(textsign == 0){
      DSstart(12)
    }
-   repeatcheck(14)
+   repeatcheck(13)
   }
+  if(DSmode == "移動3"){
+   if(textsign == 0){
+     DSstart(13)
+   }
+   repeatcheck(15)
+  }
+  if(DSmode == "移動4"){
+   if(textsign == 0){
+     DSstart(15)
+   }
+   repeatcheck(16)
+  }
+ // }
 })
