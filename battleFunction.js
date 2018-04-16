@@ -431,6 +431,16 @@ after(2.3/hidespeed, "seconds", () => {
       }
     }
     if(keysDown.includes('B') || gobackTab.mouseOver && mouseDown){
+      if(turnnumber == 2){
+        didlist("移動4")
+        if(!(indid == 0)){
+          didlist("道具1")
+          if(indid == 0){
+           textsign = 0
+    　　   DSmode = "道具1"
+          }
+        }
+      }
       choicing = 0
       choicingitem = 0
       choicestand = 1
