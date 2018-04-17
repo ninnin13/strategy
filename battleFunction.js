@@ -212,6 +212,11 @@ if(gameStatus2 == "DSduring"){
          stephide()
          backshow()
          TS = 1
+         didlist("技2")
+         if(indid == 0){
+           textsign = 0
+    　　   DSmode = "技2"
+         }
        }
        //当たり判定
        techniquestart()
@@ -286,6 +291,12 @@ if(gameStatus2 == "DSduring"){
             if(indid == 0){
              textsign = 0
       　　   DSmode = "道具1"
+            }else{
+              didlist("技1")
+              if(indid == 0){
+                textsign = 0
+         　　   DSmode = "技1"
+              }
             }
           }
         }

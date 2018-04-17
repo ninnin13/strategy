@@ -74,9 +74,59 @@ function repeatcheck(stopnumber) {
   repeatUntil(() => textnumber < stopnumber, () => {}, () => {
     if(textstop == 0 && mouseDown){
       DSset()
+      if(textnumber == 27){
+      yourdeck[choicecardnumber] = "Dl"
+      yourdeck.remove("Dl")
+      var Ycard = {
+        image: new Image({
+          url: `./image/card/dog.png`,
+          width: cardsize/5,
+          height: cardsize/5,
+        }),
+        name: "dog" + cardNumber2,
+        TorF: 1,
+        type: dog,
+        number: cardNumber2,
+        go: dog.gotype,
+        step: dog.goblock,
+        propertydata: dog.property,
+        keep: "nothing",
+        keep2: "nothing",
+        keep3: "nothing",
+        keep4: "nothing",
+        check: "nothing",
+        effect: dog.effect,
+        technique: dog.technique,
+        death: 0
+      }
+      clear = 0
+       Ycard.image.x = 3.5*grid
+       Ycard.image.y = -8.5*grid
+       Ycard.image.angle = LEFT
+       Ycards.push(Ycard)
+      //console.log(Ycard.name)
+      cardNumber2 += 1
+      }
       if(textnumber == stopnumber){
         descriptionText.text.hide()
         duringtutorial = 0
+        if(stopnumber == 30){
+         battling = 0
+         reset()
+         cards.forEach(card => {
+           card.image.hide()
+          // card.soil.hide()
+          // card.sea.hide()
+         })
+         Ycards.forEach(Ycard => {
+           Ycard.image.hide()
+         })
+         after(0.5, "seconds", () => {
+           pagechange()
+           gameStatus = "home"
+           backNumber = 0
+        })
+       }
       }
     }
   })
@@ -161,6 +211,30 @@ forever(() => {
     DSstart(21)
   }
   repeatcheck(23)
+ }
+ if(DSmode == "技1"){
+  if(textsign == 0){
+    DSstart(23)
+  }
+  repeatcheck(25)
+ }
+ if(DSmode == "技2"){
+  if(textsign == 0){
+    DSstart(25)
+  }
+  repeatcheck(26)
+ }
+ if(DSmode == "技3"){
+  if(textsign == 0){
+    DSstart(26)
+  }
+  repeatcheck(29)
+ }
+ if(DSmode == "終了"){
+  if(textsign == 0){
+    DSstart(29)
+  }
+  repeatcheck(30)
  }
  // }
 })

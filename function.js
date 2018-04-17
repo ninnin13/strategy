@@ -26,6 +26,15 @@ function randomDU(number) {
   }
  }
 }
+//基本機能
+function reset() {
+  range(0,cards.length).forEach(i =>{
+    cards.remove(cards[i])
+  })
+  range(0,itemindeck.length).forEach(i =>{
+    itemindeck.remove(itemindeck[i])
+  })
+}
 //チュートリアル
 function didlist(inname) {
   indid = 0
@@ -66,6 +75,7 @@ function techniquestart() {
   if(TS == 1){
    cards.forEach(card => {
      if(card.image.mouseOver && mouseDown && !(card.technique == "nothing")){
+
        //console.log(card.technique)
        techniquetext = card.technique
        //console.log(techniquetext)
@@ -163,6 +173,14 @@ function attackTC(name) {
    })
    after(TCcheckmate*0.02, "seconds", () => {
      name.image.hide()
+     if(gameStatus2 == "DSduring"){
+       didlist("終了")
+       if(indid == 0){
+        textsign = 0
+  　　   DSmode = "終了"
+
+       }
+     }
    })
       }
     })
@@ -1108,6 +1126,7 @@ function checkfinish() {
         winbord.image.brightness -= 1
       })
       after(3, "seconds", () => {
+       reset()
        battling = 0
        cards.forEach(card => {
          card.image.hide()
@@ -1132,6 +1151,7 @@ function checkfinish() {
         rosebard.image.brightness -= 1
       })
       after(3, "seconds", () => {
+       reset()
        battling = 0
        cards.forEach(card => {
          card.image.hide()

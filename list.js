@@ -185,7 +185,7 @@ textlist.push("下に表示されている範囲内に置くと、配置でき�
 textlist.push("配置は１ターン2体までです。")
 textlist.push("次は、火の魔法使いを配置してください。")
 textlist.push("右に写っているカードはカードは「W」で上に、「S」で下に動かせます.")
-textlist.push("このターンにできることは終わったので、「戻る」、「終了」を押してください。") //10
+textlist.push("このターンにできることは終わったので、「戻る」、「終了」を押してください。") //9
 textlist.push("次は、移動です。")
 textlist.push("「移動」のボタンを押してください。")
 textlist.push("配置した犬をクリックしてください")
@@ -195,10 +195,17 @@ textlist.push("戻るを押してください。")
 textlist.push("次は、アイテムです。")
 textlist.push("「アイテム」のボタンを押してください。")
 textlist.push("左の、海の秘石をクリックしてください。")
-textlist.push("アイテムは、カードがどこにいても使用できます。") //20
+textlist.push("アイテムは、カードがどこにいても使用できます。") //19
 textlist.push("犬のカードをクリックしてください。")
 textlist.push("これでアイテムを使えました。")
 textlist.push("戻るを押してください。")
+textlist.push("最後に、技です。")
+textlist.push("「技」のボタンを押してください。")
+textlist.push("配置した火の魔法使いをクリックして,fireballを選んでください")
+textlist.push("今表示されている赤色のところが、攻撃できる範囲です")
+textlist.push("特別に,一体敵を出します")
+textlist.push("敵のいるマスをクリックしてください")
+textlist.push("これですべての説明が終わりました。ホームに戻ります。")
 var usetextlist = []
 //ロード背景
 var loads = []
