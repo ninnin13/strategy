@@ -198,6 +198,7 @@ textlist.push("左の、海の秘石をクリックしてください。")
 textlist.push("アイテムは、カードがどこにいても使用できます。") //20
 textlist.push("犬のカードをクリックしてください。")
 textlist.push("これでアイテムを使えました。")
+textlist.push("戻るを押してください。")
 var usetextlist = []
 //ロード背景
 var loads = []

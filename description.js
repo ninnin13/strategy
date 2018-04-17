@@ -138,11 +138,29 @@ forever(() => {
    }
    repeatcheck(16)
   }
-  if(DSmode == "道具4"){
+  if(DSmode == "道具1"){
    if(textsign == 0){
      DSstart(16)
    }
    repeatcheck(18)
   }
+  if(DSmode == "道具2"){
+   if(textsign == 0){
+     DSstart(18)
+   }
+   repeatcheck(20)
+ }
+ if(DSmode == "道具3"){
+  if(textsign == 0){
+    DSstart(20)
+  }
+  repeatcheck(21)
+ }
+ if(DSmode == "道具4"){
+  if(textsign == 0){
+    DSstart(21)
+  }
+  repeatcheck(23)
+ }
  // }
 })

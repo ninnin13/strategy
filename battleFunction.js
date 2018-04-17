@@ -191,6 +191,13 @@ if(gameStatus2 == "DSduring"){
        if(step3.mouseOver && mouseDown){
          stephide()
          backshow()
+         if(turnnumber == 2){
+           didlist("道具2")
+           if(indid == 0){
+            textsign = 0
+       　　  DSmode = "道具2"
+           }
+         }
          //選んでいる
          choicingitem = 1
          //
@@ -257,6 +264,13 @@ if(gameStatus2 == "DSduring"){
              console.log(choiceitem2)
              console.log(choiceitem2.EFname)
              attributechange(choiceitem,choiceitem2,choiceitem2.attribute,choiceitem2.EFname)
+             if(turnnumber == 2){
+               didlist("道具4")
+               if(indid == 0){
+                textsign = 0
+           　　  DSmode = "道具4"
+               }
+             }
            }
            choiceitem = 1
            //console.log(downX)
@@ -265,6 +279,16 @@ if(gameStatus2 == "DSduring"){
       }
       if(keysDown.includes('B') || gobackTab.mouseOver && mouseDown){
         canarea.image.hide()
+        if(turnnumber == 2){
+          didlist("移動4")
+          if(!(indid == 0)){
+            didlist("道具1")
+            if(indid == 0){
+             textsign = 0
+      　　   DSmode = "道具1"
+            }
+          }
+        }
         choicing = 0
         choicingitem = 0
         choicestand = 1
@@ -431,16 +455,6 @@ after(2.3/hidespeed, "seconds", () => {
       }
     }
     if(keysDown.includes('B') || gobackTab.mouseOver && mouseDown){
-      if(turnnumber == 2){
-        didlist("移動4")
-        if(!(indid == 0)){
-          didlist("道具1")
-          if(indid == 0){
-           textsign = 0
-    　　   DSmode = "道具1"
-          }
-        }
-      }
       choicing = 0
       choicingitem = 0
       choicestand = 1

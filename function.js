@@ -307,6 +307,13 @@ if(name.image.mouseOver && mouseDown){
       }
     })
     if(!(itemin == 0)){
+      if(turnnumber == 2){
+        didlist("道具3")
+        if(indid == 0){
+         textsign = 0
+    　　  DSmode = "道具3"
+        }
+      }
      choiceitem = name2
      choiceitem2 = name
      downMouse = 1
