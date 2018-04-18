@@ -95,11 +95,86 @@ var penking2 = {
   SorH: 0
 }
 penking2.image.hide()
+var jyassyu2 = {
+  image: new Image({
+    url: "./image/card/stand/jyassyu.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "jyassyu",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+jyassyu2.image.hide()
+var angora2 = {
+  image: new Image({
+    url: "./image/card/stand/angora.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "angora",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+angora2.image.hide()
+var skymachine2 = {
+  image: new Image({
+    url: "./image/card/stand/skymachine.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "skymachine",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+skymachine2.image.hide()
+var eariaru2 = {
+  image: new Image({
+    url: "./image/card/stand/eariaru.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "eariaru",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+eariaru2.image.hide()
+var skelton2 = {
+  image: new Image({
+    url: "./image/card/stand/skelton.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "skelton",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+skelton2.image.hide()
 var walklist = []
 walklist.push(dog2)
 walklist.push(kabuto2)
 walklist.push(penguin2)
 walklist.push(penking2)
+walklist.push(jyassyu2)
+walklist.push(angora2)
+walklist.push(skymachine2)
+walklist.push(eariaru2)
+walklist.push(skelton2)
 every(2, "seconds", () => {
   if(walksplite == 1){
    range(0,walklist.length).forEach(i => {
@@ -183,7 +258,7 @@ textlist.push("「配置」のボタンを押してください。")
 textlist.push("左の犬のカードをクリックしてください。")
 textlist.push("下に表示されている範囲内に置くと、配置できます。")
 textlist.push("配置は１ターン2体までです。")
-textlist.push("次は、火の魔法使いを配置してください。")
+textlist.push("次は、火の魔法使いを範囲の右上端配置してください。")
 textlist.push("右に写っているカードはカードは「W」で上に、「S」で下に動かせます.")
 textlist.push("このターンにできることは終わったので、「戻る」、「終了」を押してください。") //9
 textlist.push("次は、移動です。")

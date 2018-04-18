@@ -39,6 +39,8 @@ var choiceitem2 = 0
 var itemin
 var itemname
 var showitemlimit
+//ログ
+var Gin
 //????
 var rightstand = 0
 var leftstand = 0

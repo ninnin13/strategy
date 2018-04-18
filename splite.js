@@ -16,6 +16,18 @@ var descriptionText = {
     fontFamily: "arial"
   })
 }
+//アイテムゲットログ
+var itemget1 = {
+  text: new Text({
+    text: () => Gin + "を手に入れた",
+    size: 50,
+    color: "rgb(50, 50, 255)",
+    fontFamily: "arial"
+  })
+}
+itemget1.text.x = 0
+itemget1.text.y = -8*grid
+itemget1.text.hide()
 //チュートリアル
 var canarea = {
   image: new Image({

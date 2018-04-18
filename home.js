@@ -79,7 +79,7 @@ forever(() => {
        optiontext.sendToFront()
        range(0,random(1,4)).forEach(i => {
          console.log(walklist[i])
-         keepmath = random(0,3)
+         keepmath = random(0,walklist.length-1)
          walklist[keepmath].image.x = random(-3.5*grid,3.5*grid)
          walklist[keepmath].image.y = random(-3.5*grid,1.5*grid)
          walklist[keepmath].image.show()

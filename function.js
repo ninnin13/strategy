@@ -270,6 +270,11 @@ function YattackTC(TCmain,TCx,TCy) {
         })
         after(2, "seconds", () => {
           card.image.hide()
+          if(!(Ycard.effect == "nothing")){
+            console.log("敵の死んだ後の効果")
+            yourdeck.push(Ycard.effect)
+            card.effect = "nothing"
+         }
         })
         card.death = 1
       }
@@ -302,10 +307,12 @@ if(name.image.mouseOver && mouseDown){
      canarea.image.show()
      canarea.image.sendToFront()
      canarea.image.y = -8*grid
-     didlist("配置2")
-     if(indid == 0){
-      textsign = 0
- 　　 DSmode = "配置2"
+     if(gameStatus2 == "DSduring"){
+      didlist("配置2")
+      if(indid == 0){
+       textsign = 0
+ 　　  DSmode = "配置2"
+      }
      }
     }
  }
@@ -325,6 +332,7 @@ if(name.image.mouseOver && mouseDown){
       }
     })
     if(!(itemin == 0)){
+     if(gameStatus2 == "DSduring"){
       if(turnnumber == 2){
         didlist("道具3")
         if(indid == 0){
@@ -332,6 +340,7 @@ if(name.image.mouseOver && mouseDown){
     　　  DSmode = "道具3"
         }
       }
+     }
      choiceitem = name2
      choiceitem2 = name
      downMouse = 1
@@ -564,7 +573,8 @@ function cardfield(name,name2){
     check: "nothing",
     effect: name2.effect,
     namefull: name2,
-    death: 0
+    death: 0,
+    plusitem: name2.plusitem
   }
   card.image.x = grid*downX
   card.image.y = grid*downY
@@ -604,7 +614,8 @@ function yourcardfield(name,name2){
     check: "nothing",
     effect: name2.effect,
     technique: name2.technique,
-    death: 0
+    death: 0,
+    plusitem: name2.plusitem
   }
   clear = 0
    Ycard.image.x = yourdownX + 15
@@ -856,22 +867,31 @@ function yourgo(goblocks,YcardgoX,YcardgoY){
                     card.effect = "nothing"
                     existcard()
                   }
-                  if(!(card.namefull.plusitem == "nothing")){
+                  if(!(card.plusitem == "nothing")){
                     console.log("死んだ後の効果")
                     cardkindin = 0
+                    Gin = card.plusitem.name
+                    itemget1.text.show()
+                    itemget1.text.sendToFront()
+                    repeat(100, () => {
+                      itemget1.text.brightness -= 1
+                    })
+                    after(3, "seconds", () => {
+                      itemget1.text.hide()
+                    })
                     range(0,itemkind.length).forEach(i => {
                       console.log(itemkind[i])
-                      console.log(card.namefull.plusitem)
-                      if(itemkind[i] == card.namefull.plusitem){
+                      console.log(card.plusitem)
+                      if(itemkind[i] == card.plusitem){
                         cardkindin = 1
                         console.log("その種類ある")
                       }
                     })
                     if(!(cardkindin == 1)){
                       console.log("種類追加")
-                      itemkind.push(card.namefull.plusitem)
+                      itemkind.push(card.plusitem)
                     }
-                    itemindeck.push(card.namefull.plusitem)
+                    itemindeck.push(card.plusitem)
                     card.plusitem = "nothing"
                     existitem()
                   }

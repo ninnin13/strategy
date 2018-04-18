@@ -159,6 +159,8 @@ if(gameStatus2 == "DSduring"){
          startTurn = 0
        }
        if(step5.mouseOver && mouseDown){
+         didlist("はじめに")
+         if(!(indid == 0)){
          stephide()
          backshow()
          didlist("配置1")
@@ -175,48 +177,58 @@ if(gameStatus2 == "DSduring"){
            standcard(cardkind[i])
            upcard -= 150
          })
+         }
         }
         if(step4.mouseOver && mouseDown && turnnumber > 1){
-          stephide()
-          backshow()
-          gocardtime = "true"
-          if(turnnumber == 2){
-            didlist("移動2")
-            if(indid == 0){
-             textsign = 0
-        　　  DSmode = "移動2"
-            }
-          }
-        }
-       if(step3.mouseOver && mouseDown){
-         stephide()
-         backshow()
-         if(turnnumber == 2){
-           didlist("道具2")
-           if(indid == 0){
-            textsign = 0
-       　　  DSmode = "道具2"
+          didlist("移動1")
+          if(!(indid == 0)){
+           stephide()
+           backshow()
+           gocardtime = "true"
+           if(turnnumber == 2){
+             didlist("移動2")
+             if(indid == 0){
+              textsign = 0
+         　　  DSmode = "移動2"
+             }
            }
          }
-         //選んでいる
-         choicingitem = 1
-         //
-         itemupcard2 = 180
-         itemupcard = itemupcard2
-         range(0, itemkind.length).forEach(i => {
-           standitem(itemkind[i])
-           itemupcard -= 150
-         })
         }
+       if(step3.mouseOver && mouseDown){
+         didlist("道具1")
+         if(!(indid == 0)){
+          stephide()
+          backshow()
+          if(turnnumber == 2){
+            didlist("道具2")
+            if(indid == 0){
+             textsign = 0
+        　　  DSmode = "道具2"
+            }
+          }
+          //選んでいる
+          choicingitem = 1
+          //
+          itemupcard2 = 180
+          itemupcard = itemupcard2
+          range(0, itemkind.length).forEach(i => {
+            standitem(itemkind[i])
+            itemupcard -= 150
+          })
+        }
+       }
        if(step2.mouseOver && mouseDown){
-         stephide()
-         backshow()
-         TS = 1
-         didlist("技2")
-         if(indid == 0){
-           textsign = 0
-    　　   DSmode = "技2"
-         }
+         didlist("技1")
+         if(!(indid == 0)){
+          stephide()
+          backshow()
+          TS = 1
+          didlist("技2")
+          if(indid == 0){
+            textsign = 0
+     　　   DSmode = "技2"
+          }
+        }
        }
        //当たり判定
        techniquestart()
@@ -466,6 +478,7 @@ after(2.3/hidespeed, "seconds", () => {
       }
     }
     if(keysDown.includes('B') || gobackTab.mouseOver && mouseDown){
+      canarea.image.hide()
       choicing = 0
       choicingitem = 0
       choicestand = 1
