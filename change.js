@@ -1,5 +1,13 @@
-
-
+//リセット用
+var resset =  new Image({
+url: "./image/ressettab.png",
+ width: 200,
+ height: 50,
+})
+resset.hide()
+resset.x = 6*grid
+resset.y = 9*grid
+//
 var arrow =  new Image({
 url: "./image/icon/arrow2.png",
  width: 50,
@@ -90,10 +98,14 @@ forever(() => {
       costtext.text.sendToFront()
       limittext.text.show()
       limittext.text.sendToFront()
+      resset.show()
+      resset.sendToFront()
       D2clones.forEach(D2clone => {
-        D2clone.image.x -= OTOpointx
-        D2clone.image.show()
-        D2clone.image.sendToFront()
+        if(D2clone.none == 0){
+         D2clone.image.x -= OTOpointx
+         D2clone.image.show()
+         D2clone.image.sendToFront()
+        }
       })
       IFOpointx = 0
       OTOpointx = 0
@@ -125,7 +137,35 @@ forever(() => {
       backNumber = 0
       pagechange()
     }
-
+  if(keysDown.includes('R') || resset.mouseOver && mouseDown){
+    D2clones.forEach(D2clone => {
+      D2clone.image.hide()
+    })
+    range(0,D2clones.length).forEach(i => {
+      D2clones.remove(D2clones[0])
+    })
+    range(0,clones.length).forEach(i => {
+      clones.remove(clones[0])
+    })
+    OTOpointx = 0
+  }
+  D2clones.forEach(D2clone => {
+    if(D2clone.image.mouseOver && mouseDown && Downnow == 0){
+      Downnow = 1
+      outcard(D2clone.number)
+      after(1, "seconds", () => {
+        Downnow = 0
+      })
+    }
+  })
+  // range(0,D2clones.length).forEach(i => {
+  //   if(D2clones[i].image.mouseOver && mouseDown){
+  //     console.log("条件を満たした")
+  //     after(0.2, "seconds", () => {
+  //
+  //    })
+  //   }
+  // })
   if(keysDown.includes('C') || arrow2.mouseOver && mouseDown){
     range(0,cardsetting.length).forEach(i => {
       right(cardsetting[i])
@@ -172,7 +212,7 @@ forever(() => {
       }else{
         D2clone.image.hide()
       }
-    })
+      })
     OTOpointx += 10
   }
   if(keysDown.includes('A') || OTOarrow.mouseOver && mouseDown){

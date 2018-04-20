@@ -35,6 +35,31 @@ function reset() {
     itemindeck.remove(itemindeck[i])
   })
 }
+function outcard(Cn) {
+  keepmath = 0
+  D2clones.forEach(D2clone => {
+    if(D2clone.number == Cn){
+      D2clone.image.hide()
+      D2clone.none = 1
+      D2clones[keepmath] = "Dl"
+      clones[keepmath] = "Dl"
+    }
+    keepmath += 1
+  })
+  D2clones.remove("Dl")
+  clones.remove("Dl")
+  D2clones.forEach(D2clone => {
+    if(D2clone.number > Cn && D2clone.none == 0){
+     D2clone.image.x -= 200
+     if(D2clone.image.x < 500 && D2clone.image.x > -500){
+       D2clone.image.show()
+     }else{
+       D2clone.image.hide()
+     }
+    }
+  })
+  OTOpointx -= 200
+}
 //チュートリアル
 function didlist(inname) {
   indid = 0
@@ -66,8 +91,8 @@ function deckkeep() {
   range(0,deck.length).forEach(i => {
     deck.remove(deck[i])
   })
-  range(0,DK2clones.length).forEach(i => {
-    deck.push(DK2clones[i])
+  range(0,clones.length).forEach(i => {
+    deck.push(clones[i])
   })
   range(0,itemindeck.length).forEach(i => {
     itemindeck.remove(itemindeck[i])
@@ -1057,8 +1082,11 @@ function cardup(name,name2){
         width: cardsize,
         height: cardsize,
       }),
-      name: name
+      name: name,
+      number: craftnumber,
+      none: 0
     }
+    craftnumber += 1
     D2clone.image.show()
     D2clone.image.sendToFront()
     D2clone.image.x = clonenumber*200
@@ -1082,6 +1110,7 @@ function cardup(name,name2){
 }
 //ページを替える時に非表示にする
 function pagechange(){
+  resset.hide()
   costtext.text.hide()
   back.hide()
   settab.hide()

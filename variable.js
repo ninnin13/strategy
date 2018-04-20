@@ -66,6 +66,7 @@ var deckcard = 0
 var deckname = 0
 var newkind
 var Ydeckout = 0
+var craftnumber = 1
 //消す速度
 var hidespeed = 1.5
 var hidespeed2 = 5
@@ -210,6 +211,7 @@ var clear
 //相手のターン終了タイミング
 var Ygotime = 0
 //連打不可にするため
+var Downnow = 0
 var textstop = 0
 var nextstop = 0
 var downMouse
