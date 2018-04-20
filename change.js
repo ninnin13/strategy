@@ -62,16 +62,14 @@ forever(() => {
     if(backNumber == 0){
      nextpage()
      after(2, "seconds", () => {
-      clones.forEach(clone => {
-        clone.image.x -= OTOpointx
-        if(clone.image.x < 500 && clone.image.x > -500){
-          clone.image.show()
-        }else{
-          clone.image.hide()
-        }
-      })
-      IFOpointx = 0
-      OTOpointx = 0
+      // clones.forEach(clone => {
+      //   clone.image.x -= OTOpointx
+      //   if(clone.image.x < 500 && clone.image.x > -500){
+      //     clone.image.show()
+      //   }else{
+      //     clone.image.hide()
+      //   }
+      // })
       homeback.show()
       homeback.sendToFront()
       backTabBack.show()
@@ -92,6 +90,13 @@ forever(() => {
       costtext.text.sendToFront()
       limittext.text.show()
       limittext.text.sendToFront()
+      D2clones.forEach(D2clone => {
+        D2clone.image.x -= OTOpointx
+        D2clone.image.show()
+        D2clone.image.sendToFront()
+      })
+      IFOpointx = 0
+      OTOpointx = 0
       range(0,cardsetting.length).forEach(i => {
         cardinpage(cardsetting[i],i*200)
       })
@@ -160,23 +165,23 @@ forever(() => {
      leftstand += 1
   }
   if(keysDown.includes('D') || OTOarrow2.mouseOver && mouseDown){
-    clones.forEach(clone => {
-      clone.image.x += 10
-      if(clone.image.x < 500 && clone.image.x > -500){
-        clone.image.show()
+    D2clones.forEach(D2clone => {
+      D2clone.image.x += 10
+      if(D2clone.image.x < 500 && D2clone.image.x > -500){
+        D2clone.image.show()
       }else{
-        clone.image.hide()
+        D2clone.image.hide()
       }
     })
     OTOpointx += 10
   }
   if(keysDown.includes('A') || OTOarrow.mouseOver && mouseDown){
-    clones.forEach(clone => {
-      clone.image.x -= 10
-      if(clone.image.x < 500 && clone.image.x > -500){
-        clone.image.show()
+    D2clones.forEach(D2clone => {
+      D2clone.image.x -= 10
+      if(D2clone.image.x < 500 && D2clone.image.x > -500){
+        D2clone.image.show()
       }else{
-        clone.image.hide()
+        D2clone.image.hide()
       }
     })
     OTOpointx -= 10

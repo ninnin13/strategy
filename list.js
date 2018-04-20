@@ -302,10 +302,12 @@ var load = {
 }
 load.image.hide()
 loads.push(load)
+//
+var DK2clones = []
 //デッキ
 var clones = []
+var D2clones = []
 var deck = []
-var deck2 = []
 var cardkind = []
 var yourdeck = []
 //アイテム
@@ -319,6 +321,7 @@ var itemkind = []
 // itemkind.push(landstone)
 // itemkind.push(waterstone)
 var itemindeck = []
+var itemindeck2 = []
 var Yitemindeck = []
 // itemindeck.push(waterstone)
 var cloneeffects = []

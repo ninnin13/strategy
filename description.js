@@ -31,10 +31,8 @@ forever(() => {
     }
   }
   if(battlestart.mouseOver && mouseDown && nextstop == 0){
-    deck2.push(dog)
-    deck2.push(jyassyu)
-    deck2.push(skymachine)
-    deck2.push(firemagician)
+    DK2clones.push(dog)
+    DK2clones.push(firemagician)
     itemindeck.push(waterstone)
     gameStatus2 = "DSduring"
     gameStatus = "battle"

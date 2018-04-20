@@ -66,8 +66,14 @@ function deckkeep() {
   range(0,deck.length).forEach(i => {
     deck.remove(deck[i])
   })
-  range(0,deck2.length).forEach(i => {
-    deck.push(deck2[i])
+  range(0,DK2clones.length).forEach(i => {
+    deck.push(DK2clones[i])
+  })
+  range(0,itemindeck.length).forEach(i => {
+    itemindeck.remove(itemindeck[i])
+  })
+  range(0,itemindeck2.length).forEach(i => {
+    itemindeck.push(itemindeck2[i])
   })
 }
 //技を発動させる
@@ -1045,7 +1051,7 @@ function cardup(name,name2){
   if(name.image.mouseOver && mouseDown && pushstopper == 0 && allcost + name.cost < limitcost+1){
     allcost += name.cost
     console.log(allcost)
-    var clone = {
+    var D2clone = {
       image: new Image({
         url: `./image/card/${name2}.png`,
         width: cardsize,
@@ -1053,17 +1059,17 @@ function cardup(name,name2){
       }),
       name: name
     }
-    clone.image.show()
-    clone.image.sendToFront()
-    clone.image.x = clonenumber*200
-    clone.image.x += OTOpointx
-    clone.image.y = 150
-    clones.push(clone)
-    if(clone.image.x > 500 || clone.image.x < -500){
-      clone.image.hide()
+    D2clone.image.show()
+    D2clone.image.sendToFront()
+    D2clone.image.x = clonenumber*200
+    D2clone.image.x += OTOpointx
+    D2clone.image.y = 150
+    D2clones.push(D2clone)
+    if(D2clone.image.x > 500 || D2clone.image.x < -500){
+      D2clone.image.hide()
     }
     if(name.what == "card"){
-     deck2.push(name)
+     clones.push(name)
    }else{
      itemindeck.push(name)
    }
