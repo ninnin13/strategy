@@ -1,3 +1,187 @@
+//ホームで動くもの
+var dog2 = {
+  image: new Image({
+    url: "./image/card/stand/dog.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "dog",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+dog2.image.hide()
+var kabuto2 = {
+  image: new Image({
+    url: "./image/card/stand/kabuto.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "kabuto",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+kabuto2.image.hide()
+var penguin2 = {
+  image: new Image({
+    url: "./image/card/stand/penguin.png",
+    width: 100,
+    height: 70,
+  }),
+  name: "penguin",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+penguin2.image.hide()
+var penking2 = {
+  image: new Image({
+    url: "./image/card/stand/penking.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "penking",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+penking2.image.hide()
+var sai2 = {
+  image: new Image({
+    url: "./image/card/stand/sai.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "sai",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+sai2.image.hide()
+var monkey2 = {
+  image: new Image({
+    url: "./image/card/stand/monkey.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "monkey",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+monkey2.image.hide()
+var shark2 = {
+  image: new Image({
+    url: "./image/card/stand/shark.png",
+    width: 150,
+    height: 150,
+  }),
+  name: "shark",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+shark2.image.hide()
+var jyassyu2 = {
+  image: new Image({
+    url: "./image/card/stand/jyassyu.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "jyassyu",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+jyassyu2.image.hide()
+var angora2 = {
+  image: new Image({
+    url: "./image/card/stand/angora.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "angora",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+angora2.image.hide()
+var skymachine2 = {
+  image: new Image({
+    url: "./image/card/stand/skymachine.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "skymachine",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+skymachine2.image.hide()
+var eariaru2 = {
+  image: new Image({
+    url: "./image/card/stand/eariaru.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "eariaru",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+eariaru2.image.hide()
+var firemagician2 = {
+  image: new Image({
+    url: "./image/card/stand/firemagician.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "firemagician",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+firemagician2.image.hide()
+var skelton2 = {
+  image: new Image({
+    url: "./image/card/stand/skelton.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "skelton",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+skelton2.image.hide()
+//カード本体
 var landstone = {
   image: new Image({
     url: "./image/card/landstone.png",
@@ -6,7 +190,7 @@ var landstone = {
   }),
   name: "landstone",
   type: "attributechange",
-  attribute: "soil",
+  attribute: "land",
   EFname: landeffect,
   what: "item",
   cost: 1
@@ -19,7 +203,7 @@ var waterstone = {
   }),
   name: "waterstone",
   type: "attributechange",
-  attribute: "water",
+  attribute: "sea",
   EFname: watereffect,
   what: "item",
   cost: 1
@@ -70,13 +254,15 @@ var dog = {
     height: cardsize,
   }),
   name: "dog",
+  nameingame: "犬",
   gotype: "normal",
   goblock: 3,
-  property: "soil",
+  property: "land",
   technique: "nothing",
   effect: "nothing",
   plusitem: "nothing",
   what: "card",
+  solo: dog2,
   cost: 2
 }
 var kabuto = {
@@ -86,13 +272,15 @@ var kabuto = {
     height: cardsize,
   }),
   name: "kabuto",
+  nameingame: "カブトムシ",
   gotype: "normal",
   goblock: 1,
-  property: "soil",
+  property: "land",
   technique: "nothing",
   effect: "nothing",
   plusitem: "nothing",
   what: "card",
+  solo: kabuto2,
   cost: 1
 }
 var penguin = {
@@ -102,13 +290,15 @@ var penguin = {
     height: cardsize,
   }),
   name: "penguin",
+  nameingame: "ペンギン剣士",
   gotype: "unique",
   goblock: 1,
-  property: "soil",
+  property: "land",
   technique: "nothing",
   effect: "nothing",
   plusitem: "nothing",
   what: "card",
+  solo: penguin2,
   cost: 1
 }
 var penking = {
@@ -118,13 +308,15 @@ var penking = {
     height: cardsize,
   }),
   name: "penking",
+  nameingame: "ペンギン王",
   gotype: "unique",
   goblock: 3,
-  property: "soil",
+  property: "land",
   technique: "nothing",
   effect: penguin,
   plusitem: "nothing",
   what: "card",
+  solo: penking2,
   cost: 6
 }
 var sai = {
@@ -134,13 +326,15 @@ var sai = {
     height: cardsize,
   }),
   name: "sai",
+  nameingame: "サイ",
   gotype: "unique",
   goblock: 2,
-  property: "soil",
+  property: "land",
   technique: "nothing",
   effect: "nothing",
   plusitem: "nothing",
   what: "card",
+  solo: sai2,
   cost: 2
 }
 var monkey = {
@@ -150,13 +344,15 @@ var monkey = {
     height: cardsize,
   }),
   name: "monkey",
+  nameingame: "サル",
   gotype: "power",
   goblock: 4,
-  property: "soil",
+  property: "land",
   technique: "nothing",
   effect: "nothing",
   plusitem: "nothing",
   what: "card",
+  solo: monkey2,
   cost: 3
 }
 var shark = {
@@ -166,13 +362,15 @@ var shark = {
     height: cardsize,
   }),
   name: "shark",
+  nameingame: "サメ",
   gotype: "power",
   goblock: 4,
-  property: "water",
+  property: "sea",
   technique: "nothing",
   effect: "nothing",
   plusitem: "nothing",
   what: "card",
+  solo: shark2,
   cost: 3
 }
 var angora = {
@@ -182,13 +380,15 @@ var angora = {
     height: cardsize,
   }),
   name: "angora",
+  nameingame: "アンゴラー",
   gotype: "normal",
   goblock: 2,
-  property: "water",
+  property: "sea",
   technique: "nothing",
   effect: "nothing",
   plusitem: waterstone,
   what: "card",
+  solo: angora2,
   cost: 2
 }
 var jyassyu = {
@@ -198,13 +398,15 @@ var jyassyu = {
     height: cardsize,
   }),
   name: "jyassyu",
+  nameingame: "ジャッシュ",
   gotype: "jump",
   goblock: 2,
-  property: "water",
+  property: "sea",
   technique: "nothing",
   effect: "nothing",
   plusitem: "nothing",
   what: "card",
+  solo: jyassyu2,
   cost: 1
 }
 var skymachine = {
@@ -214,6 +416,7 @@ var skymachine = {
     height: cardsize,
   }),
   name: "skymachine",
+  nameingame: "浮遊機械",
   gotype: "normal",
   goblock: 2,
   property: "sky",
@@ -221,6 +424,7 @@ var skymachine = {
   effect: "nothing",
   plusitem: "nothing",
   what: "card",
+  solo: skymachine2,
   cost: 2
 }
 var eariaru = {
@@ -230,6 +434,7 @@ var eariaru = {
     height: cardsize,
   }),
   name: "eariaru",
+  nameingame: "エアリアル",
   gotype: "unique2",
   goblock: 2,
   property: "sky",
@@ -237,6 +442,7 @@ var eariaru = {
   effect: "nothing",
   plusitem: "nothing",
   what: "card",
+  solo: eariaru2,
   cost: 2
 }
 var firemagician = {
@@ -246,6 +452,7 @@ var firemagician = {
     height: cardsize,
   }),
   name: "firemagician",
+  nameingame: "火の魔法使い",
   gotype: "normal",
   goblock: 1,
   property: "fire",
@@ -253,6 +460,7 @@ var firemagician = {
   effect: "nothing",
   plusitem: "nothing",
   what: "card",
+  solo: firemagician2,
   cost: 1
 }
 var skelton = {
@@ -262,6 +470,7 @@ var skelton = {
     height: cardsize,
   }),
   name: "skelton",
+  nameingame: "スケルトン",
   gotype: "normal",
   goblock: 2,
   property: "undead",
@@ -269,6 +478,7 @@ var skelton = {
   effect: "nothing",
   plusitem: "nothing",
   what: "card",
+  solo: skelton2,
   cost: 2
 }
 dog.image.hide()
@@ -289,17 +499,22 @@ waterstone.image.hide()
 skystone.image.hide()
 firestone.image.hide()
 undeadstone.image.hide()
+
 //
 ccn = 0
 forever(() => {
   if(gameStatus == "change"){
     range(0,cardsetting.length).forEach(i => {
       cardout(cardsetting[i])
-      cardup(cardsetting[i],cardsetting[i].name)
+      if(DetailsTime == 0){
+       cardup(cardsetting[i],cardsetting[i].name)
+      }
     })
     range(0,itemsetting.length).forEach(i => {
       cardout(itemsetting[i])
-      cardup(itemsetting[i],itemsetting[i].name)
+      if(DetailsTime == 0){
+       cardup(itemsetting[i],itemsetting[i].name)
+      }
     })
     // cardup(dog)
     // cardup(kabuto)

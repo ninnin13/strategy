@@ -7,6 +7,95 @@ url: "./image/ressettab.png",
 resset.hide()
 resset.x = 6*grid
 resset.y = 9*grid
+//ステータス表示用
+var statusback = {
+  image: new Image({
+    url: "./image/tab/notnormal/statusback.png",
+     width: 36*grid,
+     height: 18*grid,
+  }),
+}
+statusback.image.hide()
+var statusbotton = {
+  image: new Image({
+    url: "./image/tab/notnormal/statusbotton.png",
+     width: 4*grid,
+     height: 1.3*grid,
+  }),
+}
+statusbotton.image.hide()
+statusbotton.image.x = 4*grid
+statusbotton.image.y = -9*grid
+var Sback = {
+  image: new Image({
+    url: "./image/icon/back.png",
+     width: 2*grid,
+     height: 2*grid,
+  }),
+}
+Sback.image.hide()
+Sback.image.x = 15*grid
+Sback.image.y = -7*grid
+var statustext = {
+  text: new Text({
+   text: () => mode + "モード",
+   size: 40,
+   color: "rgb(100, 50, 240)",
+   fontFamily: "arial",
+   textAlign: "left"
+ }),
+}
+statustext.text.hide()
+statustext.text.x = 10*grid
+statustext.text.y = -9*grid
+var helpname = {
+  text: new Text({
+   text: () => "名前:" + statusname,
+   size: 40,
+   color: "rgb(100, 50, 240)",
+   fontFamily: "arial",
+   textAlign: "left"
+ }),
+}
+helpname.text.hide()
+helpname.text.x = -4*grid
+helpname.text.y = 7*grid
+var helprange = {
+  text: new Text({
+   text: () => "移動範囲:" + statusrange,
+   size: 40,
+   color: "rgb(100, 50, 240)",
+   fontFamily: "arial",
+   textAlign: "left"
+ }),
+}
+helprange.text.hide()
+helprange.text.x = -4*grid
+helprange.text.y = 4*grid
+var helptype = {
+  text: new Text({
+   text: () => "属性:" + statustype,
+   size: 40,
+   color: "rgb(100, 50, 240)",
+   fontFamily: "arial",
+   textAlign: "left"
+ }),
+}
+helptype.text.hide()
+helptype.text.x = -4*grid
+helptype.text.y = 5.5*grid
+var helpgotype = {
+  text: new Text({
+   text: () => "移動タイプ:" + statusgotype,
+   size: 40,
+   color: "rgb(100, 50, 240)",
+   fontFamily: "arial",
+   textAlign: "left"
+ }),
+}
+helpgotype.text.hide()
+helpgotype.text.x = -4*grid
+helpgotype.text.y = 2.5*grid
 //
 var arrow =  new Image({
 url: "./image/icon/arrow2.png",
@@ -100,6 +189,17 @@ forever(() => {
       limittext.text.sendToFront()
       resset.show()
       resset.sendToFront()
+      statusbotton.image.show()
+      statusbotton.image.sendToFront()
+      statustext.text.show()
+      statustext.text.sendToFront()
+      DetailsTime = 0
+      mode = "ノーマル"
+      range(0,walklist.length).forEach(i => {
+        imagesize(walklist[i].image,250)
+        walklist[i].image.x = -12*grid
+        walklist[i].image.y = 4*grid
+      })
       D2clones.forEach(D2clone => {
         if(D2clone.none == 0){
          D2clone.image.x -= OTOpointx
@@ -126,6 +226,7 @@ forever(() => {
           costshow.text.sendToFront()
         }else{
           costshow.text.hide()
+          costshow.text.sendToFront()
         }
 
       })
@@ -137,6 +238,34 @@ forever(() => {
       backNumber = 0
       pagechange()
     }
+    range(0,cardsetting.length).forEach(i => {
+      if(cardsetting[i].image.mouseOver && mouseDown && Downnow2 == 0 && DetailsTime == 1){
+         Downnow2 = 1
+         cardstatusshow(cardsetting[i])
+         after(1, "seconds", () => {
+           Downnow2 = 0
+         })
+      }
+    })
+  //   cardsetting.forEach(clone => {
+  //
+  // })
+  if(keysDown.includes('CTRL') && keysDown.includes("S") || statusbotton.image.mouseOver && mouseDown && Downnow3 == 0){
+    Downnow3 = 1
+    after(0.5, "seconds", () => {
+      Downnow3 = 0
+    })
+    if(DetailsTime == 0){
+      DetailsTime = 1
+      mode = "詳細"
+    }else{
+      DetailsTime = 0
+      mode = "ノーマル"
+    }
+  }
+  if(Sback.image.mouseOver && mouseDown){
+    cardstatushide()
+  }
   if(keysDown.includes('R') || resset.mouseOver && mouseDown){
     D2clones.forEach(D2clone => {
       D2clone.image.hide()
@@ -177,7 +306,7 @@ forever(() => {
       costshow.text.x += 10
       if(costshow.text.x < 500 && costshow.text.x > -500){
         costshow.text.show()
-        costshow.text.sendToFront()
+        // costshow.text.sendToFront()
       }else{
         costshow.text.hide()
       }
@@ -196,7 +325,7 @@ forever(() => {
       costshow.text.x -= 10
       if(costshow.text.x < 500 && costshow.text.x > -500){
         costshow.text.show()
-        costshow.text.sendToFront()
+        // costshow.text.sendToFront()
       }else{
         costshow.text.hide()
       }
@@ -204,27 +333,29 @@ forever(() => {
     IFOpointx -= 10
      leftstand += 1
   }
-  if(keysDown.includes('D') || OTOarrow2.mouseOver && mouseDown){
-    D2clones.forEach(D2clone => {
-      D2clone.image.x += 10
-      if(D2clone.image.x < 500 && D2clone.image.x > -500){
-        D2clone.image.show()
-      }else{
-        D2clone.image.hide()
-      }
-      })
-    OTOpointx += 10
+  if(D2clones.length >0){
+   if(keysDown.includes('D') || OTOarrow2.mouseOver && mouseDown){
+     D2clones.forEach(D2clone => {
+       D2clone.image.x += 10
+       if(D2clone.image.x < 500 && D2clone.image.x > -500){
+         D2clone.image.show()
+       }else{
+         D2clone.image.hide()
+       }
+       })
+     OTOpointx += 10
+   }
+   if(keysDown.includes('A') || OTOarrow.mouseOver && mouseDown){
+     D2clones.forEach(D2clone => {
+       D2clone.image.x -= 10
+       if(D2clone.image.x < 500 && D2clone.image.x > -500){
+         D2clone.image.show()
+       }else{
+         D2clone.image.hide()
+       }
+     })
+     OTOpointx -= 10
+   }
   }
-  if(keysDown.includes('A') || OTOarrow.mouseOver && mouseDown){
-    D2clones.forEach(D2clone => {
-      D2clone.image.x -= 10
-      if(D2clone.image.x < 500 && D2clone.image.x > -500){
-        D2clone.image.show()
-      }else{
-        D2clone.image.hide()
-      }
-    })
-    OTOpointx -= 10
-  }
-  }
+ }
 })

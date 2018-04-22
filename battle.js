@@ -78,7 +78,12 @@ forever(() => {
         newmusic()
         battlemusic = 1
         startmusic = 1
-        deckkeep()
+         deckkeep()
+         if(gameStatus2 == "DSduring"){
+           deck.push(dog)
+           deck.push(firemagician)
+           itemindeck.push(waterstone)
+         }
         kind()
         itemkindwhat()
         // castle.image.show()

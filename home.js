@@ -77,6 +77,9 @@ forever(() => {
        optiontab.show()
        optiontab.sendToFront()
        optiontext.sendToFront()
+       range(0,walklist.length).forEach(i => {
+         imagesize(walklist[i].image,100)
+       })
        range(0,random(1,4)).forEach(i => {
          console.log(walklist[i])
          keepmath = random(0,walklist.length-1)

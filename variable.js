@@ -67,6 +67,14 @@ var deckname = 0
 var newkind
 var Ydeckout = 0
 var craftnumber = 1
+var Downnow2 = 0
+var DetailsTime
+var mode = "ノーマル"
+var Downnow3 = 0
+var statusname
+var statusrange
+var statustype
+var statusgotype
 //消す速度
 var hidespeed = 1.5
 var hidespeed2 = 5

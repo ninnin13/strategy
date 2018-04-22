@@ -113,8 +113,6 @@ function repeatcheck(stopnumber) {
          reset()
          cards.forEach(card => {
            card.image.hide()
-          // card.soil.hide()
-          // card.sea.hide()
          })
          Ycards.forEach(Ycard => {
            Ycard.image.hide()

@@ -60,6 +60,40 @@ function outcard(Cn) {
   })
   OTOpointx -= 200
 }
+function cardstatusshow(name) {
+  statusname = name.nameingame
+  statusrange = name.goblock
+  FromEnglishtoJapanese(name.property)
+  statustype = translationResult
+  FromEnglishtoJapanese(name.gotype)
+  statusgotype = translationResult
+  statusback.image.show()
+  statusback.image.sendToFront()
+  Sback.image.show()
+  Sback.image.sendToFront()
+  helpname.text.show()
+  helpname.text.sendToFront()
+  helprange.text.show()
+  helprange.text.sendToFront()
+  helptype.text.show()
+  helptype.text.sendToFront()
+  helpgotype.text.show()
+  helpgotype.text.sendToFront()
+  keepword = name.solo
+  keepword.image.show()
+  keepword.image.sendToFront()
+}
+function cardstatushide() {
+  statusback.image.hide()
+  Sback.image.hide()
+  helpname.text.hide()
+  helprange.text.hide()
+  helptype.text.hide()
+  helpgotype.text.hide()
+  range(0,walklist.length).forEach(i => {
+    walklist[i].image.hide()
+  })
+}
 //チュートリアル
 function didlist(inname) {
   indid = 0
@@ -609,12 +643,6 @@ function cardfield(name,name2){
   }
   card.image.x = grid*downX
   card.image.y = grid*downY
-  // card.soil.x = grid*downX
-  // card.soil.y = grid*downY
-  // card.sea.x = grid*downX
-  // card.sea.y = grid*downY
-  // card.soil.hide()
-  // card.sea.hide()
   //console.log(card.name)
   cards.push(card)
   cardNumber += 1
@@ -658,13 +686,13 @@ function yourcardfield(name,name2){
 }
 //地面を確認
 function checksame(under,thiscard) {
-   if(thiscard == "soil" && under == 0){
+   if(thiscard == "land" && under == 0){
       typeplus = 1
    }
    if(thiscard == "fire" && under == 1){
       typeplus = 1
    }
-   if(thiscard == "water" && under == 2){
+   if(thiscard == "sea" && under == 2){
       typeplus = 1
    }
    if(thiscard == "undead" && under == 5){
@@ -684,13 +712,13 @@ function wheresame(under,thiswhere) {
   })
 }
 function Ychecksame(under,thiscard) {
-   if(thiscard == "soil" && under == 0){
+   if(thiscard == "land" && under == 0){
       Ytypeplus = 1
    }
    if(thiscard == "fire" && under == 1){
       Ytypeplus = 1
    }
-   if(thiscard == "water" && under == 2){
+   if(thiscard == "sea" && under == 2){
       Ytypeplus = 1
    }
    if(thiscard == "undead" && under == 5){
@@ -876,8 +904,6 @@ function yourgo(goblocks,YcardgoX,YcardgoY){
                   })
                   after(1, "seconds", () => {
                     card.image.hide()
-                    // card.soil.hide()
-                    // card.sea.hide()
                   })
                   card.death = 1
                   console.log("死")
@@ -1110,6 +1136,9 @@ function cardup(name,name2){
 }
 //ページを替える時に非表示にする
 function pagechange(){
+  Sback.image.hide()
+  statustext.text.hide()
+  statusback.image.hide()
   resset.hide()
   costtext.text.hide()
   back.hide()
@@ -1185,7 +1214,7 @@ function checkfinish() {
        battling = 0
        cards.forEach(card => {
          card.image.hide()
-         // card.soil.hide()
+         // card.land.hide()
          // card.sea.hide()
        })
        Ycards.forEach(Ycard => {
@@ -1210,8 +1239,6 @@ function checkfinish() {
        battling = 0
        cards.forEach(card => {
          card.image.hide()
-         // card.soil.hide()
-         // card.sea.hide()
        })
        Ycards.forEach(Ycard => {
          Ycard.image.hide()

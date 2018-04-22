@@ -38,144 +38,22 @@ var wherecan = []
 var fastwherecan = []
 var priority = []
 //ホーム画面移動用
-//ホームで動くもの
-var dog2 = {
-  image: new Image({
-    url: "./image/card/stand/dog.png",
-    width: 100,
-    height: 100,
-  }),
-  name: "dog",
-  keep: 0,
-  keep2: 0,
-  keep3: 0,
-  keep4: 0,
-  SorH: 0
-}
-dog2.image.hide()
-var kabuto2 = {
-  image: new Image({
-    url: "./image/card/stand/kabuto.png",
-    width: 100,
-    height: 100,
-  }),
-  name: "kabuto",
-  keep: 0,
-  keep2: 0,
-  keep3: 0,
-  keep4: 0,
-  SorH: 0
-}
-kabuto2.image.hide()
-var penguin2 = {
-  image: new Image({
-    url: "./image/card/stand/penguin.png",
-    width: 100,
-    height: 70,
-  }),
-  name: "penguin",
-  keep: 0,
-  keep2: 0,
-  keep3: 0,
-  keep4: 0,
-  SorH: 0
-}
-penguin2.image.hide()
-var penking2 = {
-  image: new Image({
-    url: "./image/card/stand/penking.png",
-    width: 100,
-    height: 100,
-  }),
-  name: "penking",
-  keep: 0,
-  keep2: 0,
-  keep3: 0,
-  keep4: 0,
-  SorH: 0
-}
-penking2.image.hide()
-var jyassyu2 = {
-  image: new Image({
-    url: "./image/card/stand/jyassyu.png",
-    width: 100,
-    height: 100,
-  }),
-  name: "jyassyu",
-  keep: 0,
-  keep2: 0,
-  keep3: 0,
-  keep4: 0,
-  SorH: 0
-}
-jyassyu2.image.hide()
-var angora2 = {
-  image: new Image({
-    url: "./image/card/stand/angora.png",
-    width: 100,
-    height: 100,
-  }),
-  name: "angora",
-  keep: 0,
-  keep2: 0,
-  keep3: 0,
-  keep4: 0,
-  SorH: 0
-}
-angora2.image.hide()
-var skymachine2 = {
-  image: new Image({
-    url: "./image/card/stand/skymachine.png",
-    width: 100,
-    height: 100,
-  }),
-  name: "skymachine",
-  keep: 0,
-  keep2: 0,
-  keep3: 0,
-  keep4: 0,
-  SorH: 0
-}
-skymachine2.image.hide()
-var eariaru2 = {
-  image: new Image({
-    url: "./image/card/stand/eariaru.png",
-    width: 100,
-    height: 100,
-  }),
-  name: "eariaru",
-  keep: 0,
-  keep2: 0,
-  keep3: 0,
-  keep4: 0,
-  SorH: 0
-}
-eariaru2.image.hide()
-var skelton2 = {
-  image: new Image({
-    url: "./image/card/stand/skelton.png",
-    width: 100,
-    height: 100,
-  }),
-  name: "skelton",
-  keep: 0,
-  keep2: 0,
-  keep3: 0,
-  keep4: 0,
-  SorH: 0
-}
-skelton2.image.hide()
+
 var walklist = []
 walklist.push(dog2)
 walklist.push(kabuto2)
 walklist.push(penguin2)
 walklist.push(penking2)
+walklist.push(sai2)
+walklist.push(monkey2)
+walklist.push(shark2)
 walklist.push(jyassyu2)
 walklist.push(angora2)
 walklist.push(skymachine2)
 walklist.push(eariaru2)
+walklist.push(firemagician2)
 walklist.push(skelton2)
-every(2, "seconds", () => {
+every(1.8, "seconds", () => {
   if(walksplite == 1){
    range(0,walklist.length).forEach(i => {
      if(walklist[i].SorH == 1){
@@ -186,7 +64,7 @@ every(2, "seconds", () => {
      Tkeepmath2 = walklist[i].keep*110
      Tkeepmath3 = walklist[i].keep2*110
      console.log(walklist[i].keep4)
-     if(walklist[i].keep3 + Tkeepmath2 < 10*grid && walklist[i].keep3 + Tkeepmath2 > -10*grid && walklist[i].keep4 +  Tkeepmath3 < 6*grid && walklist[i].keep4 + Tkeepmath3 > -10*grid ){
+     if(walklist[i].keep3 + Tkeepmath2 < 9.5*grid && walklist[i].keep3 + Tkeepmath2 > -9.5*grid && walklist[i].keep4 +  Tkeepmath3 < 5.5*grid && walklist[i].keep4 + Tkeepmath3 > -9.5*grid ){
       repeat(random(90,110), () => {
         walklist[i].image.x += walklist[i].keep
         walklist[i].image.y += walklist[i].keep2
