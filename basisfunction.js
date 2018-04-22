@@ -18,8 +18,8 @@ function imagesize(name,number) {
 //英語を日本語にする
 var translationResult
 var translation = []
-var Japaneselist = ["陸","海","空","火","アンデット","ノーマル","クロス","ステップ","突進","ジャンプ"]
-var Englishlist = ["land","sea","sky","fire","undead","normal","unique","unique2","power","jump"]
+var Japaneselist = ["陸","海","空","火","アンデット","ノーマル","クロス","ステップ","突進","ジャンプ","なし","火の玉"]
+var Englishlist = ["land","sea","sky","fire","undead","normal","unique","unique2","power","jump","nothing","fireball"]
 function FromEnglishtoJapanese(Originaltext) {
    range(0,translation.length).forEach(i => {
      translation.remove(translation[i])
@@ -29,4 +29,19 @@ function FromEnglishtoJapanese(Originaltext) {
        translationResult = Japaneselist[i]
      }
    })
+}
+var splitList = []
+var keepSplitCalculation
+function splitByACertainNumbeOofCharacters(splitWord) {
+  range(0,splitList.length).forEach(i => {
+    splitList.remove(splitList[0])
+  })
+   range(0,floor(splitWord.length/11)+1).forEach(i => {
+     keepSplitCalculation = i+1
+     splitList.push(splitWord.substring(i*11,keepSplitCalculation*11))
+   })
+   range(0,3).forEach(i => {
+     splitList.push("no")
+   })
+   console.log(splitList)
 }

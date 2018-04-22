@@ -75,6 +75,10 @@ var statusname
 var statusrange
 var statustype
 var statusgotype
+var statusTC
+var statusSP1
+var statusSP2
+var statusSP3
 //消す速度
 var hidespeed = 1.5
 var hidespeed2 = 5

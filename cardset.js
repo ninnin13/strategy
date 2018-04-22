@@ -261,6 +261,7 @@ var dog = {
   technique: "nothing",
   effect: "nothing",
   plusitem: "nothing",
+  effectExplanation: "特になし",
   what: "card",
   solo: dog2,
   cost: 2
@@ -279,6 +280,7 @@ var kabuto = {
   technique: "nothing",
   effect: "nothing",
   plusitem: "nothing",
+  effectExplanation: "特になし",
   what: "card",
   solo: kabuto2,
   cost: 1
@@ -297,6 +299,7 @@ var penguin = {
   technique: "nothing",
   effect: "nothing",
   plusitem: "nothing",
+  effectExplanation: "特になし",
   what: "card",
   solo: penguin2,
   cost: 1
@@ -315,6 +318,7 @@ var penking = {
   technique: "nothing",
   effect: penguin,
   plusitem: "nothing",
+  effectExplanation: "死亡時:ペンギン剣士のカードが手に入る。",
   what: "card",
   solo: penking2,
   cost: 6
@@ -333,6 +337,7 @@ var sai = {
   technique: "nothing",
   effect: "nothing",
   plusitem: "nothing",
+  effectExplanation: "特になし",
   what: "card",
   solo: sai2,
   cost: 2
@@ -351,6 +356,7 @@ var monkey = {
   technique: "nothing",
   effect: "nothing",
   plusitem: "nothing",
+  effectExplanation: "特になし",
   what: "card",
   solo: monkey2,
   cost: 3
@@ -369,6 +375,7 @@ var shark = {
   technique: "nothing",
   effect: "nothing",
   plusitem: "nothing",
+  effectExplanation: "特になし",
   what: "card",
   solo: shark2,
   cost: 3
@@ -387,6 +394,7 @@ var angora = {
   technique: "nothing",
   effect: "nothing",
   plusitem: waterstone,
+  effectExplanation: "死亡時:水の石を手に入れられる",
   what: "card",
   solo: angora2,
   cost: 2
@@ -405,6 +413,7 @@ var jyassyu = {
   technique: "nothing",
   effect: "nothing",
   plusitem: "nothing",
+  effectExplanation: "特になし",
   what: "card",
   solo: jyassyu2,
   cost: 1
@@ -423,6 +432,7 @@ var skymachine = {
   technique: "nothing",
   effect: "nothing",
   plusitem: "nothing",
+  effectExplanation: "特になし",
   what: "card",
   solo: skymachine2,
   cost: 2
@@ -441,6 +451,7 @@ var eariaru = {
   technique: "nothing",
   effect: "nothing",
   plusitem: "nothing",
+  effectExplanation: "特になし",
   what: "card",
   solo: eariaru2,
   cost: 2
@@ -459,6 +470,7 @@ var firemagician = {
   technique: "fireball",
   effect: "nothing",
   plusitem: "nothing",
+  effectExplanation: "特になし",
   what: "card",
   solo: firemagician2,
   cost: 1
@@ -477,6 +489,7 @@ var skelton = {
   technique: "nothing",
   effect: "nothing",
   plusitem: "nothing",
+  effectExplanation: "特になし",
   what: "card",
   solo: skelton2,
   cost: 2

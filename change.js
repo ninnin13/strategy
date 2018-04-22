@@ -96,6 +96,54 @@ var helpgotype = {
 helpgotype.text.hide()
 helpgotype.text.x = -4*grid
 helpgotype.text.y = 2.5*grid
+var helptechnique = {
+  text: new Text({
+   text: () => "技:" + statusTC,
+   size: 40,
+   color: "rgb(100, 50, 240)",
+   fontFamily: "arial",
+   textAlign: "left"
+ }),
+}
+helptechnique.text.hide()
+helptechnique.text.x = -4*grid
+helptechnique.text.y = 1*grid
+var helpSP1 = {
+  text: new Text({
+   text: () => "特殊効果:" + statusSP1,
+   size: 40,
+   color: "rgb(100, 50, 240)",
+   fontFamily: "arial",
+   textAlign: "left"
+ }),
+}
+helpSP1.text.hide()
+helpSP1.text.x = -4*grid
+helpSP1.text.y = -0.5*grid
+var helpSP2 = {
+  text: new Text({
+   text: () => "　　　　 " + statusSP2,
+   size: 40,
+   color: "rgb(100, 50, 240)",
+   fontFamily: "arial",
+   textAlign: "left"
+ }),
+}
+helpSP2.text.hide()
+helpSP2.text.x = -4*grid
+helpSP2.text.y = -2*grid
+var helpSP3 = {
+  text: new Text({
+   text: () => "　　　　 " + statusSP3,
+   size: 40,
+   color: "rgb(100, 50, 240)",
+   fontFamily: "arial",
+   textAlign: "left"
+ }),
+}
+helpSP3.text.hide()
+helpSP3.text.x = -4*grid
+helpSP3.text.y = -3.5*grid
 //
 var arrow =  new Image({
 url: "./image/icon/arrow2.png",

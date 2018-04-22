@@ -67,6 +67,8 @@ function cardstatusshow(name) {
   statustype = translationResult
   FromEnglishtoJapanese(name.gotype)
   statusgotype = translationResult
+  FromEnglishtoJapanese(name.technique)
+  statusTC = translationResult
   statusback.image.show()
   statusback.image.sendToFront()
   Sback.image.show()
@@ -79,9 +81,25 @@ function cardstatusshow(name) {
   helptype.text.sendToFront()
   helpgotype.text.show()
   helpgotype.text.sendToFront()
+  helptechnique.text.show()
+  helptechnique.text.sendToFront()
   keepword = name.solo
   keepword.image.show()
   keepword.image.sendToFront()
+  splitByACertainNumbeOofCharacters(name.effectExplanation)
+  statusSP1 = splitList[0]
+  helpSP1.text.show()
+  helpSP1.text.sendToFront()
+  if(!(splitList[1] == "no")){
+   statusSP2 = splitList[1]
+   helpSP2.text.show()
+   helpSP2.text.sendToFront()
+  }
+  if(!(splitList[2] == "no")){
+   statusSP3 = splitList[2]
+   helpSP3.text.show()
+   helpSP3.text.sendToFront()
+  }
 }
 function cardstatushide() {
   statusback.image.hide()
@@ -90,6 +108,10 @@ function cardstatushide() {
   helprange.text.hide()
   helptype.text.hide()
   helpgotype.text.hide()
+  helptechnique.text.hide()
+  helpSP1.text.hide()
+  helpSP2.text.hide()
+  helpSP3.text.hide()
   range(0,walklist.length).forEach(i => {
     walklist[i].image.hide()
   })
