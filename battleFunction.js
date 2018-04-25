@@ -51,14 +51,20 @@ var step5 = new Text({
   color: "rgb(100, 100, 200)",
   fontFamily: "arial",
 })
+var step6 = new Text({
+  text: () => "見る",
+  size: 30,
+  color: "rgb(100, 100, 200)",
+  fontFamily: "arial",
+})
 var bctab = new Image({
   url: "./image/tab/red.png",
   width: 80,
-  height: 220,
+  height: 235,
 })
 myturnok.hide()
 bctab.x = 500
-bctab.y = -150
+bctab.y = -135
 bctab.hide()
 step1.x = 500
 step1.y = -220
@@ -75,6 +81,9 @@ step4.hide()
 step5.x = 500
 step5.y = -100
 step5.hide()
+step6.x = 500
+step6.y = -70
+step6.hide()
 
 //second commit
 
@@ -407,6 +416,11 @@ after(2.3/hidespeed, "seconds", () => {
          upcard -= 150
        })
       }
+      if(step6.mouseOver && mouseDown){
+        stephide()
+        backshow()
+        viewStatus = 1
+      }
       if(step4.mouseOver && mouseDown){
         stephide()
         backshow()
@@ -443,7 +457,26 @@ after(2.3/hidespeed, "seconds", () => {
          itemhit(itemkind[i],itemkind[i].name)
        })
      }
-    if(mouseDown && mouseX < grid*4 && mouseX > grid*-4 && mouseY < grid*-6 && mouseY > grid*-10 ){
+     // if(viewStatus == 1){
+     //   range(0,cardkind.length).forEach(i => {
+     //     cardhit(cardkind[i],cardkind[i].name)
+     //   })
+     // }
+     if(viewStatus == 1 && mouseDown && Downnow4 == 0){
+       cards.forEach(card => {
+         if(card.image.mouseOver){
+           Downnow4 = 1
+           cardstatusshow(card.namefull)
+           statusrange = card.range
+           FromEnglishtoJapanese(card.propertydata)
+           statustype = translationResult
+           after(1, "seconds", () => {
+             Downnow4 = 0
+           })
+         }
+       })
+     }
+    if(mouseDown && mouseX < grid*4 && mouseX > grid*-4 && mouseY < grid*-6 && mouseY > grid*-10 && choicing == 1){
           if(!(choicestand == 1)){
             if(showcardlimit > 0){
              downX = floor(mouseX/grid)
@@ -478,6 +511,7 @@ after(2.3/hidespeed, "seconds", () => {
       }
     }
     if(keysDown.includes('B') || gobackTab.mouseOver && mouseDown){
+      viewStatus = 0
       canarea.image.hide()
       choicing = 0
       choicingitem = 0
@@ -535,6 +569,7 @@ function stephide(){
   step3.hide()
   step4.hide()
   step5.hide()
+  step6.hide()
   bctab.hide()
 }
 function stepshow(){
@@ -543,6 +578,7 @@ function stepshow(){
   step3.show()
   step4.show()
   step5.show()
+  step6.show()
   bctab.show()
   bctab.sendToFront()
   step1.sendToFront()
@@ -550,6 +586,7 @@ function stepshow(){
   step3.sendToFront()
   step4.sendToFront()
   step5.sendToFront()
+  step6.sendToFront()
   gobackTab.hide()
   gobackText.hide()
 }

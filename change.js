@@ -72,6 +72,18 @@ var helprange = {
 helprange.text.hide()
 helprange.text.x = -4*grid
 helprange.text.y = 4*grid
+var helpcost = {
+  text: new Text({
+   text: () => "コスト:" + statuscost,
+   size: 40,
+   color: "rgb(100, 50, 240)",
+   fontFamily: "arial",
+   textAlign: "left"
+ }),
+}
+helpcost.text.hide()
+helpcost.text.x = -4*grid
+helpcost.text.y = -3.5*grid
 var helptype = {
   text: new Text({
    text: () => "属性:" + statustype,
@@ -248,6 +260,11 @@ forever(() => {
         walklist[i].image.x = -12*grid
         walklist[i].image.y = 4*grid
       })
+      range(0,soloitemlist.length).forEach(i => {
+        imagesize(soloitemlist[i].image,250)
+        soloitemlist[i].image.x = -12*grid
+        soloitemlist[i].image.y = 4*grid
+      })
       D2clones.forEach(D2clone => {
         if(D2clone.none == 0){
          D2clone.image.x -= OTOpointx
@@ -295,6 +312,15 @@ forever(() => {
          })
       }
     })
+    range(0,itemsetting.length).forEach(i => {
+      if(itemsetting[i].image.mouseOver && mouseDown && Downnow2 == 0 && DetailsTime == 1){
+         Downnow2 = 1
+         itemstatusshow(itemsetting[i])
+         after(1, "seconds", () => {
+           Downnow2 = 0
+         })
+      }
+    })
   //   cardsetting.forEach(clone => {
   //
   // })
@@ -313,6 +339,7 @@ forever(() => {
   }
   if(Sback.image.mouseOver && mouseDown){
     cardstatushide()
+    itemstatushide()
   }
   if(keysDown.includes('R') || resset.mouseOver && mouseDown){
     D2clones.forEach(D2clone => {
@@ -325,6 +352,7 @@ forever(() => {
       clones.remove(clones[0])
     })
     OTOpointx = 0
+    allcost = 0
   }
   D2clones.forEach(D2clone => {
     if(D2clone.image.mouseOver && mouseDown && Downnow == 0){

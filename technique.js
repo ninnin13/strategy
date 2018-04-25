@@ -10,3 +10,15 @@ var fireball = {
   attribute: "fire",
   name: "fireball"
 }
+var chairattack = {
+  image: new Image({
+    url: "./image/technique/chair.png",
+    width: grid,
+    height: grid,
+  }),
+  type: "attack",
+  range: 1,
+  typeOfRange: "normal",
+  attribute: "undead",
+  name: "chairattack"
+}

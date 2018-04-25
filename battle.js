@@ -47,6 +47,10 @@ forever(() => {
       backbattle.sendToFront()
       backbattle.x = 0
       backbattle.y = 0
+      mapchips.forEach(mapchip => {
+        mapchip.image.show()
+        mapchip.image.sendToFront()
+      })
       SBback.show()
       SBback.sendToFront()
       SBback.x = 0
@@ -78,11 +82,11 @@ forever(() => {
         newmusic()
         battlemusic = 1
         startmusic = 1
-         deckkeep()
+        deckkeep()
          if(gameStatus2 == "DSduring"){
            deck.push(dog)
            deck.push(firemagician)
-           itemindeck.push(waterstone)
+           itemindeck.push(seastone)
          }
         kind()
         itemkindwhat()
@@ -95,6 +99,11 @@ forever(() => {
         YDcraft()
         STtechnique = 1
         turnnumber = 0
+        range(0,walklist.length).forEach(i => {
+          imagesize(walklist[i].image,250)
+          walklist[i].image.x = -12*grid
+          walklist[i].image.y = 4*grid
+        })
         backNumber2 = 0
       }
       if(nextturn == 1)  {
@@ -107,7 +116,10 @@ forever(() => {
         nextturn = 0
       }
 
-
+      if(Sback.image.mouseOver && mouseDown){
+        cardstatushide()
+        itemstatushide()
+      }
     }
   }
 })

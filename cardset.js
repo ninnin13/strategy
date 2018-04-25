@@ -1,4 +1,74 @@
 //ホームで動くもの
+var landstone2 = {
+  image: new Image({
+    url: "./image/card/stand/landstone.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "penking",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+landstone2.image.hide()
+var waterstone2 = {
+  image: new Image({
+    url: "./image/card/stand/seastone.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "penking",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+waterstone2.image.hide()
+var skystone2 = {
+  image: new Image({
+    url: "./image/card/stand/skystone.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "penking",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+skystone2.image.hide()
+var firestone2 = {
+  image: new Image({
+    url: "./image/card/stand/firestone.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "penking",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+firestone2.image.hide()
+var undeadstone2 = {
+  image: new Image({
+    url: "./image/card/stand/undeadstone.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "penking",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+undeadstone2.image.hide()
 var dog2 = {
   image: new Image({
     url: "./image/card/stand/dog.png",
@@ -181,6 +251,20 @@ var skelton2 = {
   SorH: 0
 }
 skelton2.image.hide()
+var polter2 = {
+  image: new Image({
+    url: "./image/card/stand/polter.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "polter",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+polter2.image.hide()
 //カード本体
 var landstone = {
   image: new Image({
@@ -193,19 +277,23 @@ var landstone = {
   attribute: "land",
   EFname: landeffect,
   what: "item",
+  solo: landstone2,
+  effectExplanation: "カードを陸属性にする。",
   cost: 1
 }
-var waterstone = {
+var seastone = {
   image: new Image({
-    url: "./image/card/waterstone.png",
+    url: "./image/card/seastone.png",
     width: cardsize*0.8,
     height: cardsize*0.8,
   }),
-  name: "waterstone",
+  name: "seastone",
   type: "attributechange",
   attribute: "sea",
   EFname: watereffect,
   what: "item",
+  solo: waterstone2,
+  effectExplanation: "カードを海属性にする。",
   cost: 1
 }
 var skystone = {
@@ -219,6 +307,8 @@ var skystone = {
   attribute: "sky",
   EFname: skyeffect,
   what: "item",
+  solo: skystone2,
+  effectExplanation: "カードを空属性にする。",
   cost: 2
 }
 var firestone = {
@@ -232,6 +322,8 @@ var firestone = {
   attribute: "fire",
   EFname: fireeffect,
   what: "item",
+  solo: firestone2,
+  effectExplanation: "カードを火属性にする。",
   cost: 1
 }
 var undeadstone = {
@@ -245,6 +337,8 @@ var undeadstone = {
   attribute: "undead",
   EFname: undeadeffect,
   what: "item",
+  solo: undeadstone2,
+  effectExplanation: "カードを屍属性にする。",
   cost: 1
 }
 var dog = {
@@ -393,7 +487,7 @@ var angora = {
   property: "sea",
   technique: "nothing",
   effect: "nothing",
-  plusitem: waterstone,
+  plusitem: seastone,
   effectExplanation: "死亡時:水の石を手に入れられる",
   what: "card",
   solo: angora2,
@@ -473,7 +567,7 @@ var firemagician = {
   effectExplanation: "特になし",
   what: "card",
   solo: firemagician2,
-  cost: 1
+  cost: 2
 }
 var skelton = {
   image: new Image({
@@ -494,6 +588,25 @@ var skelton = {
   solo: skelton2,
   cost: 2
 }
+var polter = {
+  image: new Image({
+    url: "./image/card/polter.png",
+    width: cardsize,
+    height: cardsize,
+  }),
+  name: "polter",
+  nameingame: "ホルターガイスト",
+  gotype: "unique",
+  goblock: 2,
+  property: "undead",
+  technique: "chairattack",
+  effect: "nothing",
+  plusitem: "nothing",
+  effectExplanation: "特になし",
+  what: "card",
+  solo: polter2,
+  cost: 3
+}
 dog.image.hide()
 kabuto.image.hide()
 penguin.image.hide()
@@ -507,8 +620,9 @@ skymachine.image.hide()
 eariaru.image.hide()
 firemagician.image.hide()
 skelton.image.hide()
+polter.image.hide()
 landstone.image.hide()
-waterstone.image.hide()
+seastone.image.hide()
 skystone.image.hide()
 firestone.image.hide()
 undeadstone.image.hide()

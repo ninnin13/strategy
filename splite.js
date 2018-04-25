@@ -155,7 +155,7 @@ var TBt = {
   text: new Text({
   text: () => techniquetext,
   size: 30,
-  color: "rgb(100, 50, 240)",
+  color: "rgb(240, 50, 100)",
   fontFamily: "arial",
   textAlign: "left"
   })
@@ -163,7 +163,7 @@ var TBt = {
 TBt.text.hide()
 var TBb = new Image({
   url: "./image/tab/blue.png",
-  width: 135,
+  width: 200,
   height: 50
 })
 TBb.hide()
@@ -205,10 +205,12 @@ forever(() => {
            TCnumber = i
          }
        })
-       didlist("技3")
-       if(indid == 0){
-         textsign = 0
-  　　   DSmode = "技3"
+       if(gameStatus2 == "attack"){
+        didlist("技3")
+        if(indid == 0){
+          textsign = 0
+  　　    DSmode = "技3"
+        }
        }
        TCchoice()
        TCstopper = 1
@@ -283,6 +285,19 @@ forever(() => {
       //
       // }
       if(cardtype == "power"){
+        //console.log("red")
+        gopoint(1,0,card.propertydata)
+        gopoint(-1,0,card.propertydata)
+        gopoint(0,-1,card.propertydata)
+        range(1,cardgo+1+typeplus).forEach(i => {
+          gopoint(0,1*i,card.propertydata)
+       })
+        after(0.3, "seconds", () => {
+          gotrue = "true"
+        })
+
+      }
+      if(cardtype == "guard"){
         //console.log("red")
         gopoint(1,0,card.propertydata)
         gopoint(-1,0,card.propertydata)

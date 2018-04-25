@@ -37,8 +37,14 @@ var wordkeep = []
 var wherecan = []
 var fastwherecan = []
 var priority = []
+//アイテムの単体画像
+var soloitemlist = []
+soloitemlist.push(landstone2)
+soloitemlist.push(waterstone2)
+soloitemlist.push(skystone2)
+soloitemlist.push(firestone2)
+soloitemlist.push(undeadstone2)
 //ホーム画面移動用
-
 var walklist = []
 walklist.push(dog2)
 walklist.push(kabuto2)
@@ -53,6 +59,7 @@ walklist.push(skymachine2)
 walklist.push(eariaru2)
 walklist.push(firemagician2)
 walklist.push(skelton2)
+walklist.push(polter2)
 every(1.8, "seconds", () => {
   if(walksplite == 1){
    range(0,walklist.length).forEach(i => {
@@ -90,6 +97,7 @@ cardsetting.push(skymachine)
 cardsetting.push(eariaru)
 cardsetting.push(firemagician)
 cardsetting.push(skelton)
+cardsetting.push(polter)
 var costshows = []
 range(0,cardsetting.length).forEach(i => {
   var costshow = {
@@ -140,13 +148,14 @@ textlist.push("次は、火の魔法使いを範囲の右上端配置してく�
 textlist.push("右に写っているカードはカードは「W」で上に、「S」で下に動かせます.")
 textlist.push("このターンにできることは終わったので、「戻る」、「終了」を押してください。") //9
 textlist.push("次は、移動です。")
+textlist.push("移動は、配置した次のターンにしかできません")
 textlist.push("「移動」のボタンを押してください。")
 textlist.push("配置した犬をクリックしてください")
 textlist.push("今表示されている赤色のところが、移動できる範囲です")
 textlist.push("一番前のマスの赤色のところをクリックしてください。")
 textlist.push("戻るを押してください。")
-textlist.push("次は、アイテムです。")
-textlist.push("「アイテム」のボタンを押してください。")
+textlist.push("次は、道具です。")
+textlist.push("「道具」のボタンを押してください。")
 textlist.push("左の、海の秘石をクリックしてください。")
 textlist.push("アイテムは、カードがどこにいても使用できます。") //19
 textlist.push("犬のカードをクリックしてください。")
@@ -191,17 +200,17 @@ var yourdeck = []
 //アイテム
 var itemsetting = []
 itemsetting.push(landstone)
-itemsetting.push(waterstone)
+itemsetting.push(seastone)
 itemsetting.push(skystone)
 itemsetting.push(firestone)
 itemsetting.push(undeadstone)
 var itemkind = []
 // itemkind.push(landstone)
-// itemkind.push(waterstone)
+// itemkind.push(seastone)
 var itemindeck = []
 var itemindeck2 = []
 var Yitemindeck = []
-// itemindeck.push(waterstone)
+// itemindeck.push(seastone)
 var cloneeffects = []
 //進める向き
 var outdirection =[]
@@ -209,28 +218,114 @@ var Youtdirection =[]
 //技
 var techniqueall = []
 techniqueall.push(fireball)
+techniqueall.push(chairattack)
 var TCclones = []
 var Twherecan = []
 //0=陸,2=水,3=空,1=火,5=墓
 var mapData = [
-  [0,0,0,0,0,0,0,3,0,0,0,2,0,0,0,0,0,0,2,0,0,0,3,0,0,0,0,0,0,0],
-  [0,5,5,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0],
-  [0,5,5,0,0,0,0,0,0,0,0,0,2,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0],
-  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0],
-  [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0],
-  [0,1,1,0,0,0,0,0,0,0,0,0,0,5,5,5,5,0,0,0,0,0,0,0,0,0,3,1,1,0],
-  [0,1,1,3,0,0,0,0,0,0,0,0,0,5,5,5,5,0,0,0,0,0,0,0,0,0,0,1,1,0],
-  [0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
-  [0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-  [0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,2,0,0,0,0,0,0,0,0,0,5,5,0],
-  [0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,5,5,0],
-  [0,0,0,0,0,0,0,3,0,0,0,2,0,0,0,0,0,0,2,0,0,0,3,0,0,0,0,0,0,0]
+  [2,2,2,2,2,2,2,3,0,0,0,2,0,0,0,0,0,0,2,0,0,0,3,2,2,2,2,2,2,2],
+  [2,5,5,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,2],
+  [2,5,5,0,0,0,0,0,0,0,0,0,2,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,2],
+  [2,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,2],
+  [2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,2],
+  [2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,2],
+  [2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,2],
+  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,2],
+  [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,2],
+  [2,1,1,0,0,0,0,0,0,0,0,0,0,5,5,5,5,0,0,0,0,0,0,0,0,0,3,1,1,2],
+  [2,1,1,3,0,0,0,0,0,0,0,0,0,5,5,5,5,0,0,0,0,0,0,0,0,0,0,1,1,2],
+  [2,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
+  [2,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+  [2,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2],
+  [2,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2],
+  [2,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2],
+  [2,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,2],
+  [2,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,2,0,0,0,0,0,0,0,0,0,5,5,2],
+  [2,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,5,5,2],
+  [2,2,2,2,2,2,2,3,0,0,0,2,0,0,0,0,0,0,2,0,0,0,3,2,2,2,2,2,2,2]
 ];
+var mapchips = []
+function whatHere(n1,n2) {
+  keepmath = n1*grid -15*grid
+  keepmath = keepmath+0.5*grid
+  keepmath2 = n2*-grid
+  keepmath2 = keepmath2+10*grid -0.5*grid
+  console.log("X座標" + keepmath + "Y座標" + keepmath2)
+}
+range(0,mapData.length).forEach(i => {
+  // console.log(i)
+  range(0,mapData[i].length).forEach(j => {
+    // console.log(j)
+    // console.log("チップ名" + mapData[i][j])
+    if(mapData[i][j] == 0){
+      var mapchip = {
+        image: new Image({
+          url: "./image/mapchip/land.png",
+          width: grid,
+          height: grid,
+        }),
+      }
+      whatHere(j,i)
+      mapchip.image.x = keepmath
+      mapchip.image.y = keepmath2
+      mapchip.image.hide()
+      mapchips.push(mapchip)
+    }
+    if(mapData[i][j] == 2){
+      var mapchip = {
+        image: new Image({
+          url: "./image/mapchip/sea2.png",
+          width: grid,
+          height: grid,
+        }),
+      }
+      whatHere(j,i)
+      mapchip.image.x = keepmath
+      mapchip.image.y = keepmath2
+      mapchip.image.hide()
+      mapchips.push(mapchip)
+    }
+    if(mapData[i][j] == 3){
+      var mapchip = {
+        image: new Image({
+          url: "./image/mapchip/sky.png",
+          width: grid,
+          height: grid,
+        }),
+      }
+      whatHere(j,i)
+      mapchip.image.x = keepmath
+      mapchip.image.y = keepmath2
+      mapchip.image.hide()
+      mapchips.push(mapchip)
+    }
+    if(mapData[i][j] == 1){
+      var mapchip = {
+        image: new Image({
+          url: "./image/mapchip/fire.png",
+          width: grid,
+          height: grid,
+        }),
+      }
+      whatHere(j,i)
+      mapchip.image.x = keepmath
+      mapchip.image.y = keepmath2
+      mapchip.image.hide()
+      mapchips.push(mapchip)
+    }
+    if(mapData[i][j] == 5){
+      var mapchip = {
+        image: new Image({
+          url: "./image/mapchip/undead.png",
+          width: grid,
+          height: grid,
+        }),
+      }
+      whatHere(j,i)
+      mapchip.image.x = keepmath
+      mapchip.image.y = keepmath2
+      mapchip.image.hide()
+      mapchips.push(mapchip)
+    }
+  })
+})

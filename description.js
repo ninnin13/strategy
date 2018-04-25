@@ -33,7 +33,7 @@ forever(() => {
   if(battlestart.mouseOver && mouseDown && nextstop == 0){
     DK2clones.push(dog)
     DK2clones.push(firemagician)
-    itemindeck.push(waterstone)
+    itemindeck.push(seastone)
     gameStatus2 = "DSduring"
     gameStatus = "battle"
     backNumber = 0
@@ -164,73 +164,73 @@ forever(() => {
    if(textsign == 0){
      DSstart(10)
    }
-   repeatcheck(12)
+   repeatcheck(13)
   }
   if(DSmode == "移動2"){
    if(textsign == 0){
-     DSstart(12)
+     DSstart(13)
    }
-   repeatcheck(13)
+   repeatcheck(14)
   }
   if(DSmode == "移動3"){
    if(textsign == 0){
-     DSstart(13)
-   }
-   repeatcheck(15)
-  }
-  if(DSmode == "移動4"){
-   if(textsign == 0){
-     DSstart(15)
+     DSstart(14)
    }
    repeatcheck(16)
   }
-  if(DSmode == "道具1"){
+  if(DSmode == "移動4"){
    if(textsign == 0){
      DSstart(16)
    }
-   repeatcheck(18)
+   repeatcheck(17)
+  }
+  if(DSmode == "道具1"){
+   if(textsign == 0){
+     DSstart(17)
+   }
+   repeatcheck(19)
   }
   if(DSmode == "道具2"){
    if(textsign == 0){
-     DSstart(18)
+     DSstart(19)
    }
-   repeatcheck(20)
+   repeatcheck(21)
  }
  if(DSmode == "道具3"){
   if(textsign == 0){
-    DSstart(20)
+    DSstart(21)
   }
-  repeatcheck(21)
+  repeatcheck(22)
  }
  if(DSmode == "道具4"){
   if(textsign == 0){
-    DSstart(21)
+    DSstart(22)
   }
-  repeatcheck(23)
+  repeatcheck(24)
  }
  if(DSmode == "技1"){
   if(textsign == 0){
-    DSstart(23)
-  }
-  repeatcheck(25)
- }
- if(DSmode == "技2"){
-  if(textsign == 0){
-    DSstart(25)
+    DSstart(24)
   }
   repeatcheck(26)
  }
- if(DSmode == "技3"){
+ if(DSmode == "技2"){
   if(textsign == 0){
     DSstart(26)
   }
-  repeatcheck(29)
+  repeatcheck(27)
+ }
+ if(DSmode == "技3"){
+  if(textsign == 0){
+    DSstart(27)
+  }
+  repeatcheck(30)
  }
  if(DSmode == "終了"){
   if(textsign == 0){
-    DSstart(29)
+    DSstart(30)
   }
-  repeatcheck(30)
+  repeatcheck(31)
  }
  // }
 })

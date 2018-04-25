@@ -79,6 +79,8 @@ var statusTC
 var statusSP1
 var statusSP2
 var statusSP3
+var statuscost
+var soloitemlist
 //消す速度
 var hidespeed = 1.5
 var hidespeed2 = 5
@@ -101,6 +103,8 @@ var totalcard = 0
 var totalcard2 = 3
 var pullcard = 0
 var namestand
+//ステータス（バトル時）
+var viewStatus = 0
 //カード基準(編成時)
 var IFOpointx = 0
 var OTOpointx = 0
@@ -228,6 +232,7 @@ var textstop = 0
 var nextstop = 0
 var downMouse
 var hidestop = 0
+var Downnow4 = 0
 every(1, "seconds", () => {
   if(!(downMouse == 0)){
   downMouse = 0

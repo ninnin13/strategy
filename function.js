@@ -34,6 +34,7 @@ function reset() {
   range(0,itemindeck.length).forEach(i =>{
     itemindeck.remove(itemindeck[i])
   })
+
 }
 function outcard(Cn) {
   keepmath = 0
@@ -43,6 +44,7 @@ function outcard(Cn) {
       D2clone.none = 1
       D2clones[keepmath] = "Dl"
       clones[keepmath] = "Dl"
+      allcost -= D2clone.cost
     }
     keepmath += 1
   })
@@ -60,8 +62,16 @@ function outcard(Cn) {
   })
   OTOpointx -= 200
 }
+
 function cardstatusshow(name) {
+  helpSP1.text.x = -4*grid
+  helpSP1.text.y = -0.5*grid
+  helpSP2.text.x = -4*grid
+  helpSP2.text.y = -2*grid
+  helpSP3.text.x = -4*grid
+  helpSP3.text.y = -3.5*grid
   statusname = name.nameingame
+  statuscost = name.cost
   statusrange = name.goblock
   FromEnglishtoJapanese(name.property)
   statustype = translationResult
@@ -83,6 +93,62 @@ function cardstatusshow(name) {
   helpgotype.text.sendToFront()
   helptechnique.text.show()
   helptechnique.text.sendToFront()
+  helpcost.text.show()
+  helpcost.text.sendToFront()
+  keepword = name.solo
+  keepword.image.show()
+  keepword.image.sendToFront()
+  splitByACertainNumbeOofCharacters(name.effectExplanation)
+  statusSP1 = splitList[0]
+  helpSP1.text.show()
+  helpSP1.text.sendToFront()
+  if(!(splitList[1] == "no")){
+   statusSP2 = splitList[1]
+   helpSP2.text.show()
+   helpSP2.text.sendToFront()
+  }
+  if(!(splitList[2] == "no")){
+   statusSP3 = splitList[2]
+   helpSP3.text.show()
+   helpSP3.text.sendToFront()
+  }
+  helpcost.text.x = -4*grid
+  helpcost.text.y = -3.5*grid
+}
+function cardstatushide() {
+  statusback.image.hide()
+  Sback.image.hide()
+  helpname.text.hide()
+  helprange.text.hide()
+  helptype.text.hide()
+  helpgotype.text.hide()
+  helptechnique.text.hide()
+  helpSP1.text.hide()
+  helpSP2.text.hide()
+  helpSP3.text.hide()
+  helpcost.text.hide()
+  range(0,walklist.length).forEach(i => {
+    walklist[i].image.hide()
+  })
+}
+function itemstatusshow(name) {
+  helpSP1.text.x = -4*grid
+  helpSP1.text.y = 5.5*grid
+  helpSP2.text.x = -4*grid
+  helpSP2.text.y = 4*grid
+  helpSP3.text.x = -4*grid
+  helpSP3.text.y = 2.5*grid
+  FromEnglishtoJapanese(name.name)
+  statusname = translationResult
+  statuscost = name.cost
+  statusback.image.show()
+  statusback.image.sendToFront()
+  Sback.image.show()
+  Sback.image.sendToFront()
+  helpname.text.show()
+  helpname.text.sendToFront()
+  helpcost.text.show()
+  helpcost.text.sendToFront()
   keepword = name.solo
   keepword.image.show()
   keepword.image.sendToFront()
@@ -101,19 +167,13 @@ function cardstatusshow(name) {
    helpSP3.text.sendToFront()
   }
 }
-function cardstatushide() {
+function itemstatushide() {
   statusback.image.hide()
   Sback.image.hide()
   helpname.text.hide()
-  helprange.text.hide()
-  helptype.text.hide()
-  helpgotype.text.hide()
-  helptechnique.text.hide()
-  helpSP1.text.hide()
-  helpSP2.text.hide()
-  helpSP3.text.hide()
-  range(0,walklist.length).forEach(i => {
-    walklist[i].image.hide()
+  helpcost.text.hide()
+  range(0,soloitemlist.length).forEach(i => {
+    soloitemlist[i].image.hide()
   })
 }
 //チュートリアル
@@ -161,8 +221,13 @@ function deckkeep() {
 function techniquestart() {
   if(TS == 1){
    cards.forEach(card => {
-     if(card.image.mouseOver && mouseDown && !(card.technique == "nothing")){
-
+     if(card.image.mouseOver && mouseDown && !(card.technique == "nothing") && card.TorF == 0){
+       cards.forEach(card => {
+         if(card.TorF == "keep"){
+           card.TorF = 0
+         }
+       })
+       card.TorF = "keep"
        //console.log(card.technique)
        techniquetext = card.technique
        //console.log(techniquetext)
@@ -170,11 +235,11 @@ function techniquestart() {
        TCcY = card.image.y
        TBb.show()
        TBb.sendToFront()
-       TBb.x = card.image.x + grid*3
+       TBb.x = card.image.x + grid*5
        TBb.y = card.image.y
        TBt.text.show()
        TBt.text.sendToFront()
-       TBt.text.x = card.image.x + grid*1.5
+       TBt.text.x = card.image.x + grid*3
        TBt.text.y = card.image.y
        TCstopper = 1
        STtechnique = 1
@@ -203,12 +268,12 @@ function attackTC(name) {
   touchX = TCcX
   touchY = TCcY
   // TCclones.push(TCclone)
-  console.log(name)
-  console.log(TCcX)
-  console.log(TCcY)
+  // console.log(name)
+  // console.log(TCcX)
+  // console.log(TCcY)
   goNumber = 1
   if(name.typeOfRange == "normal"){
-    console.log("場所決定")
+    // console.log("場所決定")
     range(1,name.range+1).forEach(i => {
       gopoint(1*i,0,name.attribute)
       gopoint(-1*i,0,name.attribute)
@@ -223,9 +288,14 @@ function attackTC(name) {
   touchOK = 0
   repeatUntil(() => touchOK == 1, () => {
   wheres.forEach(where => {
-    console.log("試す")
+    // console.log("試す")
     if(where.image.mouseOver && mouseDown && touchstand == 1){
       touchOK = 1
+      cards.forEach(card => {
+        if(card.TorF == "keep"){
+          card.TorF = 1
+        }
+      })
    if(abs(where.image.x - TCcX) > abs(where.image.y - TCcY)){
     TCcheckmate = abs(where.image.x - TCcX)
     }else{
@@ -661,7 +731,8 @@ function cardfield(name,name2){
     effect: name2.effect,
     namefull: name2,
     death: 0,
-    plusitem: name2.plusitem
+    plusitem: name2.plusitem,
+    range: name2.goblock
   }
   card.image.x = grid*downX
   card.image.y = grid*downY
@@ -1132,7 +1203,8 @@ function cardup(name,name2){
       }),
       name: name,
       number: craftnumber,
-      none: 0
+      none: 0,
+      cost: name.cost
     }
     craftnumber += 1
     D2clone.image.show()
@@ -1147,7 +1219,7 @@ function cardup(name,name2){
     if(name.what == "card"){
      clones.push(name)
    }else{
-     itemindeck.push(name)
+     itemindeck2.push(name)
    }
     clonenumber += 1
     pushstopper = 1

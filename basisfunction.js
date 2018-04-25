@@ -18,15 +18,25 @@ function imagesize(name,number) {
 //英語を日本語にする
 var translationResult
 var translation = []
-var Japaneselist = ["陸","海","空","火","アンデット","ノーマル","クロス","ステップ","突進","ジャンプ","なし","火の玉"]
-var Englishlist = ["land","sea","sky","fire","undead","normal","unique","unique2","power","jump","nothing","fireball"]
+var Japaneselist = ["陸","海","空","火","アンデット","ノーマル","クロス","ステップ","突進","ジャンプ","なし","火の玉","陸の秘石","海の秘石","空の秘石","火の秘石","屍の秘石","椅子攻撃"]
+var Englishlist = ["land","sea","sky","fire","undead","normal","unique","unique2","power","jump","nothing","fireball","landstone","seastone","skystone","firestone","undeadstone","chairattack"]
 function FromEnglishtoJapanese(Originaltext) {
-   range(0,translation.length).forEach(i => {
-     translation.remove(translation[i])
-   })
+   // range(0,translation.length).forEach(i => {
+   //   translation.remove(translation[i])
+   // })
    range(0,Englishlist.length).forEach(i => {
      if(Englishlist[i] == Originaltext){
        translationResult = Japaneselist[i]
+     }
+   })
+}
+function FromJapanesetoEnglish(Originaltext) {
+   // range(0,translation.length).forEach(i => {
+   //   translation.remove(translation[i])
+   // })
+   range(0,Japaneselist.length).forEach(i => {
+     if(Japaneselist[i] == Originaltext){
+       translationResult = Englishlist[i]
      }
    })
 }
