@@ -123,7 +123,7 @@ if(gameStatus2 == "DSduring"){
       DSfirst = 0
     }
     var choicing = 0
-    //console.log(cardsetting[0])
+    ////console.log(cardsetting[0])
     repeatUntil(() => !(turn == "my"), () => {
       if(duringtutorial == 0){
        if(choicing == 1){
@@ -241,12 +241,12 @@ if(gameStatus2 == "DSduring"){
        }
        //当たり判定
        techniquestart()
-       if(choicing == 1){
+       if(choicing == 1 && duringtutorial == 0){
          range(0,cardkind.length).forEach(i => {
            cardhit(cardkind[i],cardkind[i].name)
          })
        }
-       if(choicingitem == 1){
+       if(choicingitem == 1 && duringtutorial == 0){
          range(0,itemkind.length).forEach(i => {
            itemhit(itemkind[i],itemkind[i].name)
          })
@@ -273,7 +273,7 @@ if(gameStatus2 == "DSduring"){
              　　 DSmode = "配置4"
                  }
                }
-               //console.log(downX)
+               ////console.log(downX)
              }
             }
        }
@@ -284,11 +284,11 @@ if(gameStatus2 == "DSduring"){
            downY = floor(mouseY/grid)
            downX += 0.5
            downY += 0.5
-            console.log("道具の効果")
+            //console.log("道具の効果")
            if(choiceitem2.type == "attributechange"){
-             console.log("属性変更決定")
-             console.log(choiceitem2)
-             console.log(choiceitem2.EFname)
+             //console.log("属性変更決定")
+             //console.log(choiceitem2)
+             //console.log(choiceitem2.EFname)
              attributechange(choiceitem,choiceitem2,choiceitem2.attribute,choiceitem2.EFname)
              if(turnnumber == 2){
                didlist("道具4")
@@ -299,7 +299,7 @@ if(gameStatus2 == "DSduring"){
              }
            }
            choiceitem = 1
-           //console.log(downX)
+           ////console.log(downX)
          }
         }
       }
@@ -360,7 +360,7 @@ if(gameStatus2 == "DSduring"){
 }else{
 after(2.3/hidespeed, "seconds", () => {
   var choicing = 0
-  //console.log(cardsetting[0])
+  ////console.log(cardsetting[0])
   repeatUntil(() => !(turn == "my"), () => {
      if(choicing == 1){
        if(keysDown.includes('S')){
@@ -487,7 +487,7 @@ after(2.3/hidespeed, "seconds", () => {
              cardfield(choicestand,choicestand2)
              existcard()
              choicestand = 1
-             //console.log(downX)
+             ////console.log(downX)
            }
           }
      }
@@ -498,15 +498,15 @@ after(2.3/hidespeed, "seconds", () => {
          downY = floor(mouseY/grid)
          downX += 0.5
          downY += 0.5
-          console.log("道具の効果")
+          //console.log("道具の効果")
          if(choiceitem2.type == "attributechange"){
-           console.log("属性変更決定")
-           console.log(choiceitem2)
-           console.log(choiceitem2.EFname)
+           //console.log("属性変更決定")
+           //console.log(choiceitem2)
+           //console.log(choiceitem2.EFname)
            attributechange(choiceitem,choiceitem2,choiceitem2.attribute,choiceitem2.EFname)
          }
          choiceitem = 1
-         //console.log(downX)
+         ////console.log(downX)
        }
       }
     }
@@ -622,7 +622,7 @@ after(2.3/hidespeed, "seconds", () => {
   Ycards.forEach(Ycard => {
 　　if(Ycard.death == 0 && !(Ycard.technique == "nothing")){
       if(random(0,1) == 0){
-        console.log("相手の技発動")
+        //console.log("相手の技発動")
         Ytechnique(Ycard.technique,Ycard.image.x,Ycard.image.y)
       }
     }
@@ -632,46 +632,46 @@ after(2.3/hidespeed, "seconds", () => {
    if(Ycard.death == 0){
     Ytypeplus = 0
     Ykeepmath = Ycard.image.y - 10*grid
-    //console.log(Ycard)
-    //console.log(Ycard.image.y)
-    //console.log(Ykeepmath)
+    ////console.log(Ycard)
+    ////console.log(Ycard.image.y)
+    ////console.log(Ykeepmath)
     Ykeepmath = Ykeepmath*-1
     Ykeepmath2 = Ycard.image.x + 15*grid
-    //console.log(floor(Ykeepmath/grid))
-    //console.log(floor(Ykeepmath2/grid))
-    //console.log(Ycard.propertydata)
-    //console.log(mapData[floor(Ykeepmath/grid)][floor(Ykeepmath2/grid)])
+    ////console.log(floor(Ykeepmath/grid))
+    ////console.log(floor(Ykeepmath2/grid))
+    ////console.log(Ycard.propertydata)
+    ////console.log(mapData[floor(Ykeepmath/grid)][floor(Ykeepmath2/grid)])
     Ychecksame(mapData[floor(Ykeepmath/grid)][floor(Ykeepmath2/grid)],Ycard.propertydata)
     if(80 > random(0,100) && Ycard.TorF == 0){
       // if(Ycard.image.y < grid*9){
         // if(0 == random(0,2)){
           Ycardput(Ycard.go,Ycard.step)
-         // console.log(goXYstart)
-         // console.log(wherecan)
-         // console.log("putern1")
+         // //console.log(goXYstart)
+         // //console.log(wherecan)
+         // //console.log("putern1")
          Ychoicego(Ycard.image.x,Ycard.image.y,Ycard.property)
-         console.log("P1x: " + goX)
-         console.log("P1y: " + goY)
+         //console.log("P1x: " + goX)
+         //console.log("P1y: " + goY)
          yourgo(Ycard.number,goX,goY)
          YcardDLT()
          checkfinish()
        // }else{
        //   Ycardput2(Ycard.go,Ycard.step)
-       //   // console.log(goXYstart)
-       //   // console.log(wherecan)
-       //   // console.log("putern2")
+       //   // //console.log(goXYstart)
+       //   // //console.log(wherecan)
+       //   // //console.log("putern2")
        //   Ychoicego(Ycard.image.x,Ycard.image.y,Ycard.property)
-       //   console.log("P2x: " + goX)
-       //   console.log("P2y: " + goY)
+       //   //console.log("P2x: " + goX)
+       //   //console.log("P2y: " + goY)
        //   yourgo(Ycard.number,goX,goY)
        //   YcardDLT()
        //   checkfinish()
        // }
       // }else{
       //   Ycardput3(Ycard.go,Ycard.step)
-      //   //console.log(goXYstart)
-      //   //console.log(wherecan)
-      //   //console.log("putern3")
+      //   ////console.log(goXYstart)
+      //   ////console.log(wherecan)
+      //   ////console.log("putern3")
       //   Ychoicego()
       //   yourgo(Ycard.number,goX,goY)
       //   YcardDLT()

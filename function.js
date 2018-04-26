@@ -1,5 +1,5 @@
 function randomDU(number) {
-  console.log(yourdeck.length)
+  //console.log(yourdeck.length)
   if(yourdeck.length > 0){
   if(0 == random(0,number)){
     range(0, random(0,2)).forEach(i => {
@@ -7,8 +7,8 @@ function randomDU(number) {
       yourdownX = grid*random(-4,3)
       yourdownY = grid*random(6,9)
       choicecardnumber = random(0,yourdeck.length-1)
-      //console.log(choicecardnumber)
-      //console.log(cardsetting[choicecardnumber])
+      ////console.log(choicecardnumber)
+      ////console.log(cardsetting[choicecardnumber])
       yourcardfield(yourdeck[choicecardnumber].name,yourdeck[choicecardnumber])
      }
     })
@@ -18,8 +18,8 @@ function randomDU(number) {
     yourdownX = grid*random(-4,3)
     yourdownY = grid*random(6,9)
     choicecardnumber = random(0,yourdeck.length-1)
-    //console.log(choicecardnumber)
-    //console.log(cardsetting[choicecardnumber])
+    ////console.log(choicecardnumber)
+    ////console.log(cardsetting[choicecardnumber])
     yourcardfield(yourdeck[choicecardnumber].name,yourdeck[choicecardnumber])
     }
    })
@@ -228,9 +228,9 @@ function techniquestart() {
          }
        })
        card.TorF = "keep"
-       //console.log(card.technique)
+       ////console.log(card.technique)
        techniquetext = card.technique
-       //console.log(techniquetext)
+       ////console.log(techniquetext)
        TCcX = card.image.x
        TCcY = card.image.y
        TBb.show()
@@ -250,8 +250,8 @@ function techniquestart() {
 function TCchoice() {
   TBt.text.hide()
   TBb.hide()
-  console.log(TCnumber)
-  console.log(techniqueall)
+  //console.log(TCnumber)
+  //console.log(techniqueall)
   if(techniqueall[TCnumber].type == "attack"){
     attackTC(techniqueall[TCnumber])
     touchstand = 0
@@ -268,12 +268,12 @@ function attackTC(name) {
   touchX = TCcX
   touchY = TCcY
   // TCclones.push(TCclone)
-  // console.log(name)
-  // console.log(TCcX)
-  // console.log(TCcY)
+  // //console.log(name)
+  // //console.log(TCcX)
+  // //console.log(TCcY)
   goNumber = 1
   if(name.typeOfRange == "normal"){
-    // console.log("場所決定")
+    // //console.log("場所決定")
     range(1,name.range+1).forEach(i => {
       gopoint(1*i,0,name.attribute)
       gopoint(-1*i,0,name.attribute)
@@ -288,7 +288,7 @@ function attackTC(name) {
   touchOK = 0
   repeatUntil(() => touchOK == 1, () => {
   wheres.forEach(where => {
-    // console.log("試す")
+    // //console.log("試す")
     if(where.image.mouseOver && mouseDown && touchstand == 1){
       touchOK = 1
       cards.forEach(card => {
@@ -345,9 +345,9 @@ function attackTC(name) {
   choiced = 1
 }
 function Ytechnique(TCname,TCx,TCy) {
-  console.log(TCname)
+  //console.log(TCname)
   range(0, techniqueall.length).forEach(i => {
-    console.log(techniqueall[i])
+    //console.log(techniqueall[i])
     if(techniqueall[i].name == TCname){
       if(techniqueall[i].type == "attack"){
         YattackTC(techniqueall[i],TCx,TCy)
@@ -355,8 +355,9 @@ function Ytechnique(TCname,TCx,TCy) {
     }
   })
 }
-function YattackTC(TCmain,TCx,TCy) {
+function YattackTC(TCmain,TCx2,TCy2) {
   Ygotime += 1
+  YTchoice = 0
   var attackobject = {
     image: new Image({
       url: `./image/technique/${TCmain.name}.png`,
@@ -380,60 +381,96 @@ function YattackTC(TCmain,TCx,TCy) {
    Twherecan.push(0)
    Twherecan.push(-1*i)
   })
-  attackobject.image.x = TCx
-  attackobject.image.y = TCy
-  attackobject.STXData = TCx
-  attackobject.STYData = TCy
-  console.log(random(0,Twherecan.length +1))
-  keepmath = random(0,Twherecan.length +1)
-  console.log(keepmath)
+  attackobject.image.x = TCx2
+  attackobject.image.y = TCy2
+  attackobject.STXData = attackobject.image.x
+  attackobject.STYData = attackobject.image.y
+  console.log("STXData" + attackobject.STXData + "STYData" + attackobject.STYData)
+  cards.forEach(card => {
+    keepword = card.image.x
+    keepword2 = card.image.y
+   range(0,Twherecan.length/2).forEach(g => {
+     // //console.log(TCx + Twherecan[i*2]*grid)
+     // //console.log(TCy + Twherecan[i*2+1]*grid)
+     // //console.log(card.image.x)
+     // //console.log(card.image.y)7
+     keepmath2 = Twherecan[g*2]
+     keepmath3 = Twherecan[g*2+1]
+     keepmath2 = attackobject.image.x + keepmath2*grid
+     keepmath3 = attackobject.image.y + keepmath3*grid
+     // console.log("比較A" + keepmath2 + keepword + "比較B" + keepmath3 + keepword2)
+     if(keepmath2 == keepword && keepmath3 == keepword2){
+       //console.log("OK")
+       YTchoice = 1
+       keepmath = g*2
+     }
+   })
+  })
+  // //console.log(random(0,Twherecan.length +1))
+  if(YTchoice == 0){
+    // console.log("ランダム")
+   keepmath = random(0,Twherecan.length +1)
+  }
+  //console.log(keepmath)
   keepmath = floor(keepmath/2)
-  console.log(keepmath)
+  //console.log(keepmath)
   plusmoveX = Twherecan[keepmath*2]
-  console.log(plusmoveX)
+  //console.log(plusmoveX)
   plusmoveY = Twherecan[keepmath*2+1]
-  console.log(plusmoveY)
+  //console.log(plusmoveY)
   if(abs(plusmoveX*grid) > abs(plusmoveY*grid)){
    Ycheckmate = abs(plusmoveX*grid)
   }else{
    Ycheckmate = abs(plusmoveY*grid)
   }
-  console.log(Ycheckmate)
-  attackobject.PMXData = plusmoveX
-  attackobject.PMYData = plusmoveY
+  //console.log(Ycheckmate)
+  attackobject.PMXData = plusmoveX*grid
+  attackobject.PMYData = plusmoveY*grid
   attackobject.YCMData = Ycheckmate
-  console.log(attackobject.YCMData)
-  repeat(attackobject.YCMData, () => {
-    if(attackobject.PMXData > 0){
-      attackobject.image.x += 1
-    }else{
-      attackobject.image.x -= 1
-    }
-    if(attackobject.PMYData > 0){
-      attackobject.image.y += 1
-    }else{
-      attackobject.image.y -= 1
-    }
+  //console.log(attackobject.YCMData)
+  console.log("進むX座標" + attackobject.PMXData + "進むY座標" + attackobject.PMYData)
+  repeat(abs(attackobject.PMXData), () => {
+    console.log("移動X")
+     if(attackobject.PMXData > 0){
+       attackobject.image.x += 1
+     }else{
+       attackobject.image.x -= 1
+     }
+  })
+  repeat(abs(attackobject.PMYData), () => {
+    console.log("移動Y")
+     if(attackobject.PMYData > 0){
+       attackobject.image.y += 1
+     }else{
+       attackobject.image.y -= 1
+     }
   })
   range(0,Twherecan.length).forEach(i => {
     Twherecan.remove(Twherecan[i])
   })
-  after(attackobject.YCMData*0.02, "seconds", () => {
+  after(attackobject.YCMData*0.025, "seconds", () => {
     cards.forEach(card => {
-      if(card.image.x == attackobject.STXData + attackobject.PMXData && card.image.y == attackobject.STYData + attackobject.PMYData){
+      console.log("最初のX座標" + attackobject.STXData + "最初のY座標" + attackobject.STYData + "進むのX座標" + attackobject.PMXData + "進むのY座標" + attackobject.PMYData)
+      if(card.image.x == attackobject.STXData + attackobject.PMXData && card.image.y == attackobject.STYData + attackobject.PMYData && card.death == 0){
+        card.death = 1
+        console.log("当たり判定アリ")
         card.image.brightness = 100
         repeat(100, () => {
           card.image.brightness -= 1
         })
         after(2, "seconds", () => {
           card.image.hide()
-          if(!(Ycard.effect == "nothing")){
-            console.log("敵の死んだ後の効果")
-            yourdeck.push(Ycard.effect)
+          if(!(card.effect == "nothing")){
+            //console.log("敵の死んだ後の効果")
+            deck.push(card.effect)
             card.effect = "nothing"
-         }
+          }
+          if(!(card.plusitem == "nothing")){
+            //console.log("敵の死んだ後の効果")
+            itemindeck.push(card.plusitem)
+            card.plusitem = "nothing"
+          }
         })
-        card.death = 1
       }
     })
     attackobject.image.hide()
@@ -447,14 +484,14 @@ function wheresputout(){
   })
 }
 function cardhit(name,name2){
-if(name.image.mouseOver && mouseDown){
+if(name.image.mouseOver && mouseDown && duringtutorial == 0){
   if(downMouse == 0){
     deckcard = 0
     range(0,deck.length).forEach(i => {
       if(name == deck[i]){
         deckcard += 1
         deckname = i
-        console.log(deck[i])
+        //console.log(deck[i])
       }
     })
     if(!(deckcard == 0)){
@@ -477,7 +514,7 @@ if(name.image.mouseOver && mouseDown){
 }
 //アイテム
 function itemhit(name,name2){
-  // console.log("判定" + name)
+  // //console.log("判定" + name)
 if(name.image.mouseOver && mouseDown){
   if(downMouse == 0){
     itemin = 0
@@ -485,7 +522,7 @@ if(name.image.mouseOver && mouseDown){
       if(name == itemindeck[i]){
         itemin += 1
         itemname = i
-        console.log(itemindeck[i])
+        //console.log(itemindeck[i])
       }
     })
     if(!(itemin == 0)){
@@ -507,14 +544,14 @@ if(name.image.mouseOver && mouseDown){
 }
 function attributechange(name,name2,property,property2) {
   cards.forEach(card => {
-    console.log("カードの位置は?")
-    console.log(card.image.x/grid)
-    console.log(card.image.y/grid)
-    console.log(downX)
-    console.log(downY)
+    //console.log("カードの位置は?")
+    //console.log(card.image.x/grid)
+    //console.log(card.image.y/grid)
+    //console.log(downX)
+    //console.log(downY)
     if(card.image.x/grid == downX && card.image.y/grid == downY){
-      console.log("一致")
-      console.log(property2)
+      //console.log("一致")
+      //console.log(property2)
       card.propertydata = property
       property2.image.x = card.image.x
       property2.image.y = card.image.y
@@ -544,7 +581,7 @@ function Yattributechange(changeproperty,changeproperty2) {
    Ycards.forEach(Ycard => {
      if(Ycard.number == keepmath){
        Ycard.propertydata = changeproperty
-       console.log(changeproperty2.name)
+       //console.log(changeproperty2.name)
        var cloneeffect = {
          image: new Image({
            url: `./image/card/${changeproperty2.name}.png`,
@@ -553,7 +590,7 @@ function Yattributechange(changeproperty,changeproperty2) {
          }),
          TorF: 0
        }
-       console.log(cloneeffect)
+       //console.log(cloneeffect)
        cloneeffects.push(cloneeffect)
        cloneeffects.forEach(cloneeffect => {
         if(cloneeffect.TorF == 0){
@@ -580,7 +617,7 @@ function useitem() {
   range(0,random(1,2)).forEach(i => {
     if(Yitemindeck.length > 0){
      keepword = Yitemindeck[random(0,Yitemindeck.length-1)]
-     console.log(keepword)
+     //console.log(keepword)
      if(keepword.type == "attributechange"){
        Yattributechange(keepword.attribute,keepword.EFname)
      }
@@ -663,25 +700,25 @@ function gopoint(choiceX,choiceY,whatproperty){
   wheres.forEach(where => {
    if(where.number == goNumber){
      if(touchY + grid*choiceY < grid*-10 || touchY + grid*choiceY > grid*10 || touchX + grid*choiceX < grid*-15 || touchX + grid*choiceX > grid*15){
-       //console.log("hide")
+       ////console.log("hide")
        where.image.hide()
      }else{
      can = 0
-     console.log("X:" +choiceX)
-     console.log("Y:" +choiceY)
+     //console.log("X:" +choiceX)
+     //console.log("Y:" +choiceY)
      where.goX = choiceX
      where.goY = choiceY
      directioncheck(where.goX,where.goY)
      where.direction = direction
-     console.log(where.direction)
+     //console.log(where.direction)
      keepmath = touchY + grid*choiceY - 10*grid
      keepmath = keepmath*-1
      keepmath2 = touchX + grid*choiceX + 15*grid
      keepmath2 = touchX + grid*choiceX + 15*grid
      keepmath2 = floor(keepmath2/grid)
-     //console.log(keepmath)
-     //console.log(keepmath2)
-     //console.log(mapData[floor(keepmath/grid)][keepmath2])
+     ////console.log(keepmath)
+     ////console.log(keepmath2)
+     ////console.log(mapData[floor(keepmath/grid)][keepmath2])
      wheresame(mapData[floor(keepmath/grid)][floor(keepmath2)],whatproperty)
      if(can == 1){
       where.image.x = touchX + grid*choiceX
@@ -689,7 +726,7 @@ function gopoint(choiceX,choiceY,whatproperty){
       where.image.show()
       where.image.sendToFront()
       // if(where.image.y < grid*-10 || where.image.y > grid*10 || where.image.x < grid*-15 || where.image.x > grid*15){
-      //   //console.log("hide")
+      //   ////console.log("hide")
       //   where.image.hide()
       // }
      }
@@ -708,8 +745,8 @@ function goORturn(){
 }
 //カードを出す
 function cardfield(name,name2){
-  //console.log(name)
-  console.log(deck[deckname])
+  ////console.log(name)
+  //console.log(deck[deckname])
   deck[deckname] = "Dl"
   deck.remove("Dl")
   var card = {
@@ -736,14 +773,14 @@ function cardfield(name,name2){
   }
   card.image.x = grid*downX
   card.image.y = grid*downY
-  //console.log(card.name)
+  ////console.log(card.name)
   cards.push(card)
   cardNumber += 1
   showcardlimit -= 1
 }
 function yourcardfield(name,name2){
-  //console.log(name)
-  //console.log(name2)
+  ////console.log(name)
+  ////console.log(name2)
   yourdeck[choicecardnumber] = "Dl"
   yourdeck.remove("Dl")
   var Ycard = {
@@ -774,7 +811,7 @@ function yourcardfield(name,name2){
    Ycard.image.y = yourdownY + 15
    Ycard.image.angle = LEFT
    Ycards.push(Ycard)
-  //console.log(Ycard.name)
+  ////console.log(Ycard.name)
   cardNumber2 += 1
 }
 //地面を確認
@@ -832,13 +869,13 @@ function kind() {
     range(0,deck.length).forEach(j => {
       if(deck[j] == cardsetting[i]){
         newkind = 1
-        console.log(deck[j])
-        console.log(cardsetting[i])
+        //console.log(deck[j])
+        //console.log(cardsetting[i])
       }
     })
     if(newkind == 1){
      cardkind.push(cardsetting[i])
-     console.log(cardkind)
+     //console.log(cardkind)
     }
   })
 }
@@ -848,38 +885,35 @@ function itemkindwhat() {
     range(0,itemindeck.length).forEach(j => {
       if(itemindeck[j] == itemsetting[i]){
         newkind = 1
-        console.log(deck[j])
-        console.log(cardsetting[i])
+        //console.log(deck[j])
+        //console.log(cardsetting[i])
       }
     })
     if(newkind == 1){
      itemkind.push(itemsetting[i])
-     console.log(cardkind)
+     //console.log(cardkind)
     }
   })
 }
 //相手のカードが進む
 function Ychoicego(nowX,nowY,nowproperty) {
-  console.log(Youtdirection)
+  //console.log(Youtdirection)
   range(0,wherecan.length/2).forEach(i => {
     check = "no"
     Ydirectioncheck(wherecan[i*2],wherecan[i*2+1])
     range(0,Youtdirection.length).forEach(j => {
        if(Ydirection == Youtdirection[j]){
-         console.log("アウトー")
          Ydelatelist.push(i*2)
          check = "out"
        }
     })
    if(!(check == "out")){
-     console.log("outではなかった")
     if(nowX + wherecan[i*2] < 15*grid && nowX + wherecan[i*2] > -15*grid && nowY + wherecan[i*2+1] < 10*grid && nowY + wherecan[i*2+1] > -10*grid){
       keepmath = nowY + wherecan[i*2+1] - 10*grid
       keepmath = keepmath*-1
       keepmath = floor(keepmath/grid)
       keepmath2 = nowX + wherecan[i*2] + 15*grid
       keepmath2 = floor(keepmath2/grid)
-      console.log("計算結果" + mapData[keepmath][keepmath2])
       if(mapData[keepmath][keepmath2] == 3 && !(nowproperty == "sky")){
        Youtdirection.push(Ydirection)
        Ydelatelist.push(i*2)
@@ -891,13 +925,13 @@ function Ychoicego(nowX,nowY,nowproperty) {
   }
   })
   range(0,Ydelatelist.length).forEach(i => {
-    // console.log("消す" + Ydelatelist[dcrease])
+    // //console.log("消す" + Ydelatelist[dcrease])
     wherecan[Ydelatelist[i]] = "Ds"
     dcrease -= 1
   })
   wherecan.remove("Ds")
   plusfast(nowX,nowY)
-  console.log("進行方向決定" + wherecan)
+  // //console.log("進行方向決定" + wherecan)
   if(fastwherecan.length == 0){
    littlefast()
    if(fastwherecan.length == 0){
@@ -929,9 +963,9 @@ function yourgo(goblocks,YcardgoX,YcardgoY){
             myHP -= 1
            }else{
             Ygotime += 1
-            console.log("予定位置X" + Ycard.image.x + YcardgoX*grid)
-            console.log("予定位置Y" +　Ycard.image.y + YcardgoY + grid)
-            console.log("進む" + Ygotime)
+            // //console.log("予定位置X" + Ycard.image.x + YcardgoX*grid)
+            // //console.log("予定位置Y" +　Ycard.image.y + YcardgoY + grid)
+            // //console.log("進む" + Ygotime)
             // repeat(abs(YcardgoX*grid), () => {
             //   if (YcardgoX > 0 ){
             //     Ycard.image.x += 1
@@ -945,7 +979,7 @@ function yourgo(goblocks,YcardgoX,YcardgoY){
              Ycheckmate = abs(YcardgoY*grid)
             }
             Ycard.check = Ycheckmate
-            console.log("待ち時間" + Ycheckmate)
+            // //console.log("待ち時間" + Ycheckmate)
             Ycard.keep = abs(YcardgoX*grid)/Ycheckmate
             Ycard.keep2 = abs(YcardgoY*grid)/Ycheckmate
             Ycard.keep3 = YcardgoX*grid
@@ -976,8 +1010,8 @@ function yourgo(goblocks,YcardgoX,YcardgoY){
          // cards.forEach(card => {
            after(Ycard.check*0.02, "seconds", () => {
              Ygotime -= 1
-             console.log("Ygotime" + Ygotime)
-             console.log(Ycard.image.y)
+             // //console.log("Ygotime" + Ygotime)
+             // //console.log(Ycard.image.y)
             range(0,yourcardX.length).forEach(i => {
               yourcardX.remove(yourcardX[0])
               yourcardY.remove(yourcardY[0])
@@ -999,18 +1033,18 @@ function yourgo(goblocks,YcardgoX,YcardgoY){
                     card.image.hide()
                   })
                   card.death = 1
-                  console.log("死")
+                  //console.log("死")
                   if(!(card.effect == "nothing")){
-                    console.log("死んだ後の効果")
+                    //console.log("死んだ後の効果")
                     cardkindin = 0
                     range(0,cardkind.length).forEach(i => {
                       if(cardkind[i] == card.effect){
                         cardkindin = 1
-                        console.log("その種類はない")
+                        //console.log("その種類はない")
                       }
                     })
                     if(!(cardkindin == 1)){
-                      console.log("種類追加")
+                      //console.log("種類追加")
                       cardkind.push(card.effect)
                     }
                     deck.push(card.effect)
@@ -1018,7 +1052,7 @@ function yourgo(goblocks,YcardgoX,YcardgoY){
                     existcard()
                   }
                   if(!(card.plusitem == "nothing")){
-                    console.log("死んだ後の効果")
+                    //console.log("死んだ後の効果")
                     cardkindin = 0
                     Gin = card.plusitem.name
                     itemget1.text.show()
@@ -1030,15 +1064,15 @@ function yourgo(goblocks,YcardgoX,YcardgoY){
                       itemget1.text.hide()
                     })
                     range(0,itemkind.length).forEach(i => {
-                      console.log(itemkind[i])
-                      console.log(card.plusitem)
+                      //console.log(itemkind[i])
+                      //console.log(card.plusitem)
                       if(itemkind[i] == card.plusitem){
                         cardkindin = 1
-                        console.log("その種類ある")
+                        //console.log("その種類ある")
                       }
                     })
                     if(!(cardkindin == 1)){
-                      console.log("種類追加")
+                      //console.log("種類追加")
                       itemkind.push(card.plusitem)
                     }
                     itemindeck.push(card.plusitem)
@@ -1106,18 +1140,18 @@ function indeck(name) {
 function existcard() {
   range(0,cardsetting.length).forEach(j => {
    deckcard = 0
-   console.log(deck)
+   //console.log(deck)
    range(0,deck.length).forEach(i => {
      if(cardsetting[j] == deck[i]){
        deckcard += 1
-       console.log(deck[i])
+       //console.log(deck[i])
      }
    })
    if(!(deckcard == 0)){
-     console.log("そのまま")
+     //console.log("そのまま")
     cardsetting[j].image.brightness = 100
   }else{
-    console.log("変化")
+    //console.log("変化")
     cardsetting[j].image.brightness = 50
   }
  })
@@ -1125,25 +1159,25 @@ function existcard() {
 function existitem() {
   range(0,itemsetting.length).forEach(j => {
    deckcard = 0
-   console.log(deck)
+   //console.log(deck)
    range(0,itemindeck.length).forEach(i => {
      if(itemsetting[j] == itemindeck[i]){
        deckcard += 1
-       console.log(itemindeck[i])
+       //console.log(itemindeck[i])
      }
    })
    if(!(deckcard == 0)){
-     console.log("そのまま")
+     //console.log("そのまま")
     itemsetting[j].image.brightness = 100
   }else{
-    console.log("変化")
+    //console.log("変化")
     itemsetting[j].image.brightness = 50
   }
  })
 }
 function YDcraft() {
   Ydeckout = 0
-  console.log(yourdeck)
+  //console.log(yourdeck)
   range(0,yourdeck.length).forEach(i => {
     yourdeck.remove(yourdeck[0])
   })
@@ -1166,7 +1200,7 @@ function YDcraft() {
      }
     }
   })
-  console.log(yourdeck)
+  //console.log(yourdeck)
 }
 function nextpage() {
   keepword = loads[random(0,loads.length - 1)]
@@ -1194,7 +1228,7 @@ forever(() => {
 function cardup(name,name2){
   if(name.image.mouseOver && mouseDown && pushstopper == 0 && allcost + name.cost < limitcost+1){
     allcost += name.cost
-    console.log(allcost)
+    //console.log(allcost)
     var D2clone = {
       image: new Image({
         url: `./image/card/${name2}.png`,
@@ -1357,9 +1391,9 @@ yourbard.image.hide()
 function Yturnshow() {
   hidespeed = 1+hidespeed2/10
   mathcheck = floor(1/hidespeed*10)
-  console.log(mathcheck)
+  //console.log(mathcheck)
   mathcheck2 = floor(100/hidespeed)
-  console.log(mathcheck2)
+  //console.log(mathcheck2)
   yourbard.image.brightness = 100
   yourbard.image.show()
   yourbard.image.sendToFront()
@@ -1379,11 +1413,11 @@ var mybard = {
 mybard.image.hide()
 function turnshow() {
   hidespeed = 1 + hidespeed2/10
-  console.log(hidespeed)
+  //console.log(hidespeed)
   mathcheck = floor(1/hidespeed*10)
-  console.log(mathcheck)
+  //console.log(mathcheck)
   mathcheck2 = floor(100/hidespeed)
-  console.log(mathcheck2)
+  //console.log(mathcheck2)
   mybard.image.brightness = 100
   mybard.image.show()
   mybard.image.sendToFront()
@@ -1443,10 +1477,10 @@ function kingchoice(){
 // name.image.x = totalcard2*200 + rightstand*10 - leftstand*10
 // totalcard -= 1
 // totalcard2 += 1
-//  //console.log(putcard)
+//  ////console.log(putcard)
 // range(pullcard, cardsetting.length + pullcard).forEach(i => {
 //   cardsetting[i] = cardsetting[i+1]
-//   ////console.log(cardsetting[i])
+//   //////console.log(cardsetting[i])
 //})
 
 // putcard = name.image.x - IFOpointx
@@ -1454,6 +1488,6 @@ function kingchoice(){
 // name.image.y = 150
 // name.image.x = totalcard*200 + rightstand*10 - leftstand*10 +200
 // cardsetting[totalcard] = name.name
-////console.log(cardsetting[totalcard])
+//////console.log(cardsetting[totalcard])
 // totalcard += 1
 // totalcard2 -= 1

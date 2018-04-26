@@ -19,7 +19,7 @@ var DSmode = "none"
 var textnumber = 0
 var textsign
 var indid
-var duringtutorial
+var duringtutorial = 0
 //技
 var STtechnique = 0
 var TCnumber
@@ -28,6 +28,7 @@ var TCcY
 var TCstopper = 0
 var touchOK = 0
 var touchstand = 0
+var YTchoice = 0
 //死んで後の効果
 var cardkindin = 0
 //アイテム
@@ -95,6 +96,8 @@ var mathcheck2
 var keepword
 var keepword2
 var keepmath3
+var keepmath4
+var keepmath5
 var keepnumber
 //????
 var choiceCheck = 0
@@ -238,7 +241,7 @@ every(1, "seconds", () => {
   downMouse = 0
   }
   // if(!(textstop == 0)){
-  //   console.log("元に戻した")
+  //   //console.log("元に戻した")
   //  textstop = 0
   // }
   if(TCstopper == 1){

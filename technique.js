@@ -12,7 +12,7 @@ var fireball = {
 }
 var chairattack = {
   image: new Image({
-    url: "./image/technique/chair.png",
+    url: "./image/technique/chairattack.png",
     width: grid,
     height: grid,
   }),

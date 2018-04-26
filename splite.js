@@ -1,3 +1,23 @@
+//チュートリアル用
+var TTtab = {
+  image: new Image({
+    url: `./image/tab/notnormal/tutorial.png`,
+    width: 40*grid,
+    height: 4*grid,
+  }),
+}
+TTtab.image.y = -8*grid
+TTtab.image.hide()
+var TTback = {
+  image: new Image({
+    url: `./image/icon/back.png`,
+    width: 2*grid,
+    height: 2*grid,
+  }),
+}
+TTback.image.x = 16.5*grid
+TTback.image.y = -8.5*grid
+TTback.image.hide()
 //吹き出し
 // var hukidasi = {
 //   image: new Image({
@@ -198,10 +218,10 @@ forever(() => {
   if(STtechnique == 1){
     if(TBb.mouseOver && mouseDown && TCstopper == 0){
        range(0,techniqueall.length).forEach(i => {
-         console.log(techniqueall[i].name)
-         console.log(techniquetext)
+         //console.log(techniqueall[i].name)
+         //console.log(techniquetext)
          if(techniqueall[i].name == techniquetext){
-           console.log("TCnumber設定")
+           //console.log("TCnumber設定")
            TCnumber = i
          }
        })
@@ -237,7 +257,7 @@ forever(() => {
         where.check = "false"
       })
       wheresputout()
-      //console.log(card.name)
+      ////console.log(card.name)
       whatcard = 1
       touch = card.name
       touchX = card.image.x
@@ -252,11 +272,11 @@ forever(() => {
       keepmath = card.image.y - 10*grid
       keepmath = keepmath*-1
       keepmath2 = card.image.x + 15*grid
-      //console.log(mapData[floor(keepmath/grid)][floor(keepmath2/grid)])
-      //console.log(card.propertydata)
+      ////console.log(mapData[floor(keepmath/grid)][floor(keepmath2/grid)])
+      ////console.log(card.propertydata)
       checksame(mapData[floor(keepmath/grid)][floor(keepmath2/grid)],card.propertydata)
       if(cardtype == "normal"){
-        //console.log("red")
+        ////console.log("red")
         range(1,cardgo+1+typeplus).forEach(i => {
           gopoint(1*i,0,card.propertydata)
           gopoint(-1*i,0,card.propertydata)
@@ -272,7 +292,7 @@ forever(() => {
          gopoint(-1,-1,card.propertydata)
       }
       // if(cardtype == "unique"){
-      //   //console.log("red")
+      //   ////console.log("red")
       //   range(1,cardgo+1+typeplus).forEach(i => {
       //    gopoint(1*i,1*i,card.propertydata)
       //    gopoint(1*i,-1*i,card.propertydata)
@@ -285,7 +305,7 @@ forever(() => {
       //
       // }
       if(cardtype == "power"){
-        //console.log("red")
+        ////console.log("red")
         gopoint(1,0,card.propertydata)
         gopoint(-1,0,card.propertydata)
         gopoint(0,-1,card.propertydata)
@@ -298,7 +318,7 @@ forever(() => {
 
       }
       if(cardtype == "guard"){
-        //console.log("red")
+        ////console.log("red")
         gopoint(1,0,card.propertydata)
         gopoint(-1,0,card.propertydata)
         gopoint(0,-1,card.propertydata)
@@ -311,7 +331,7 @@ forever(() => {
 
       }
       if(cardtype == "jump"){
-        //console.log("red")
+        ////console.log("red")
         range(1,cardgo+1+typeplus).forEach(i => {
          oddOrEven(i)
          if(oddEven == "odd"){
@@ -402,7 +422,7 @@ forever(() => {
       }
       if(where.image.mouseOver && mouseDown && gotrue == "true") {
         if(where.type == "normal"){
-         //console.log(where.name)
+         ////console.log(where.name)
          redX = where.image.x
          redY = where.image.y
          cards.forEach(card => {
@@ -471,18 +491,18 @@ forever(() => {
         // cards.forEach(card => {
            mycardX.push(card.image.x)
            mycardY.push(card.image.y)
-           //console.log(card.image.x)
-           //console.log(card.image.y)
+           ////console.log(card.image.x)
+           ////console.log(card.image.y)
          // })
 
-         // //console.log(mycardX)
-         // //console.log(mycardY)
+         // ////console.log(mycardX)
+         // ////console.log(mycardY)
          Ycards.forEach(Ycard =>{
            range(0,mycardX.length).forEach(i =>{
-             // //console.log(mycardX[i])
-             // //console.log(Ycard.image.x)
-             // //console.log(mycardY[i])
-             // //console.log(Ycard.image.y)
+             // ////console.log(mycardX[i])
+             // ////console.log(Ycard.image.x)
+             // ////console.log(mycardY[i])
+             // ////console.log(Ycard.image.y)
              if(Ycard.image.x == mycardX[i] && Ycard.image.y == mycardY[i]){
                Ycard.image.sendToFront()
                repeat(100, () => {
@@ -493,16 +513,16 @@ forever(() => {
                })
                 Ycard.death = 1
                 if(!(Ycard.effect == "nothing")){
-                  console.log("敵の死んだ後の効果")
+                  //console.log("敵の死んだ後の効果")
                   // Ycardkindin = 0
                   // range(0,cardkind.length).forEach(i => {
                   //   if(cardkind[i] == card.effect){
                   //     cardkindin = 1
-                  //     console.log("その種類はない")
+                  //     //console.log("その種類はない")
                   //   }
                   // })
                   // if(!(cardkindin == 1)){
-                  //   console.log("種類追加")
+                  //   //console.log("種類追加")
                   //   cardkind.push(card.effect)
                   // }
                   yourdeck.push(Ycard.effect)
@@ -517,7 +537,7 @@ forever(() => {
        })
          // cards.forEach(card => {
          //   if(card.image.x > grid*9 && card.image.y > grid*1 && card.image.y < grid*-1){
-         //     //console.log("hit" + yourHP)
+         //     ////console.log("hit" + yourHP)
          //     yourHP -= 1
          //   }
          // })

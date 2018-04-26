@@ -1,4 +1,4 @@
-//説明のページ(予定)
+//チュートリアルホーム画面
 forever(() => {
   if(gameStatus == "description"){
     if(backNumber == 0){
@@ -6,18 +6,10 @@ forever(() => {
       after(2, "seconds", () => {
        homeback2.sendToFront()
        battletab.sendToFront()
-       settab.sendToFront()
        homeback2.show()
        battlestart.show()
        battletab.show()
        battlestart.sendToFront()
-       settext.show()
-       settab.show()
-       settext.sendToFront()
-       optiontext.show()
-       optiontab.show()
-       optiontab.sendToFront()
-       optiontext.sendToFront()
        newmusic()
        homemusic = 1
        startmusic = 1
@@ -45,6 +37,11 @@ forever(() => {
   }
 })
 function DSstart(startText) {
+  duringtutorial = 1
+  TTtab.image.show()
+  TTtab.image.sendToFront()
+  TTback.image.show()
+  TTback.image.sendToFront()
   textnumber = startText
   Textinwhat = textlist[textnumber]
   descriptionText.text.show()
@@ -59,7 +56,7 @@ function DSstart(startText) {
 function DSset() {
   duringtutorial = 1
   textnumber += 1
-  console.log(textnumber)
+  //console.log(textnumber)
   Textinwhat = textlist[textnumber]
   descriptionText.text.show()
   descriptionText.text.sendToFront()
@@ -70,7 +67,7 @@ function DSset() {
 }
 function repeatcheck(stopnumber) {
   repeatUntil(() => textnumber < stopnumber, () => {}, () => {
-    if(textstop == 0 && mouseDown){
+    if(textstop == 0 && mouseDown && TTback.image.mouseOver){
       DSset()
       if(textnumber == 27){
       yourdeck[choicecardnumber] = "Dl"
@@ -102,12 +99,14 @@ function repeatcheck(stopnumber) {
        Ycard.image.y = -8.5*grid
        Ycard.image.angle = LEFT
        Ycards.push(Ycard)
-      //console.log(Ycard.name)
+      ////console.log(Ycard.name)
       cardNumber2 += 1
       }
       if(textnumber == stopnumber){
         descriptionText.text.hide()
         duringtutorial = 0
+        TTtab.image.hide()
+        TTback.image.hide()
         if(stopnumber == 30){
          battling = 0
          reset()
