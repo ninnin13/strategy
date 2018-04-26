@@ -475,6 +475,18 @@ after(2.3/hidespeed, "seconds", () => {
            })
          }
        })
+       Ycards.forEach(Ycard => {
+         if(Ycard.image.mouseOver){
+           Downnow4 = 1
+           cardstatusshow(Ycard.namefull)
+           statusrange = Ycard.range
+           FromEnglishtoJapanese(Ycard.propertydata)
+           statustype = translationResult
+           after(1, "seconds", () => {
+             Downnow4 = 0
+           })
+         }
+       })
      }
     if(mouseDown && mouseX < grid*4 && mouseX > grid*-4 && mouseY < grid*-6 && mouseY > grid*-10 && choicing == 1){
           if(!(choicestand == 1)){

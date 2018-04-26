@@ -36,6 +36,32 @@ var descriptionText = {
     fontFamily: "arial"
   })
 }
+//移動タイプ
+var goDS = {
+  image: new Image({
+    url: `./image/icon/gotype.png`,
+    width: grid,
+    height: grid,
+  }),
+}
+goDS.image.x = 7*grid
+goDS.image.y = -9*grid
+// var go1 = {
+//   text: new Text({
+//     text: () => "移動タイプ",
+//     size: 50,
+//     color: "rgb(50, 50, 255)",
+//     fontFamily: "arial"
+//   })
+// }
+// var go2 = {
+//   text: new Text({
+//     text: () => "ノーマル：",
+//     size: 50,
+//     color: "rgb(50, 50, 255)",
+//     fontFamily: "arial"
+//   })
+// }
 //アイテムゲットログ
 var itemget1 = {
   text: new Text({
@@ -420,7 +446,7 @@ forever(() => {
       if(where.check == "false"){
         where.check = "true"
       }
-      if(where.image.mouseOver && mouseDown && gotrue == "true") {
+      if(where.image.mouseOver && mouseDown && gotrue == "true" && duringtutorial == 0) {
         if(where.type == "normal"){
          ////console.log(where.name)
          redX = where.image.x

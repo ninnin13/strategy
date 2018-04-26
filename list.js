@@ -58,8 +58,11 @@ walklist.push(angora2)
 walklist.push(skymachine2)
 walklist.push(eariaru2)
 walklist.push(firemagician2)
+walklist.push(saramanda2)
 walklist.push(skelton2)
 walklist.push(polter2)
+walklist.push(grendel2)
+walklist.push(mirror2)
 every(1.8, "seconds", () => {
   if(walksplite == 1){
    range(0,walklist.length).forEach(i => {
@@ -96,8 +99,10 @@ cardsetting.push(jyassyu)
 cardsetting.push(skymachine)
 cardsetting.push(eariaru)
 cardsetting.push(firemagician)
+cardsetting.push(saramanda)
 cardsetting.push(skelton)
 cardsetting.push(polter)
+cardsetting.push(grendel)
 var costshows = []
 range(0,cardsetting.length).forEach(i => {
   var costshow = {
@@ -142,28 +147,32 @@ textlist.push("今から、戦いの基本を教えます。")
 textlist.push("まずは、配置の仕方を教えます。")
 textlist.push("「配置」のボタンを押してください。")
 textlist.push("左の犬のカードをクリックしてください。")
-textlist.push("下に表示されている範囲内に置くと、配置できます。")
+textlist.push("青い範囲内に置くと、配置できます。")
 textlist.push("配置は１ターン2体までです。")
-textlist.push("次は、火の魔法使いを範囲の右上端配置してください。")
-textlist.push("右に写っているカードはカードは「W」で上に、「S」で下に動かせます.")
-textlist.push("このターンにできることは終わったので、「戻る」、「終了」を押してください。") //9
+textlist.push("次は、火の魔法使いを")
+textlist.push("範囲の右上端配置してください。")
+textlist.push("カードは「W」,「S」で上下に動かせます.")
+textlist.push("このターンにできることは終わったので、") //10
+textlist.push("「戻る」、「終了」を押してください。") //11
 textlist.push("次は、移動です。")
 textlist.push("移動は、配置した次のターンにしかできません")
 textlist.push("「移動」のボタンを押してください。")
 textlist.push("配置した犬をクリックしてください")
-textlist.push("今表示されている赤色のところが、移動できる範囲です")
-textlist.push("一番前のマスの赤色のところをクリックしてください。")
+textlist.push("今表示されている赤色のところが、")
+textlist.push("移動できる範囲です")
+textlist.push("好きなマスをクリックしてください。")
 textlist.push("戻るを押してください。")
 textlist.push("次は、道具です。")
 textlist.push("「道具」のボタンを押してください。")
 textlist.push("左の、海の秘石をクリックしてください。")
-textlist.push("アイテムは、カードがどこにいても使用できます。") //19
+textlist.push("アイテムは、1ターンに2回しか使えません。") //19
 textlist.push("犬のカードをクリックしてください。")
 textlist.push("これでアイテムを使えました。")
 textlist.push("戻るを押してください。")
 textlist.push("最後に、技です。")
 textlist.push("「技」のボタンを押してください。")
-textlist.push("配置した火の魔法使いをクリックして,fireballを選んでください")
+textlist.push("配置した火の魔法使いをクリックして,")
+textlist.push("fireballを選んでください")
 textlist.push("今表示されている赤色のところが、攻撃できる範囲です")
 textlist.push("特別に,一体敵を出します")
 textlist.push("敵のいるマスをクリックしてください")
@@ -223,7 +232,7 @@ var TCclones = []
 var Twherecan = []
 //0=陸,2=水,3=空,1=火,5=墓
 var mapData = [
-  [2,2,2,2,2,2,2,3,0,0,0,2,0,0,0,0,0,0,2,0,0,0,3,2,2,2,2,2,2,2],
+  [2,2,2,2,2,2,2,3,0,0,0,2,0,0,6,7,0,0,2,0,0,0,3,2,2,2,2,2,2,2],
   [2,5,5,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,2],
   [2,5,5,0,0,0,0,0,0,0,0,0,2,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,2],
   [2,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,2],
@@ -242,7 +251,7 @@ var mapData = [
   [2,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,2],
   [2,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,2,0,0,0,0,0,0,0,0,0,5,5,2],
   [2,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,5,5,2],
-  [2,2,2,2,2,2,2,3,0,0,0,2,0,0,0,0,0,0,2,0,0,0,3,2,2,2,2,2,2,2]
+  [2,2,2,2,2,2,2,3,0,0,0,2,0,0,6,7,0,0,2,0,0,0,3,2,2,2,2,2,2,2]
 ];
 var mapchips = []
 function whatHere(n1,n2) {
@@ -317,6 +326,34 @@ range(0,mapData.length).forEach(i => {
       var mapchip = {
         image: new Image({
           url: "./image/mapchip/undead.png",
+          width: grid,
+          height: grid,
+        }),
+      }
+      whatHere(j,i)
+      mapchip.image.x = keepmath
+      mapchip.image.y = keepmath2
+      mapchip.image.hide()
+      mapchips.push(mapchip)
+    }
+    if(mapData[i][j] == 6){
+      var mapchip = {
+        image: new Image({
+          url: "./image/mapchip/castle1.png",
+          width: grid,
+          height: grid,
+        }),
+      }
+      whatHere(j,i)
+      mapchip.image.x = keepmath
+      mapchip.image.y = keepmath2
+      mapchip.image.hide()
+      mapchips.push(mapchip)
+    }
+    if(mapData[i][j] == 7){
+      var mapchip = {
+        image: new Image({
+          url: "./image/mapchip/castle2.png",
           width: grid,
           height: grid,
         }),

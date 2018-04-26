@@ -324,6 +324,16 @@ forever(() => {
   //   cardsetting.forEach(clone => {
   //
   // })
+  if(goDS.image.mouseOver && mouseDown && DetailsTime == 1){
+    statusback.image.show()
+    statusback.image.sendToFront()
+    Sback.image.show()
+    Sback.image.sendToFront()
+    Downnow2 = 1
+    after(1, "seconds", () => {
+      Downnow2 = 0
+    })
+  }
   if(keysDown.includes('CTRL') && keysDown.includes("S") || statusbotton.image.mouseOver && mouseDown && Downnow3 == 0){
     Downnow3 = 1
     after(0.5, "seconds", () => {
@@ -332,9 +342,12 @@ forever(() => {
     if(DetailsTime == 0){
       DetailsTime = 1
       mode = "詳細"
+      // goDS.image.show()
+      // goDS.image.sendToFront()
     }else{
       DetailsTime = 0
       mode = "ノーマル"
+      // goDS.image.hide()
     }
   }
   if(Sback.image.mouseOver && mouseDown){

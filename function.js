@@ -725,6 +725,11 @@ function gopoint(choiceX,choiceY,whatproperty){
       where.image.y = touchY + grid*choiceY
       where.image.show()
       where.image.sendToFront()
+      cards.forEach(card => {
+       if(where.image.x == card.image.x && where.image.y == card.image.y){
+         where.image.hide()
+       }
+      })
       // if(where.image.y < grid*-10 || where.image.y > grid*10 || where.image.x < grid*-15 || where.image.x > grid*15){
       //   ////console.log("hide")
       //   where.image.hide()
@@ -804,6 +809,8 @@ function yourcardfield(name,name2){
     effect: name2.effect,
     technique: name2.technique,
     death: 0,
+    range: name2.goblock,
+    namefull: name2,
     plusitem: name2.plusitem
   }
   clear = 0
@@ -1264,6 +1271,7 @@ function cardup(name,name2){
 }
 //ページを替える時に非表示にする
 function pagechange(){
+  goDS.image.hide()
   Sback.image.hide()
   statustext.text.hide()
   statusback.image.hide()

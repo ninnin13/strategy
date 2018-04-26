@@ -151,85 +151,85 @@ forever(() => {
    if(textsign == 0){
      DSstart(6)
    }
-   repeatcheck(9)
+   repeatcheck(10)
   }
   if(DSmode == "配置4"){
    if(textsign == 0){
-     DSstart(9)
+     DSstart(10)
    }
-   repeatcheck(10)
+   repeatcheck(12)
   }
   if(DSmode == "移動1"){
    if(textsign == 0){
-     DSstart(10)
+     DSstart(12)
    }
-   repeatcheck(13)
+   repeatcheck(15)
   }
   if(DSmode == "移動2"){
    if(textsign == 0){
-     DSstart(13)
-   }
-   repeatcheck(14)
-  }
-  if(DSmode == "移動3"){
-   if(textsign == 0){
-     DSstart(14)
+     DSstart(15)
    }
    repeatcheck(16)
   }
-  if(DSmode == "移動4"){
+  if(DSmode == "移動3"){
    if(textsign == 0){
      DSstart(16)
    }
-   repeatcheck(17)
-  }
-  if(DSmode == "道具1"){
-   if(textsign == 0){
-     DSstart(17)
-   }
    repeatcheck(19)
   }
-  if(DSmode == "道具2"){
+  if(DSmode == "移動4"){
    if(textsign == 0){
      DSstart(19)
    }
-   repeatcheck(21)
+   repeatcheck(20)
+  }
+  if(DSmode == "道具1"){
+   if(textsign == 0){
+     DSstart(20)
+   }
+   repeatcheck(22)
+  }
+  if(DSmode == "道具2"){
+   if(textsign == 0){
+     DSstart(22)
+   }
+   repeatcheck(24)
  }
  if(DSmode == "道具3"){
   if(textsign == 0){
-    DSstart(21)
+    DSstart(24)
   }
-  repeatcheck(22)
+  repeatcheck(25)
  }
  if(DSmode == "道具4"){
   if(textsign == 0){
-    DSstart(22)
-  }
-  repeatcheck(24)
- }
- if(DSmode == "技1"){
-  if(textsign == 0){
-    DSstart(24)
-  }
-  repeatcheck(26)
- }
- if(DSmode == "技2"){
-  if(textsign == 0){
-    DSstart(26)
+    DSstart(25)
   }
   repeatcheck(27)
  }
- if(DSmode == "技3"){
+ if(DSmode == "技1"){
   if(textsign == 0){
     DSstart(27)
   }
   repeatcheck(30)
  }
- if(DSmode == "終了"){
+ if(DSmode == "技2"){
   if(textsign == 0){
     DSstart(30)
   }
   repeatcheck(31)
+ }
+ if(DSmode == "技3"){
+  if(textsign == 0){
+    DSstart(31)
+  }
+  repeatcheck(34)
+ }
+ if(DSmode == "終了"){
+  if(textsign == 0){
+    DSstart(34)
+  }
+  repeatcheck(35)
  }
  // }
 })

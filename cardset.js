@@ -237,6 +237,20 @@ var firemagician2 = {
   SorH: 0
 }
 firemagician2.image.hide()
+var saramanda2 = {
+  image: new Image({
+    url: "./image/card/stand/saramanda.png",
+    width: 60,
+    height: 100,
+  }),
+  name: "saramanda",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+saramanda2.image.hide()
 var skelton2 = {
   image: new Image({
     url: "./image/card/stand/skelton.png",
@@ -265,6 +279,34 @@ var polter2 = {
   SorH: 0
 }
 polter2.image.hide()
+var grendel2 = {
+  image: new Image({
+    url: "./image/card/stand/grendel.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "grendel",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+grendel2.image.hide()
+var mirror2 = {
+  image: new Image({
+    url: "./image/card/stand/mirror.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "mirror",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+mirror2.image.hide()
 //カード本体
 var landstone = {
   image: new Image({
@@ -569,6 +611,25 @@ var firemagician = {
   solo: firemagician2,
   cost: 2
 }
+var saramanda = {
+  image: new Image({
+    url: "./image/card/saramanda.png",
+    width: cardsize,
+    height: cardsize,
+  }),
+  name: "saramanda",
+  nameingame: "サラマンダー",
+  gotype: "power",
+  goblock: 3,
+  property: "fire",
+  technique: "nothing",
+  effect: "nothing",
+  plusitem: "nothing",
+  effectExplanation: "特になし",
+  what: "card",
+  solo: saramanda2,
+  cost: 2
+}
 var skelton = {
   image: new Image({
     url: "./image/card/skelton.png",
@@ -607,6 +668,25 @@ var polter = {
   solo: polter2,
   cost: 3
 }
+var grendel = {
+  image: new Image({
+    url: "./image/card/grendel.png",
+    width: cardsize,
+    height: cardsize,
+  }),
+  name: "grendel",
+  nameingame: "グレンデル",
+  gotype: "unique2",
+  goblock: 3,
+  property: "undead",
+  technique: "nothing",
+  effect: "nothing",
+  plusitem: "nothing",
+  effectExplanation: "特になし",
+  what: "card",
+  solo: grendel2,
+  cost: 8
+}
 dog.image.hide()
 kabuto.image.hide()
 penguin.image.hide()
@@ -619,8 +699,10 @@ jyassyu.image.hide()
 skymachine.image.hide()
 eariaru.image.hide()
 firemagician.image.hide()
+saramanda.image.hide()
 skelton.image.hide()
 polter.image.hide()
+grendel.image.hide()
 landstone.image.hide()
 seastone.image.hide()
 skystone.image.hide()

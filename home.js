@@ -63,6 +63,7 @@ forever(() => {
     if(backNumber == 0){
       nextpage()
       after(2, "seconds", () => {
+       gameStatus2 = "normal"
        homeback2.sendToFront()
        battletab.sendToFront()
        settab.sendToFront()
