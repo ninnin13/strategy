@@ -13,18 +13,18 @@ function YcardDLT() {
     wherecan.remove(wherecan[0])
   })
   range(0,Youtdirection.length).forEach(i => {
-    //console.log(Youtdirection[0])
+    ////console.log(Youtdirection[0])
     Youtdirection.remove(Youtdirection[0])
   })
   range(0,Ydelatelist.length).forEach(i => {
-    //console.log(Ydelatelist[0])
+    ////console.log(Ydelatelist[0])
     Ydelatelist.remove(Ydelatelist[0])
   })
   range(0,fastwherecan.length).forEach(i => {
-    //console.log(fastwherecan[0])
+    ////console.log(fastwherecan[0])
     fastwherecan.remove(fastwherecan[0])
   })
-  //console.log(Ydelatelist)
+  ////console.log(Ydelatelist)
 }
 function Ycardput(Ycardtype,Ycardgo){
   if(Ycardtype == "normal"){

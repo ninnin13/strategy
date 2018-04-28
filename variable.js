@@ -131,6 +131,9 @@ var direction
 //相手のカードの初期位置
 var yourdownX
 var yourdownY
+//カード位置
+var Wcardtype
+var WYTData
 //????
 var high = 100
 var turnchange = "true"
@@ -241,7 +244,7 @@ every(1, "seconds", () => {
   downMouse = 0
   }
   // if(!(textstop == 0)){
-  //   //console.log("元に戻した")
+  //   ////console.log("元に戻した")
   //  textstop = 0
   // }
   if(TCstopper == 1){

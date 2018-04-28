@@ -293,20 +293,20 @@ var grendel2 = {
   SorH: 0
 }
 grendel2.image.hide()
-var mirror2 = {
-  image: new Image({
-    url: "./image/card/stand/mirror.png",
-    width: 100,
-    height: 100,
-  }),
-  name: "mirror",
-  keep: 0,
-  keep2: 0,
-  keep3: 0,
-  keep4: 0,
-  SorH: 0
-}
-mirror2.image.hide()
+// var mirror2 = {
+//   image: new Image({
+//     url: "./image/card/stand/mirror.png",
+//     width: 100,
+//     height: 100,
+//   }),
+//   name: "mirror",
+//   keep: 0,
+//   keep2: 0,
+//   keep3: 0,
+//   keep4: 0,
+//   SorH: 0
+// }
+// mirror2.image.hide()
 //カード本体
 var landstone = {
   image: new Image({
@@ -685,7 +685,7 @@ var grendel = {
   effectExplanation: "特になし",
   what: "card",
   solo: grendel2,
-  cost: 8
+  cost: 5
 }
 dog.image.hide()
 kabuto.image.hide()

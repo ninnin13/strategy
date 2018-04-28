@@ -282,9 +282,9 @@ forever(() => {
       })
       costshows.forEach(costshow => {
         keepword = costshow.of
-        //console.log(keepword)
+        ////console.log(keepword)
         costshow.text.x = keepword.image.x
-        //console.log(keepword.image.x)
+        ////console.log(keepword.image.x)
         costshow.text.y = -2*grid
         if(costshow.text.x < 500 && costshow.text.x > -500){
           costshow.text.show()
@@ -378,7 +378,7 @@ forever(() => {
   })
   // range(0,D2clones.length).forEach(i => {
   //   if(D2clones[i].image.mouseOver && mouseDown){
-  //     //console.log("条件を満たした")
+  //     ////console.log("条件を満たした")
   //     after(0.2, "seconds", () => {
   //
   //    })

@@ -56,7 +56,7 @@ function DSstart(startText) {
 function DSset() {
   duringtutorial = 1
   textnumber += 1
-  //console.log(textnumber)
+  ////console.log(textnumber)
   Textinwhat = textlist[textnumber]
   descriptionText.text.show()
   descriptionText.text.sendToFront()
@@ -99,7 +99,7 @@ function repeatcheck(stopnumber) {
        Ycard.image.y = -8.5*grid
        Ycard.image.angle = LEFT
        Ycards.push(Ycard)
-      ////console.log(Ycard.name)
+      //////console.log(Ycard.name)
       cardNumber2 += 1
       }
       if(textnumber == stopnumber){

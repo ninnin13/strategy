@@ -53,5 +53,5 @@ function splitByACertainNumbeOofCharacters(splitWord) {
    range(0,3).forEach(i => {
      splitList.push("no")
    })
-   //console.log(splitList)
+   ////console.log(splitList)
 }

@@ -62,7 +62,7 @@ walklist.push(saramanda2)
 walklist.push(skelton2)
 walklist.push(polter2)
 walklist.push(grendel2)
-walklist.push(mirror2)
+// walklist.push(mirror2)
 every(1.8, "seconds", () => {
   if(walksplite == 1){
    range(0,walklist.length).forEach(i => {
@@ -73,7 +73,7 @@ every(1.8, "seconds", () => {
      walklist[i].keep4 = walklist[i].image.y
      Tkeepmath2 = walklist[i].keep*110
      Tkeepmath3 = walklist[i].keep2*110
-     //console.log(walklist[i].keep4)
+     ////console.log(walklist[i].keep4)
      if(walklist[i].keep3 + Tkeepmath2 < 9.5*grid && walklist[i].keep3 + Tkeepmath2 > -9.5*grid && walklist[i].keep4 +  Tkeepmath3 < 5.5*grid && walklist[i].keep4 + Tkeepmath3 > -9.5*grid ){
       repeat(random(90,110), () => {
         walklist[i].image.x += walklist[i].keep
@@ -130,6 +130,9 @@ var mycardX = []
 var mycardY = []
 var yourcardX = []
 var yourcardY = []
+var SPreferred = []
+var wherecansub = []
+var WYTData = []
 //消す
 var Ydelatelist = []
 //音楽
@@ -259,13 +262,13 @@ function whatHere(n1,n2) {
   keepmath = keepmath+0.5*grid
   keepmath2 = n2*-grid
   keepmath2 = keepmath2+10*grid -0.5*grid
-  //console.log("X座標" + keepmath + "Y座標" + keepmath2)
+  ////console.log("X座標" + keepmath + "Y座標" + keepmath2)
 }
 range(0,mapData.length).forEach(i => {
-  // //console.log(i)
+  // ////console.log(i)
   range(0,mapData[i].length).forEach(j => {
-    // //console.log(j)
-    // //console.log("チップ名" + mapData[i][j])
+    // ////console.log(j)
+    // ////console.log("チップ名" + mapData[i][j])
     if(mapData[i][j] == 0){
       var mapchip = {
         image: new Image({
