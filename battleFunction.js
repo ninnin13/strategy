@@ -6,6 +6,47 @@ var gobackTab = new Image({
 gobackTab.x = 17.5*grid
 gobackTab.y = 8*grid
 gobackTab.hide()
+var black = {
+  image: new Image({
+    url: "./image/tab/gold.png",
+    width: 26*grid,
+    height: 18*grid,
+  }),
+}
+black.image.hide()
+var Orblack = {
+  text: new Text({
+    text: () => "本当に降参しますか",
+    size: 40,
+    color: "rgb(220, 100, 100)",
+    fontFamily: "arial",
+  }),
+}
+Orblack.text.x = 0
+Orblack.text.y = 5*grid
+Orblack.text.hide()
+var Yesblack = {
+  text: new Text({
+    text: () => "はい",
+    size: 40,
+    color: "rgb(220, 100, 100)",
+    fontFamily: "arial",
+  }),
+}
+Yesblack.text.x = -5*grid
+Yesblack.text.y = -5*grid
+Yesblack.text.hide()
+var Noblack = {
+  text: new Text({
+    text: () => "いいえ",
+    size: 40,
+    color: "rgb(220, 100, 100)",
+    fontFamily: "arial",
+  }),
+}
+Noblack.text.x = 5*grid
+Noblack.text.y = -5*grid
+Noblack.text.hide()
 var gobackText = new Text({
   text: () => "戻る",
   size: 40,
@@ -22,9 +63,15 @@ var myturnok = new Text({
   fontFamily: "arial",
 })
 var step1 = new Text({
-  text: () => "終了",
+  text: () => "完了",
   size: 30,
   color: "rgb(100, 100, 200)",
+  fontFamily: "arial",
+})
+var step7 = new Text({
+  text: () => "降参",
+  size: 30,
+  color: "rgb(100, 200, 100)",
   fontFamily: "arial",
 })
 var step2 = new Text({
@@ -60,11 +107,11 @@ var step6 = new Text({
 var bctab = new Image({
   url: "./image/tab/red.png",
   width: 80,
-  height: 235,
+  height: 280,
 })
 myturnok.hide()
 bctab.x = 500
-bctab.y = -135
+bctab.y = -110
 bctab.hide()
 step1.x = 500
 step1.y = -220
@@ -84,6 +131,9 @@ step5.hide()
 step6.x = 500
 step6.y = -70
 step6.hide()
+step7.x = 500
+step7.y = -10
+step7.hide()
 
 //second commit
 
@@ -182,6 +232,10 @@ if(gameStatus2 == "DSduring"){
          //
          upcard2 = 180
          upcard = upcard2
+         upIM.image.show()
+         upIM.image.sendToFront()
+         downIM.image.show()
+         downIM.image.sendToFront()
          range(0, cardkind.length).forEach(i => {
            standcard(cardkind[i])
            upcard -= 150
@@ -363,7 +417,7 @@ after(2.3/hidespeed, "seconds", () => {
   //////console.log(cardsetting[0])
   repeatUntil(() => !(turn == "my"), () => {
      if(choicing == 1){
-       if(keysDown.includes('S')){
+       if(keysDown.includes('S')|| mouseDown && downIM.image.mouseOver){
          upcard2 -= 10
          upcard = upcard2
          range(0, cardkind.length).forEach(i => {
@@ -371,7 +425,7 @@ after(2.3/hidespeed, "seconds", () => {
           upcard -= 150
         })
        }
-       if(keysDown.includes('W')){
+       if(keysDown.includes('W')|| mouseDown && upIM.image.mouseOver){
          upcard2 += 10
          upcard = upcard2
          range(0, cardkind.length).forEach(i => {
@@ -381,7 +435,7 @@ after(2.3/hidespeed, "seconds", () => {
        }
      }
      if(choicingitem == 1){
-       if(keysDown.includes('S')){
+       if(keysDown.includes('W') || mouseDown && upIM.image.mouseOver){
          itemupcard2 -= 10
          itemupcard = itemupcard2
          range(0, itemkind.length).forEach(i => {
@@ -389,7 +443,7 @@ after(2.3/hidespeed, "seconds", () => {
           itemupcard -= 150
         })
        }
-       if(keysDown.includes('W')){
+       if(keysDown.includes('S') || mouseDown && downIM.image.mouseOver){
          itemupcard2 += 10
          itemupcard = itemupcard2
          range(0, itemkind.length).forEach(i => {
@@ -415,6 +469,68 @@ after(2.3/hidespeed, "seconds", () => {
          standcard(cardkind[i])
          upcard -= 150
        })
+       upIM.image.show()
+       upIM.image.sendToFront()
+       downIM.image.show()
+       downIM.image.sendToFront()
+      }
+      if(step7.mouseOver && mouseDown){
+        black.image.show()
+        black.image.sendToFront()
+        Yesblack.text.show()
+        Yesblack.text.sendToFront()
+        Noblack.text.show()
+        Noblack.text.sendToFront()
+        Orblack.text.show()
+        Orblack.text.sendToFront()
+      }
+      if(Noblack.text.mouseOver && mouseDown){
+        viewStatus = 0
+        canarea.image.hide()
+        choicing = 0
+        choicingitem = 0
+        choicestand = 1
+        choiceitem = 1
+        STtechnique = 1
+        stepshow()
+        wheres.forEach(where => {
+          where.image.hide()
+        })
+        where0.image.hide()
+        gocardtime = "false"
+        range(0, cardsetting.length).forEach(i => {
+         notstandcard(cardsetting[i])
+         upcard -= 150
+       })
+       range(0, itemkind.length).forEach(i => {
+        notstandcard(itemkind[i])
+        itemupcard -= 150
+       })
+       TBt.text.hide()
+       TS = 0
+      }
+      if(Yesblack.text.mouseOver && mouseDown){
+        rosebard.image.show()
+        rosebard.image.sendToFront()
+        rosebard.image.brightness = 100
+        repeat(100, () => {
+          rosebard.image.brightness -= 1
+        })
+        after(3, "seconds", () => {
+         reset()
+         battling = 0
+         cards.forEach(card => {
+           card.image.hide()
+         })
+         Ycards.forEach(Ycard => {
+           Ycard.image.hide()
+         })
+         after(0.5, "seconds", () => {
+           pagechange()
+           gameStatus = "home"
+           backNumber = 0
+        })
+      })
       }
       if(step6.mouseOver && mouseDown){
         stephide()
@@ -582,15 +698,21 @@ function stephide(){
   step4.hide()
   step5.hide()
   step6.hide()
+  step7.hide()
   bctab.hide()
 }
 function stepshow(){
+  black.image.hide()
+  Yesblack.text.hide()
+  Noblack.text.hide()
+  Orblack.text.hide()
   step1.show()
   step2.show()
   step3.show()
   step4.show()
   step5.show()
   step6.show()
+  step7.show()
   bctab.show()
   bctab.sendToFront()
   step1.sendToFront()
@@ -599,8 +721,11 @@ function stepshow(){
   step4.sendToFront()
   step5.sendToFront()
   step6.sendToFront()
+  step7.sendToFront()
   gobackTab.hide()
   gobackText.hide()
+  upIM.image.hide()
+  downIM.image.hide()
 }
 // function choicehide(){
 //   step1.hide()
@@ -633,7 +758,31 @@ after(2.3/hidespeed, "seconds", () => {
   //技
   Ycards.forEach(Ycard => {
 　　if(Ycard.death == 0 && !(Ycard.technique == "nothing")){
-      if(random(0,1) == 0){
+      keepmath = 0
+      keepmath2 = Ycard.technique
+      range(0, techniqueall.length).forEach(i => {
+        if(techniqueall[i].name == keepmath2){
+           keepmath2 = techniqueall[i]
+        }
+      })
+      range(1,keepmath2.range+1).forEach(i => {
+       Twherecan.push(1*i*grid)
+       Twherecan.push(0*grid)
+       Twherecan.push(-1*i*grid)
+       Twherecan.push(0*grid)
+       Twherecan.push(0*grid)
+       Twherecan.push(1*i*grid)
+       Twherecan.push(0*grid)
+       Twherecan.push(-1*i*grid)
+      })
+      cards.forEach(card => {
+       range(0,Twherecan.length/2).forEach(i => {
+        if(card.image.x ==  Ycard.image.x + Twherecan[i*2] && card.image.y == Ycard.image.y + Twherecan[i*2+1]){
+          keepmath = 1
+        }
+       })
+      })
+      if(keepmath == 1){
         ////console.log("相手の技発動")
         Ytechnique(Ycard.technique,Ycard.image.x,Ycard.image.y)
       }
@@ -655,7 +804,7 @@ after(2.3/hidespeed, "seconds", () => {
     //////console.log(mapData[floor(Ykeepmath/grid)][floor(Ykeepmath2/grid)])
     Ychecksame(mapData[floor(Ykeepmath/grid)][floor(Ykeepmath2/grid)],Ycard.propertydata)
     if(100 > random(0,100) && Ycard.TorF == 0){
-      // if(Ycard.image.y < grid*9){
+      if(Ycard.image.y < grid*9){
         // if(0 == random(0,2)){
           Ycardput(Ycard.go,Ycard.step)
          // ////console.log(goXYstart)
@@ -667,7 +816,7 @@ after(2.3/hidespeed, "seconds", () => {
          yourgo(Ycard.number,goX,goY)
          YcardDLT()
          checkfinish()
-       // }else{
+       }else{
        //   Ycardput2(Ycard.go,Ycard.step)
        //   // ////console.log(goXYstart)
        //   // ////console.log(wherecan)
@@ -680,15 +829,15 @@ after(2.3/hidespeed, "seconds", () => {
        //   checkfinish()
        // }
       // }else{
-      //   Ycardput3(Ycard.go,Ycard.step)
-      //   //////console.log(goXYstart)
-      //   //////console.log(wherecan)
-      //   //////console.log("putern3")
-      //   Ychoicego()
-      //   yourgo(Ycard.number,goX,goY)
-      //   YcardDLT()
-      //   checkfinish()
-      // }
+        Ycardput3(Ycard.go,Ycard.step)
+        //////console.log(goXYstart)
+        //////console.log(wherecan)
+        //////console.log("putern3")
+        Ychoicego()
+        yourgo(Ycard.number,goX,goY)
+        YcardDLT()
+        checkfinish()
+      }
 
     }
    }

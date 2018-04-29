@@ -326,6 +326,8 @@ function techniquestart() {
        card.TorF = "keep"
        //////console.log(card.technique)
        techniquetext = card.technique
+       NOx = card.image.x
+       NOy = card.image.y
        //////console.log(techniquetext)
        TCcX = card.image.x
        TCcY = card.image.y
@@ -355,12 +357,72 @@ function TCchoice() {
      touchstand = 1
    })
   }
+  if(techniqueall[TCnumber].type == "range"){
+    attackRG(techniqueall[TCnumber])
+    touchstand = 0
+    after(1, "seconds", () => {
+     touchstand = 1
+   })
+  }
+}
+function attackRG(name){
+  var attackOBJ = {
+    image: new Image({
+      url: `./image/technique/${name.name}.png`,
+      width: 3.5*grid,
+      height: 3.5*grid,
+    }),
+  }
+  attackOBJ.image.x = TCcX
+  attackOBJ.image.y = TCcY
+  attackOBJ.image.brightness = 100
+  if(name.typeOfRange == "normal"){
+    range(1,name.range+1).forEach(i => {
+      wherecanTC.push(1*i*grid)
+      wherecanTC.push(0*grid)
+      wherecanTC.push(-1*i*grid)
+      wherecanTC.push(0*grid)
+      wherecanTC.push(0*grid)
+      wherecanTC.push(1*i*grid)
+      wherecanTC.push(0*grid)
+      wherecanTC.push(-1*i*grid)
+   })
+  }
+  console.log(wherecanTC)
+  Ycards.forEach(Ycard => {
+     range(0,wherecanTC.length/2).forEach(i => {
+       console.log("X" + attackOBJ.image.x + "Y" + attackOBJ.image.y)
+       if(Ycard.image.x == wherecanTC[i*2] + attackOBJ.image.x && Ycard.image.y == wherecanTC[i*2+1] + attackOBJ.image.y && Ycard.death == 0){
+         Ycard.death = 1
+         Ycard.image.brightness = 100
+         repeat(100, () => {
+           Ycard.image.brightness -= 1
+         })
+         after(1, "seconds", () => {
+           Ycard.image.hide()
+         })
+       }
+     })
+  })
+  repeat(50, () => {
+    attackOBJ.image.brightness -= 2
+  })
+  after(1, "seconds", () => {
+    attackOBJ.hide()
+  })
 }
 function attackTC(name) {
-  name.image.x = TCcX
-  name.image.y = TCcY
-  name.image.show()
-  name.image.sendToFront()
+  var attackOBJ = {
+    image: new Image({
+      url: `./image/technique/${name.name}.png`,
+      width: grid,
+      height: grid,
+    }),
+  }
+  attackOBJ.image.x = TCcX
+  attackOBJ.image.y = TCcY
+  attackOBJ.image.show()
+  attackOBJ.image.sendToFront()
   touchX = TCcX
   touchY = TCcY
   // TCclones.push(TCclone)
@@ -400,7 +462,7 @@ function attackTC(name) {
    keepmath = abs(where.image.x - TCcX)
    keepmath2 = abs(where.image.y - TCcY)
     Ycards.forEach(Ycard => {
-      if(Ycard.image.x == name.image.x + where.image.x - TCcX && Ycard.image.y == name.image.y + where.image.y - TCcY){
+      if(Ycard.image.x == attackOBJ.image.x + where.image.x - TCcX && Ycard.image.y == attackOBJ.image.y + where.image.y - TCcY){
         after(TCcheckmate*0.02, "seconds", () => {
          Ycard.image.hide()
          Ycard.death = 1
@@ -414,18 +476,18 @@ function attackTC(name) {
    })
    repeat(TCcheckmate, () => {
      if(where.image.x - TCcX > 0 ){
-       name.image.x += keepmath
+       attackOBJ.image.x += keepmath
      } else {
-       name.image.x -= keepmath
+       attackOBJ.image.x -= keepmath
      }
      if(where.image.y - TCcY > 0 ){
-       name.image.y += keepmath2
+       attackOBJ.image.y += keepmath2
      } else {
-       name.image.y -= keepmath2
+       attackOBJ.image.y -= keepmath2
      }
    })
    after(TCcheckmate*0.02, "seconds", () => {
-     name.image.hide()
+     attackOBJ.image.hide()
      if(gameStatus2 == "DSduring"){
        didlist("終了")
        if(indid == 0){
@@ -448,7 +510,59 @@ function Ytechnique(TCname,TCx,TCy) {
       if(techniqueall[i].type == "attack"){
         YattackTC(techniqueall[i],TCx,TCy)
       }
+      if(techniqueall[i].type == "range"){
+        YattackRG(techniqueall[i],TCx,TCy)
+      }
     }
+  })
+}
+function YattackRG(TCmain,TCx2,TCy2) {
+  Ygotime += 1
+  YTchoice = 0
+  var attackobject = {
+    image: new Image({
+      url: `./image/technique/${TCmain.name}.png`,
+      width: grid,
+      height: grid,
+    }),
+    PMXData: 0,
+    PMYData: 0,
+    YCMData: 0,
+    STXData: 0,
+    STYData: 0,
+    RPData: 0,
+    RPData2: 0,
+    death: "nothing"
+  }
+  attackobject.image.x = TCx2
+  attackobject.image.y = TCy2
+  attackobject.image.brightness = 100
+  range(1,TCmain.range+1).forEach(i => {
+   Twherecan.push(1*i*grid)
+   Twherecan.push(0*grid)
+   Twherecan.push(-1*i*grid)
+   Twherecan.push(0*grid)
+   Twherecan.push(0*grid)
+   Twherecan.push(1*i*grid)
+   Twherecan.push(0*grid)
+   Twherecan.push(-1*i*grid)
+  })
+  cards.forEach(card => {
+    range(0,Twherecan.length/2).forEach(i => {
+      if(card.image.x == TCx2 + Twherecan[i*2] && card.image.y == TCx2 + Twherecan[i*2+1]){
+        card.death = 1
+        card.image.brightness = 100
+        repeat(100, () => {
+           card.image.brightness -= 1
+        })
+        after(1, "seconds", () => {
+          card.image.hide()
+        })
+      }
+    })
+  })
+  repeat(50, () => {
+    attackobject.image.brightness -= 2
   })
 }
 function YattackTC(TCmain,TCx2,TCy2) {
@@ -1319,7 +1433,7 @@ function standcard(name){
   name.image.sendToFront()
   name.image.x = -445 - cardsize/2
   name.image.y = upcard
-  if(name.image.y > grid*8 || name.image.y <grid*-8){
+  if(name.image.y > grid*6 || name.image.y <grid*-6){
     name.image.hide()
   }
 }
@@ -1328,7 +1442,7 @@ function standitem(name){
   name.image.sendToFront()
   name.image.x = -445 - cardsize/2
   name.image.y = itemupcard
-  if(name.image.y > grid*8 || name.image.y <grid*-8){
+  if(name.image.y > grid*6 || name.image.y <grid*-6){
     name.image.hide()
   }
 }
@@ -1489,6 +1603,10 @@ function cardup(name,name2){
 }
 //ページを替える時に非表示にする
 function pagechange(){
+  black.image.hide()
+  Orblack.text.hide()
+  Yesblack.text.hide()
+  Noblack.text.hide()
   goDS.image.hide()
   Sback.image.hide()
   statustext.text.hide()
@@ -1550,8 +1668,6 @@ function pagechange(){
 function newmusic() {
   if(!(musicwhat == 0)){
    musicwhat.music.stopPlaying()
-   battelemusic = 0
-   homemusic = 0
  }
 }
 //相手を倒したか?
@@ -1626,6 +1742,9 @@ function Yturnshow() {
   after(mathcheck/10, "seconds", () => {
     repeat(mathcheck2, () => {
       yourbard.image.brightness -= hidespeed
+    })
+    after(mathcheck2*0.05, "seconds", () => {
+      yourbard.image.hide()
     })
   })
 }

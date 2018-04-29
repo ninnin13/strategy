@@ -91,7 +91,7 @@ forever(() => {
          walklist[keepmath].SorH = 1
        })
        newmusic()
-       homemusic = 1
+       musictype = "home"
        startmusic = 1
        walksplite = 1
       // if(deck.length > 0 || deck.length = 0){

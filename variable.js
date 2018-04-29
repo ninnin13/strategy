@@ -29,6 +29,8 @@ var TCstopper = 0
 var touchOK = 0
 var touchstand = 0
 var YTchoice = 0
+var NOx
+var NOy
 //死んで後の効果
 var cardkindin = 0
 //アイテム
@@ -193,11 +195,11 @@ battleairking.hide()
 var kingname = battleundeadking
 //音楽用
 var startmusic = 1
-var battlemusic = 0
-var homemusic = 0
 var battleuse
 var homeuse
 var musicwhat = 0
+var musictype
+var musicnumber = 0
 //地面の属性
 var typeplus
 var keepmath

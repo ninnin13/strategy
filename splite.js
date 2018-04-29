@@ -18,6 +18,27 @@ var TTback = {
 TTback.image.x = 16.5*grid
 TTback.image.y = -8.5*grid
 TTback.image.hide()
+//矢印
+var upIM = {
+  image: new Image({
+    url: `./image/icon/blueup.png`,
+    width: 2*grid,
+    height: 2*grid,
+  }),
+}
+var downIM = {
+  image: new Image({
+    url: `./image/icon/bluedown.png`,
+    width: 2*grid,
+    height: 2*grid,
+  }),
+}
+upIM.image.hide()
+downIM.image.hide()
+upIM.image.x = -19*grid
+upIM.image.y = 9*grid
+downIM.image.x = -19*grid
+downIM.image.y = -9*grid
 //吹き出し
 // var hukidasi = {
 //   image: new Image({
@@ -344,10 +365,10 @@ forever(() => {
 
       }
       if(cardtype == "guard"){
-        gopoint(1,0,card.propertydata)
-        gopoint(-1,0,card.propertydata)
         gopoint(0,1,card.propertydata)
        range(1,cardgo+1+typeplus).forEach(i => {
+         gopoint(1*i,0,card.propertydata)
+         gopoint(-1*i,0,card.propertydata)
          gopoint(0,-1*i,card.propertydata)
        })
         after(0.3, "seconds", () => {

@@ -62,6 +62,7 @@ walklist.push(saramanda2)
 walklist.push(skelton2)
 walklist.push(polter2)
 walklist.push(grendel2)
+walklist.push(insectdevil2)
 // walklist.push(mirror2)
 every(1.8, "seconds", () => {
   if(walksplite == 1){
@@ -103,6 +104,7 @@ cardsetting.push(saramanda)
 cardsetting.push(skelton)
 cardsetting.push(polter)
 cardsetting.push(grendel)
+cardsetting.push(insectdevil)
 var costshows = []
 range(0,cardsetting.length).forEach(i => {
   var costshow = {
@@ -231,8 +233,10 @@ var Youtdirection =[]
 var techniqueall = []
 techniqueall.push(fireball)
 techniqueall.push(chairattack)
+techniqueall.push(impact)
 var TCclones = []
 var Twherecan = []
+var wherecanTC = []
 //0=陸,2=水,3=空,1=火,5=墓
 var mapData = [
   [2,2,2,2,2,2,2,3,0,0,0,2,0,0,6,7,0,0,2,0,0,0,3,2,2,2,2,2,2,2],

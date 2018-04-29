@@ -386,25 +386,6 @@ forever(() => {
   // })
   if(keysDown.includes('C') || arrow2.mouseOver && mouseDown){
     range(0,cardsetting.length).forEach(i => {
-      right(cardsetting[i])
-    })
-    range(0,itemsetting.length).forEach(i => {
-      right(itemsetting[i])
-    })
-    costshows.forEach(costshow => {
-      costshow.text.x += 10
-      if(costshow.text.x < 500 && costshow.text.x > -500){
-        costshow.text.show()
-        // costshow.text.sendToFront()
-      }else{
-        costshow.text.hide()
-      }
-    })
-    IFOpointx += 10
-     rightstand += 1
-  }
-  if(keysDown.includes('Z') || arrow.mouseOver && mouseDown){
-    range(0,cardsetting.length).forEach(i => {
       left(cardsetting[i])
     })
     range(0,itemsetting.length).forEach(i => {
@@ -422,19 +403,27 @@ forever(() => {
     IFOpointx -= 10
      leftstand += 1
   }
+  if(keysDown.includes('Z') || arrow.mouseOver && mouseDown){
+     range(0,cardsetting.length).forEach(i => {
+       right(cardsetting[i])
+     })
+     range(0,itemsetting.length).forEach(i => {
+       right(itemsetting[i])
+     })
+     costshows.forEach(costshow => {
+       costshow.text.x += 10
+       if(costshow.text.x < 500 && costshow.text.x > -500){
+         costshow.text.show()
+         // costshow.text.sendToFront()
+       }else{
+         costshow.text.hide()
+       }
+     })
+     IFOpointx += 10
+      rightstand += 1
+  }
   if(D2clones.length >0){
    if(keysDown.includes('D') || OTOarrow2.mouseOver && mouseDown){
-     D2clones.forEach(D2clone => {
-       D2clone.image.x += 10
-       if(D2clone.image.x < 500 && D2clone.image.x > -500){
-         D2clone.image.show()
-       }else{
-         D2clone.image.hide()
-       }
-       })
-     OTOpointx += 10
-   }
-   if(keysDown.includes('A') || OTOarrow.mouseOver && mouseDown){
      D2clones.forEach(D2clone => {
        D2clone.image.x -= 10
        if(D2clone.image.x < 500 && D2clone.image.x > -500){
@@ -444,6 +433,17 @@ forever(() => {
        }
      })
      OTOpointx -= 10
+   }
+   if(keysDown.includes('A') || OTOarrow.mouseOver && mouseDown){
+     D2clones.forEach(D2clone => {
+       D2clone.image.x += 10
+       if(D2clone.image.x < 500 && D2clone.image.x > -500){
+         D2clone.image.show()
+       }else{
+         D2clone.image.hide()
+       }
+       })
+     OTOpointx += 10
    }
   }
  }

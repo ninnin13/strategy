@@ -80,7 +80,7 @@ forever(() => {
         kingname.show()
         kingname.sendToFront()
         newmusic()
-        battlemusic = 1
+        musictype = "battle"
         startmusic = 1
         deckkeep()
          if(gameStatus2 == "DSduring"){

@@ -293,6 +293,20 @@ var grendel2 = {
   SorH: 0
 }
 grendel2.image.hide()
+var insectdevil2 = {
+  image: new Image({
+    url: "./image/card/stand/insectdevil.png",
+    width: 100,
+    height: 100,
+  }),
+  name: "insectdevil",
+  keep: 0,
+  keep2: 0,
+  keep3: 0,
+  keep4: 0,
+  SorH: 0
+}
+insectdevil2.image.hide()
 // var mirror2 = {
 //   image: new Image({
 //     url: "./image/card/stand/mirror.png",
@@ -687,6 +701,25 @@ var grendel = {
   solo: grendel2,
   cost: 5
 }
+var insectdevil = {
+  image: new Image({
+    url: "./image/card/insectdevil.png",
+    width: cardsize,
+    height: cardsize,
+  }),
+  name: "insectdevil",
+  nameingame: "インセクトデビル",
+  gotype: "guard",
+  goblock: 3,
+  property: "undead",
+  technique: "impact",
+  effect: "nothing",
+  plusitem: "nothing",
+  effectExplanation: "特になし",
+  what: "card",
+  solo: insectdevil2,
+  cost: 8
+}
 dog.image.hide()
 kabuto.image.hide()
 penguin.image.hide()
@@ -703,6 +736,7 @@ saramanda.image.hide()
 skelton.image.hide()
 polter.image.hide()
 grendel.image.hide()
+insectdevil.image.hide()
 landstone.image.hide()
 seastone.image.hide()
 skystone.image.hide()

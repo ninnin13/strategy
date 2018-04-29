@@ -11,7 +11,7 @@ forever(() => {
        battletab.show()
        battlestart.sendToFront()
        newmusic()
-       homemusic = 1
+       musictype = "home"
        startmusic = 1
       // if(deck.length > 0 || deck.length = 0){
       //   range(0,deck.length).forEach(i => {
