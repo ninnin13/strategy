@@ -217,6 +217,8 @@ var goNumber
 var checkmate
 var Ycheckmate
 var can
+var front
+var progressingDirection
 //相手移動用
 var choicecardnumber
 var goXYstart

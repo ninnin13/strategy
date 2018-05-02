@@ -61,15 +61,21 @@ function DSset() {
   descriptionText.text.show()
   descriptionText.text.sendToFront()
   textstop = 1
-  after(1, "seconds", () => {
+  after(0.6, "seconds", () => {
     textstop = 0
   })
 }
 function repeatcheck(stopnumber) {
   repeatUntil(() => textnumber < stopnumber, () => {}, () => {
-    if(textstop == 0 && mouseDown && TTback.image.mouseOver){
+    if(textstop == 0 && mouseDown && TTback.image.mouseOver || textstop == 0 && keysDown.includes('ENTER')){
       DSset()
-      if(textnumber == 27){
+      if(textnumber == 32){
+      cards.forEach(card => {
+        if(card.namefull == firemagician){
+          keepmath = card.image.x
+          keepmath2 = card.image.y
+        }
+      })
       yourdeck[choicecardnumber] = "Dl"
       yourdeck.remove("Dl")
       var Ycard = {
@@ -95,8 +101,8 @@ function repeatcheck(stopnumber) {
         death: 0
       }
       clear = 0
-       Ycard.image.x = 3.5*grid
-       Ycard.image.y = -8.5*grid
+       Ycard.image.x = keepmath + 2*grid
+       Ycard.image.y = keepmath2
        Ycard.image.angle = LEFT
        Ycards.push(Ycard)
       //////console.log(Ycard.name)
@@ -107,7 +113,7 @@ function repeatcheck(stopnumber) {
         duringtutorial = 0
         TTtab.image.hide()
         TTback.image.hide()
-        if(stopnumber == 30){
+        if(stopnumber == 34){
          battling = 0
          reset()
          cards.forEach(card => {
@@ -211,11 +217,11 @@ forever(() => {
   if(textsign == 0){
     DSstart(27)
   }
-  repeatcheck(30)
+  repeatcheck(29)
  }
  if(DSmode == "技2"){
   if(textsign == 0){
-    DSstart(30)
+    DSstart(29)
   }
   repeatcheck(31)
  }

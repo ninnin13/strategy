@@ -13,7 +13,7 @@ function randomDU(number) {
      }
     })
   }else{
-   range(0, random(1,2)).forEach(i => {
+   range(0,2).forEach(i => {
     if(yourdeck.length > 0){
     yourdownX = grid*random(-4,3)
     yourdownY = grid*random(6,9)
@@ -29,10 +29,10 @@ function randomDU(number) {
 //基本機能
 function reset() {
   range(0,cards.length).forEach(i =>{
-    cards.remove(cards[i])
+    cards.remove(cards[0])
   })
   range(0,itemindeck.length).forEach(i =>{
-    itemindeck.remove(itemindeck[i])
+    itemindeck.remove(itemindeck[0])
   })
 
 }
@@ -65,6 +65,7 @@ function outcard(Cn) {
 function Mgocanpush() {
   cards.forEach(card => {
     Wcardtype = card.gotype
+    // console.log(Wcardtype)
     keepmath = card.image.y - 10*grid
     keepmath = keepmath*-1
     keepmath2 = card.image.x + 15*grid
@@ -72,25 +73,25 @@ function Mgocanpush() {
     if(Wcardtype == "normal"){
       range(1,card.range+1+typeplus).forEach(i => {
        WYTData.push(1*i*grid + card.image.x)
-       WYTData.push(0*grid + card.image.x)
+       WYTData.push(0*grid + card.image.y)
        WYTData.push(-1*i*grid + card.image.x)
+       WYTData.push(0*grid + card.image.y)
        WYTData.push(0*grid + card.image.x)
+       WYTData.push(1*i*grid + card.image.y)
        WYTData.push(0*grid + card.image.x)
-       WYTData.push(1*i*grid + card.image.x)
-       WYTData.push(0*grid + card.image.x)
-       WYTData.push(-1*i*grid + card.image.x)
+       WYTData.push(-1*i*grid + card.image.y)
      })
    }
    if(Wcardtype == "unique"){
      range(1,card.range+1+typeplus).forEach(i => {
       WYTData.push(1*i*grid + card.image.x)
+      WYTData.push(1*i*grid + card.image.y)
       WYTData.push(1*i*grid + card.image.x)
-      WYTData.push(1*i*grid + card.image.x)
+      WYTData.push(-1*i*grid + card.image.y)
       WYTData.push(-1*i*grid + card.image.x)
+      WYTData.push(1*i*grid + card.image.y)
       WYTData.push(-1*i*grid + card.image.x)
-      WYTData.push(1*i*grid + card.image.x)
-      WYTData.push(-1*i*grid + card.image.x)
-      WYTData.push(-1*i*grid + card.image.x)
+      WYTData.push(-1*i*grid + card.image.y)
     })
    }
    if(Wcardtype == "unique2"){
@@ -101,35 +102,35 @@ function Mgocanpush() {
        range(-1*keepmath3,keepmath3+1).forEach(k => {
         oddOrEven(several)
         if(oddEven == "even"){
-         WYTData.push(k*grid + card.image.x)
-         WYTData.push(j*grid + card.image.x)
+         WYTData.push(k*grid + card.image.x - keepmath3)
+         WYTData.push(j*grid + card.image.y - keepmath3)
         }
         several += 1
       })
      })
    }
     if(Wcardtype == "power"){
-      WYTData.push(1*grid + card.image.x)
-      WYTData.push(0*grid + card.image.x)
       WYTData.push(-1*grid + card.image.x)
-      WYTData.push(0*grid + card.image.x)
-      WYTData.push(0*grid + card.image.x)
+      WYTData.push(0*grid + card.image.y)
       WYTData.push(1*grid + card.image.x)
+      WYTData.push(0*grid + card.image.y)
+      WYTData.push(0*grid + card.image.x)
+      WYTData.push(-1*grid + card.image.y)
       range(1,card.range+1+typeplus).forEach(i => {
-        WYTData.push(0*grid + card.image.x)
-        WYTData.push(-1*i*grid + card.image.x)
-     })
+        WYTData.push(0 + card.image.x)
+        WYTData.push(1*i*grid + card.image.y)
+      })
      }
      if(Wcardtype == "guard"){
-       WYTData.push(1*grid + card.image.x)
        WYTData.push(0*grid + card.image.x)
-       WYTData.push(-1*grid + card.image.x)
-       WYTData.push(0*grid + card.image.x)
-       WYTData.push(0*grid + card.image.x)
-       WYTData.push(-1*grid + card.image.x)
+       WYTData.push(1*grid + card.image.y)
       range(1,card.range+1+typeplus).forEach(i => {
-         WYTData.push(0*grid + card.image.x)
-         WYTData.push(1*i*grid + card.image.x)
+        WYTData.push(1*i*grid + card.image.x)
+        WYTData.push(0*grid + card.image.y)
+        WYTData.push(-1*i*grid + card.image.x)
+        WYTData.push(0*grid + card.image.y)
+        WYTData.push(0*grid + card.image.x)
+        WYTData.push(-1*i*grid + card.image.y)
       })
       }
      if(Wcardtype == "jump"){
@@ -138,19 +139,19 @@ function Mgocanpush() {
         if(oddEven == "odd"){
           range(0,2*i).forEach(j => {
            WYTData.push(i*grid + card.image.x)
-           WYTData.push(i-j*grid + card.image.x)
+           WYTData.push(i-j*grid + card.image.y)
           })
           range(0,2*i).forEach(j => {
            WYTData.push(-i*grid + card.image.x)
-           WYTData.push(-i+j*grid + card.image.x)
+           WYTData.push(-i+j*grid + card.image.y)
           })
           range(0,2*i).forEach(j => {
            WYTData.push(i-j*grid + card.image.x)
-           WYTData.push(-i*grid + card.image.x)
+           WYTData.push(-i*grid + card.image.y)
           })
           range(0,2*i).forEach(j => {
            WYTData.push(-i+j*grid + card.image.x)
-           WYTData.push(i*grid + card.image.x)
+           WYTData.push(i*grid + card.image.y)
           })
        }else{
 
@@ -294,20 +295,29 @@ function plusfast(nowx,nowy) {
 function littlefast() {
   range(0,wherecan.length/2).forEach(i => {
     if(wherecan[i*2+1] < 0){
-      fastwherecan.push(wherecan[i*2],wherecan[i*2+1])
+      fastwherecan.push(wherecan[i*2])
+      fastwherecan.push(wherecan[i*2+1])
+    }
+  })
+}
+function littlefast2() {
+  range(0,wherecansub.length/2).forEach(i => {
+    if(wherecansub[i*2+1] < 0){
+      fastwherecan.push(wherecansub[i*2])
+      fastwherecan.push(wherecansub[i*2+1])
     }
   })
 }
 //デッキ保存
 function deckkeep() {
   range(0,deck.length).forEach(i => {
-    deck.remove(deck[i])
+    deck.remove(deck[0])
   })
   range(0,clones.length).forEach(i => {
     deck.push(clones[i])
   })
   range(0,itemindeck.length).forEach(i => {
-    itemindeck.remove(itemindeck[i])
+    itemindeck.remove(itemindeck[0])
   })
   range(0,itemindeck2.length).forEach(i => {
     itemindeck.push(itemindeck2[i])
@@ -408,7 +418,7 @@ function attackRG(name){
     attackOBJ.image.brightness -= 2
   })
   after(1, "seconds", () => {
-    attackOBJ.hide()
+    attackOBJ.image.hide()
   })
 }
 function attackTC(name) {
@@ -564,6 +574,9 @@ function YattackRG(TCmain,TCx2,TCy2) {
   repeat(50, () => {
     attackobject.image.brightness -= 2
   })
+  after(2, "seconds", () => {
+    Ygotime -= 1
+  })
 }
 function YattackTC(TCmain,TCx2,TCy2) {
   Ygotime += 1
@@ -666,7 +679,7 @@ function YattackTC(TCmain,TCx2,TCy2) {
      }
   })
   range(0,Twherecan.length).forEach(i => {
-    Twherecan.remove(Twherecan[i])
+    Twherecan.remove(Twherecan[0])
   })
   after(attackobject.YCMData*0.025, "seconds", () => {
     cards.forEach(card => {
@@ -1064,6 +1077,7 @@ function yourcardfield(name,name2){
     willX: "nothing",
     willX: "nothing",
     role: "nothing",
+    moved: "nothing"
   }
   clear = 0
    trueOrFalse()
@@ -1071,7 +1085,7 @@ function yourcardfield(name,name2){
    Ycard.image.y = yourdownY + 15
    Ycard.willX = Ycard.image.x
    Ycard.willX = Ycard.image.y
-   if(random(0,10) < 5){
+   if(random(0,7) < 5){
      Ycard.role = "attack"
    }else{
      Ycard.role = "guard"
@@ -1163,7 +1177,41 @@ function itemkindwhat() {
   })
 }
 //相手のカードが進む
-function Ychoicego(nowX,nowY,nowproperty,itsrole) {
+function priorityFC() {
+  littlefast()
+   if(fastwherecan.length == 0){
+    goXYstart = random(0,wherecan.length-1)
+    goXYstart = floor(goXYstart/2)
+    goXYstart = goXYstart*2
+    goX = wherecan[goXYstart]
+    goY = wherecan[goXYstart+1]
+    console.log("完全ランダム" + wherecan + "X" + goX + "Y" + goY)
+  }else{
+    goXYstart = random(0,fastwherecan.length-1)
+    goXYstart = floor(goXYstart/2)
+    goXYstart = goXYstart*2
+    goX = fastwherecan[goXYstart]
+    goY = fastwherecan[goXYstart+1]
+    console.log("全進優先" + fastwherecan + "X" + goX + "Y" + goY)
+  }
+}
+function RorL(coordinate) {
+  if(coordinate > 0){
+    progressingDirection = "right"
+  }else{
+    progressingDirection = "left"
+  }
+}
+function Ychoicego(nowX,nowY,nowproperty,itsrole,Md) {
+  if(front == "outdoors"){
+    range(0,wherecan.length/2).forEach(i => {
+      if(wherecan[i*2+1] < 0){
+        wherecan[i*2] = "Ds"
+        wherecan[i*2+1] = "Ds"
+      }
+    })
+    wherecan.remove("Ds")
+  }
   ////console.log(Youtdirection)
   range(0,wherecan.length/2).forEach(i => {
     check = "no"
@@ -1198,7 +1246,6 @@ function Ychoicego(nowX,nowY,nowproperty,itsrole) {
         if(card.death == 0){
          if(nowX + wherecan[i*2]*grid == card.willX && nowY + wherecan[i*2+1]*grid == card.willY){
            Youtdirection.push(Ydirection)
-           Ydelatelist.push(i*2)
          }
         }
       })
@@ -1211,84 +1258,163 @@ function Ychoicego(nowX,nowY,nowproperty,itsrole) {
   range(0,Ydelatelist.length).forEach(i => {
     // ////console.log("消す" + Ydelatelist[dcrease])
     wherecan[Ydelatelist[i]] = "Ds"
+    wherecan[Ydelatelist[i]+1] = "Ds"
     dcrease -= 1
   })
   wherecan.remove("Ds")
   range(0,wherecansub.length).forEach(i => {
-    wherecansub.remove(wherecansub[i])
+    wherecansub.remove(wherecansub[0])
   })
  range(0,SPreferred.length).forEach(i => {
-   SPreferred.remove(SPreferred[i])
+   SPreferred.remove(SPreferred[0])
  })
  range(0,WYTData.length).forEach(i => {
-   WYTData.remove(WYTData[i])
+   WYTData.remove(WYTData[0])
+ })
+ range(0,fastwherecan.length).forEach(i => {
+   fastwherecan.remove(fastwherecan[0])
  })
    if(itsrole == "attack"){
     Mgocanpush()
+    // console.log(WYTData)
     range(0,wherecan.length/2).forEach(i => {
+      // console.log(wherecan[i*2]*grid + " " + nowX + " " + wherecan[i*2+1]*grid + " " + nowY)
      range(0,WYTData.length/2).forEach(j => {
        if(nowX + wherecan[i*2]*grid == WYTData[j*2] && nowY + wherecan[i*2+1]*grid == WYTData[j*2+1]){
           SPreferred.push(i*2)
        }
      })
     })
-    console.log(SPreferred)
+    // console.log(SPreferred)
    }
    plusfast(nowX,nowY)
-   if(fastwherecan.length == 0){
-    littlefast()
+   // console.log(wherecan)
+  if(front == "inthehall" && !(Md == 1)){
+   if(wherecan.length > 0){
     if(fastwherecan.length == 0){
       if(SPreferred.length == 0){
-        goXYstart = random(0,wherecan.length-1)
-        goXYstart = floor(goXYstart/2)
-        goXYstart = goXYstart*2
-        goX = wherecan[goXYstart]
-        goY = wherecan[goXYstart+1]
-      }else{
-       if(itsrole == "attack"){
-        if(wherecan.length > SPreferred.length){
-         range(0,wherecan.length).forEach(i => {
-           wherecansub.push(wherecan[i])
-         })
-         range(0,SPreferred.length/2).forEach(i => {
-          wherecansub[SPreferred[i*2]] = "DS"
-          wherecansub[SPreferred[i*2]+1] = "DS"
-         })
-         wherecansub.remove("DS")
-         goXYstart = random(0,wherecansub.length-1)
-         goXYstart = floor(goXYstart/2)
-         goXYstart = goXYstart*2
-         goX = wherecansub[goXYstart]
-         goY = wherecanaub[goXYstart+1]
+         priorityFC()
        }else{
-         goXYstart = random(0,wherecan.length-1)
-         goXYstart = floor(goXYstart/2)
-         goXYstart = goXYstart*2
-         goX = wherecan[goXYstart]
-         goY = wherecan[goXYstart+1]
+        if(itsrole == "attack"){
+         if(wherecan.length > SPreferred.length*2){
+          range(0,wherecan.length).forEach(i => {
+            wherecansub.push(wherecan[i])
+          })
+          range(0,SPreferred.length).forEach(i => {
+           wherecansub[SPreferred[i]] = "DS"
+           wherecansub[SPreferred[i]+1] = "DS"
+          })
+          wherecansub.remove("DS")
+          // console.log(wherecansub)
+          littlefast2()
+          if(fastwherecan.length > 0){
+           goXYstart = random(0,fastwherecan.length-1)
+           goXYstart = floor(goXYstart/2)
+           goXYstart = goXYstart*2
+           goX = fastwherecan[goXYstart]
+           goY = fastwherecan[goXYstart+1]
+           console.log("よけろ" + fastwherecan + "X" + goX + "Y" + goY)
+         }else{
+           goXYstart = random(0,wherecansub.length-1)
+           goXYstart = floor(goXYstart/2)
+           goXYstart = goXYstart*2
+           goX = wherecansub[goXYstart]
+           goY = wherecansub[goXYstart+1]
+           console.log("よけろ" + wherecansub + "X" + goX + "Y" + goY)
+         }
+        }else{
+          priorityFC()
+        }
+       }else{
+         priorityFC()
        }
-      }else{
-        goXYstart = random(0,wherecan.length-1)
-        goXYstart = floor(goXYstart/2)
-        goXYstart = goXYstart*2
-        goX = wherecan[goXYstart]
-        goY = wherecan[goXYstart+1]
       }
-     }
    }else{
      goXYstart = random(0,fastwherecan.length-1)
      goXYstart = floor(goXYstart/2)
      goXYstart = goXYstart*2
      goX = fastwherecan[goXYstart]
      goY = fastwherecan[goXYstart+1]
+     console.log("敵撃破優先" + fastwherecan + "X" + goX + "Y" + goY)
    }
-  }else{
-    goXYstart = random(0,fastwherecan.length-1)
-    goXYstart = floor(goXYstart/2)
-    goXYstart = goXYstart*2
-    goX = fastwherecan[goXYstart]
-    goY = fastwherecan[goXYstart+1]
   }
+ }else{
+   if(wherecan.length > 0){
+    if(fastwherecan.length == 0){
+      RorL(nowX)
+      if(progressingDirection = "right"){
+        range(0,wherecan.length/2).forEach(i => {
+          if(wherecan[i*2] < 0){
+            fastwherecan.push(wherecan[i*2])
+            fastwherecan.push(wherecan[i*2+1])
+          }
+        })
+        if(fastwherecan.length > 0){
+         goXYstart = random(0,fastwherecan.length-1)
+         goXYstart = floor(goXYstart/2)
+         goXYstart = goXYstart*2
+         goX = fastwherecan[goXYstart]
+         goY = fastwherecan[goXYstart+1]
+         console.log("城へ向かう" + fastwherecan + "X" + goX + "Y" + goY)
+       }else{
+         range(0,wherecan.length/2).forEach(i => {
+           if(wherecan[i*2+1] > 0){
+             fastwherecan.push(wherecan[i*2])
+             fastwherecan.push(wherecan[i*2+1])
+           }
+         })
+         if(fastwherecan.length > 0){
+          goXYstart = random(0,fastwherecan.length-1)
+          goXYstart = floor(goXYstart/2)
+          goXYstart = goXYstart*2
+          goX = fastwherecan[goXYstart]
+          goY = fastwherecan[goXYstart+1]
+          movementRecord = 1
+          console.log("下がる" + fastwherecan + "X" + goX + "Y" + goY)
+        }
+       }
+      }else{
+        range(0,wherecan.length/2).forEach(i => {
+          if(wherecan[i*2] > 0){
+            fastwherecan.push(wherecan[i*2])
+            fastwherecan.push(wherecan[i*2+1])
+          }
+        })
+        if(fastwherecan.length > 0){
+         goXYstart = random(0,fastwherecan.length-1)
+         goXYstart = floor(goXYstart/2)
+         goXYstart = goXYstart*2
+         goX = fastwherecan[goXYstart]
+         goY = fastwherecan[goXYstart+1]
+         console.log("城へ向かう" + fastwherecan + "X" + goX + "Y" + goY)
+       }else{
+         range(0,wherecan.length/2).forEach(i => {
+           if(wherecan[i*2+1] > 0){
+             fastwherecan.push(wherecan[i*2])
+             fastwherecan.push(wherecan[i*2+1])
+           }
+         })
+         if(fastwherecan.length > 0){
+          goXYstart = random(0,fastwherecan.length-1)
+          goXYstart = floor(goXYstart/2)
+          goXYstart = goXYstart*2
+          goX = fastwherecan[goXYstart]
+          goY = fastwherecan[goXYstart+1]
+          movementRecord = 1
+          console.log("下がる" + fastwherecan + "X" + goX + "Y" + goY)
+        }
+       }
+      }
+   }else{
+     goXYstart = random(0,fastwherecan.length-1)
+     goXYstart = floor(goXYstart/2)
+     goXYstart = goXYstart*2
+     goX = fastwherecan[goXYstart]
+     goY = fastwherecan[goXYstart+1]
+     console.log("敵撃破優先" + fastwherecan + "X" + goX + "Y" + goY)
+   }
+  }
+ }
 }
 function yourgo(goblocks,YcardgoX,YcardgoY){
      Ycards.forEach(Ycard => {

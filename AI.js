@@ -4,9 +4,6 @@
 
 
 
-
-
-
 //敵の進む場所
 function YcardDLT() {
   range(0,wherecan.length).forEach(i => {

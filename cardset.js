@@ -471,7 +471,7 @@ var penking = {
   effectExplanation: "死亡時:ペンギン剣士のカードが手に入る。",
   what: "card",
   solo: penking2,
-  cost: 6
+  cost: 5
 }
 var sai = {
   image: new Image({

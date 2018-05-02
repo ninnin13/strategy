@@ -417,7 +417,7 @@ after(2.3/hidespeed, "seconds", () => {
   //////console.log(cardsetting[0])
   repeatUntil(() => !(turn == "my"), () => {
      if(choicing == 1){
-       if(keysDown.includes('S')|| mouseDown && downIM.image.mouseOver){
+       if(keysDown.includes('W')|| mouseDown && upIM.image.mouseOver){
          upcard2 -= 10
          upcard = upcard2
          range(0, cardkind.length).forEach(i => {
@@ -425,7 +425,7 @@ after(2.3/hidespeed, "seconds", () => {
           upcard -= 150
         })
        }
-       if(keysDown.includes('W')|| mouseDown && upIM.image.mouseOver){
+       if(keysDown.includes('S')|| mouseDown && downIM.image.mouseOver){
          upcard2 += 10
          upcard = upcard2
          range(0, cardkind.length).forEach(i => {
@@ -790,7 +790,7 @@ after(2.3/hidespeed, "seconds", () => {
   })
   //移動
   Ycards.forEach(Ycard => {
-   if(Ycard.death == 0){
+   if(Ycard.death == 0 && !(Ycard.image.x == 'NaN') && !(Ycard.image.y == 'NaN')){
     Ytypeplus = 0
     Ykeepmath = Ycard.image.y - 10*grid
     //////console.log(Ycard)
@@ -802,21 +802,32 @@ after(2.3/hidespeed, "seconds", () => {
     //////console.log(floor(Ykeepmath2/grid))
     //////console.log(Ycard.propertydata)
     //////console.log(mapData[floor(Ykeepmath/grid)][floor(Ykeepmath2/grid)])
+    Ykeepmath = abs(Ykeepmath)
+    Ykeepmath2 = abs(Ykeepmath2)
     Ychecksame(mapData[floor(Ykeepmath/grid)][floor(Ykeepmath2/grid)],Ycard.propertydata)
-    if(100 > random(0,100) && Ycard.TorF == 0){
-      if(Ycard.image.y < grid*9){
+     if(100 > random(0,100) && Ycard.TorF == 0){
+      if(Ycard.image.y < grid*-9){
+        front = "outdoors"
+      }else{
+        front = "inthehall"
+     }
         // if(0 == random(0,2)){
           Ycardput(Ycard.go,Ycard.step)
          // ////console.log(goXYstart)
          // ////console.log(wherecan)
          // ////console.log("putern1")
-         Ychoicego(Ycard.image.x,Ycard.image.y,Ycard.property,Ycard.role)
+         movementRecord = 0
+         Ychoicego(Ycard.image.x,Ycard.image.y,Ycard.property,Ycard.role,Ycard.moved)
+         Ycard.moved = "nothing"
+         if(movementRecord == 1){
+           Ycard.moved = "back"
+         }
          ////console.log("P1x: " + goX)
          ////console.log("P1y: " + goY)
          yourgo(Ycard.number,goX,goY)
          YcardDLT()
          checkfinish()
-       }else{
+
        //   Ycardput2(Ycard.go,Ycard.step)
        //   // ////console.log(goXYstart)
        //   // ////console.log(wherecan)
@@ -829,15 +840,14 @@ after(2.3/hidespeed, "seconds", () => {
        //   checkfinish()
        // }
       // }else{
-        Ycardput3(Ycard.go,Ycard.step)
-        //////console.log(goXYstart)
-        //////console.log(wherecan)
-        //////console.log("putern3")
-        Ychoicego()
-        yourgo(Ycard.number,goX,goY)
-        YcardDLT()
-        checkfinish()
-      }
+        // Ycardput3(Ycard.go,Ycard.step)
+        // //////console.log(goXYstart)
+        // //////console.log(wherecan)
+        // //////console.log("putern3")
+        // Ychoicego()
+        // yourgo(Ycard.number,goX,goY)
+        // YcardDLT()
+        // checkfinish()
 
     }
    }

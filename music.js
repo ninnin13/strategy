@@ -6,7 +6,7 @@
        speed: "normal",
        volume: 0.3
      }),
-     long: 110,
+     long: 111,
      type: "battle"
   }
   var music1 = {
